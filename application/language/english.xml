@@ -1,0 +1,310 @@
+<?xml version="1.0" ?>
+<tmx version="1.4">
+	<header creationtool="XYZTool" creationtoolversion="1.01-023"
+		datatype="PlainText" segtype="sentence" adminlang="en" srclang="EN"
+		o-tmf="ABCTransMem">
+	</header>
+	<body>
+		<!-- customer registration form -->
+		<!-- user id -->
+		<tu tuid="customer_id" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>* Customer ID:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="sing_in" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>登入</seg>
+			</tuv>
+		</tu>
+		
+		<tu tuid="customer_id_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>Enter your most used email address</seg>
+			</tuv>
+		</tu>
+		<tu tuid="customer_id_error" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>Enter valid email address</seg>
+			</tuv>
+		</tu>
+		<tu tuid="email" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>* Email:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="email_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>Enter your email as user id</seg>
+			</tuv>
+		</tu>
+		
+		<tu tuid="first_name" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>* First Name:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="first_name_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>Enter your first name</seg>
+			</tuv>
+		</tu>
+
+		<tu tuid="last_name" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>* Last Name:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="last_name_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>Enter your last name</seg>
+			</tuv>
+		</tu>
+		
+		<tu tuid="ic" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg> Identity Card Number:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="ic_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>Enter national identity card number</seg>
+			</tuv>
+		</tu>
+		<tu tuid="ic_error" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>Enter valid national identity card number</seg>
+			</tuv>
+		</tu>
+
+
+		<tu tuid="password" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>* Password:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="password_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>More than 5 characters</seg>
+			</tuv>
+		</tu>
+
+		<tu tuid="re_password" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>* Re-enter Password:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="re_password_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>Enter password again</seg>
+			</tuv>
+		</tu>
+
+		<tu tuid="address_1" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>* Address:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="address_1_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>Address for billing and contact</seg>
+			</tuv>
+		</tu>
+
+		<tu tuid="address_2" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>Address line 2:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="address_2_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg> </seg>
+			</tuv>
+		</tu>
+
+		<tu tuid="postcode" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>Post code:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="postcode_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>Enter your area post code</seg>
+			</tuv>
+		</tu>
+
+		<tu tuid="city" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>* City:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="city_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>City name where you are living</seg>
+			</tuv>
+		</tu>
+
+		<tu tuid="country" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>* Country:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="country_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>Select from the list</seg>
+			</tuv>
+		</tu>
+
+		<tu tuid="state" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>* State:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="state_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>Select your state name from the list</seg>
+			</tuv>
+		</tu>
+
+		<tu tuid="telephone" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>* Hand phone:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="telephone_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>Enter your mobile phone number</seg>
+			</tuv>
+		</tu>
+
+		<tu tuid="landphone" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg> Land phone:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="landphone_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>Enter your house phone number</seg>
+			</tuv>
+		</tu>
+
+<!-- customer registration ends -->
+
+
+
+<!--  delivery contact information -->
+<tu tuid="instruction" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg> delivery_contact_info :</seg>
+			</tuv>
+		</tu>
+
+		<tu tuid="contact_name" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>* Contact name:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="contact_name_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg> </seg>
+			</tuv>
+		</tu>
+		
+		<tu tuid="contact_name_error" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>Contact name is required</seg>
+			</tuv>
+		</tu>
+		
+<tu tuid="contact_number" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>* Contact phone:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="contact_number_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg> </seg>
+			</tuv>
+		</tu>
+
+
+<tu tuid="bank_name" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>* Bank name:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="bank_name_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg> Bank name from you have transfered money</seg>
+			</tuv>
+		</tu>
+
+
+<tu tuid="receipt_number" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>* Receipt number:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="receipt_number_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg> Receipt number published by bank transfer </seg>
+			</tuv>
+		</tu>
+
+
+<tu tuid="amount" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>* Amount:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="amount_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg> Amount transfered to easy buy</seg>
+			</tuv>
+		</tu>
+
+<tu tuid="instruction" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>* Instructions:</seg>
+			</tuv>
+		</tu>
+
+		
+
+
+
+<tu tuid="instruction_desc" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg> </seg>
+			</tuv>
+		</tu>
+		
+<!-- City form starts-->		
+<tu tuid="* Select Country" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>* Select Country</seg>
+			</tuv>
+		</tu>
+<!-- City form ends-->		
+
+<!-- Country form starts-->		
+<tu tuid="* Country Name" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>* Country Name</seg>
+			</tuv>
+		</tu>
+		
+
+
+<tu tuid="Save" datatype="plaintext">
+			<tuv xml:lang="en">
+				<seg>Save</seg>
+			</tuv>
+		</tu>
+		
+<!-- Country form ends-->		
+
+
+		
+	</body>
+</tmx>

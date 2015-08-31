@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+	  xmlns:fb="https://www.facebook.com/2008/fbml"
+	  itemscope itemtype="http://schema.org/Organization">
+<head>
+<title>netefct</title>
+        <?php //general settings 
+        $registry = Zend_Registry::getInstance();
+        ?>
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta name="description" content="">
+     <meta name="author" content=""> 
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <!--<link rel="" href="fav-icon.png">-->
+     <!-- Bootstrap Core CSS -->
+     <link href="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/sb-admin-2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+     <link href="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/sb-admin-2/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+     <link href="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/sb-admin-2/css/plugins/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+ <!--    <link href="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/sb-admin-2/css/sb-admin-2.css" rel="stylesheet">-->
+
+    <!-- Morris Charts CSS -->
+     <link href="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/sb-admin-2/css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+     <link href="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/sb-admin-2/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+ <!-- DataTables CSS -->
+     <link href="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/sb-admin-2/css/plugins/dataTables.bootstrap.css" rel="stylesheet">
+     
+	 <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $this->baseUrl() ?>/css/colinkr/site.css"/>  
+	  
+<!--fonts open sans-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<!-- end fonts open sans-->
+   
+ 
+      <!-- jQuery Version 1.11.0 -->
+
+  <script src="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/sb-admin-2/js/jquery-1.11.0.js"></script>
+
+  </head> 
+ 
+ <body>
+ <?php echo $this->render("header.phtml"); ?>
+        <div class="container"><!--main container start -->
+    <?php echo $this->layout()->content; ?>
+     </div> <!--main container end-->
+   	<?php echo $this->render("footer.phtml"); ?> 
+</body>  
+  
+   <!-- <link REL="SHORTCUT ICON" HREF=""/>
+   <!-- Bootstrap Core JavaScript -->
+    <script src="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/sb-admin-2/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+     <script src="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/sb-admin-2/js/plugins/metisMenu/metisMenu.min.js"></script>
+    <!-- Morris Charts JavaScript -->
+    <script src="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/sb-admin-2/js/plugins/morris/raphael.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+   <script src="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/sb-admin-2/js/sb-admin-2.js"></script>
+
+   <!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//aliinfotech.com/colinkr/analytics/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 1]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//aliinfotech.com/colinkr/analytics/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+</html>

@@ -1,0 +1,109 @@
+<style>
+ .set-table{
+ float:left;
+}
+</style>    
+    <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                         <div class="col-lg-12 col-md-26">
+                         <h3></h3>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <i class="fa fa-image fa-5x"></i>
+                                </div>
+													
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">Gallery Images List</div>
+                            
+                                </div>
+                            </div>
+                        </div>
+						
+						 <div class="panel-body">
+                               
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix">
+                                <div class="table-responsive">
+													<table cellpadding="0" cellspacing="0" border="0" class="responsive dynamicTable display table table-bordered  set-table" width="100%">
+														<thead>
+														<!--<tr id='msg'><td colspan='2'><?php echo $this->msg ?></td></tr>-->
+															<tr>
+																<th style="text-align:center;">Image</th>														
+																<th style="text-align:center;">Edit </th>
+																<th style="text-align:center;">Delete</th>
+                                                        	</tr>
+														</thead>		
+														<tbody>
+                                          
+														<?php if (count($this->paginator)){ ?>
+													
+														<?php foreach ($this->paginator as $item): ?>
+														<tr class="odd gradeX">
+														<td style="text-align:center;">
+<div  style="position: relative; width: 50px; height: 50px">
+<img style="max-width:100%; max-height: 100%  text-align:center;" src="<?php echo $this->baseUrl(); ?>/images/gallery-images/200X200/<?php echo $item['photo_name'] ?>" alt="" />
+</div>
+
+															</td>
+														
+                                                            														                                                        
+
+														<td style="text-align:center;"><a class="btn btn-sm btn-warning float-right" href="<?php echo $this->baseUrl(); ?>/admin/gallery/edit-photo/photo_id/<?php echo $item['photo_id'] ?>">Edit</a></td>
+															 <td  style="text-align:center;"><a class="btn btn-danger" href="#" onclick="return confirmDelete(<?php echo $item['photo_id'] ?> )" href="">Delete </a></td>
+														</tr>
+															<?php endforeach; ?>
+															<tr><td colspan='9' style="text-align:center;">
+															<?php echo $this->paginationControl($this->paginator, 'Sliding', 'my_pagination_control.phtml'); ?>
+															</td>
+															</tr><?php }else{ ?>
+											
+															<tr><td colspan="7"><h4>There are no Photo Gallery List!</h4></td></tr>
+															<?php } ?>
+														</tbody>
+
+						 								</table>
+														</div><!-- div responsive end-->
+												</div>
+
+                               
+                                
+                                
+                                </div>
+				 		
+                        <a href="#">
+                            <div class="panel-footer">
+                                
+								 </a>
+                            </div>
+                       
+                    </div>
+                </div>
+                
+                
+          
+                
+                
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+
+
+  <script language="Javascript" type="text/javascript">
+ 
+ function confirmDelete(id){
+	var r = confirm("Are you sure to Delete this Image! " );
+	if (r == true) {
+	window.location.assign("<?php echo $this->baseUrl(); ?>/admin/gallery/delete-photo/id/" + id);    
+	} else {
+	return false;
+	}
+	}
+ </script>

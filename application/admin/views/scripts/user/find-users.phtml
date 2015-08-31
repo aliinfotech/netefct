@@ -1,0 +1,139 @@
+<!-- Non form translator section starts-->
+ 
+<?php
+
+if(Zend_Registry::get("lang_id") == 1){
+$adapter = new Zend_Translate(
+    array(
+        'adapter' => 'array',
+        'content' => array('page_heading' => ' Users List'),
+        'locale'  => 'en'
+    )
+);
+}
+if(Zend_Registry::get("lang_id") == 2){
+$adapter = new Zend_Translate(
+    array(
+        'adapter' => 'array',
+        'content' => array('page_heading' => 'ایک نیا صارف شامل کریں' ),
+        'locale'  => 'en'
+    )
+);
+}
+$role = array(
+					'1' => 'Admin',
+					'2' => 'Editor',
+					'3' => 'Author',
+					'4' => 'Super Super Admin',
+					);
+	?>
+
+  <div id="content" class="clearfix">
+            <div class="contentwrapper"><!--Content wrapper-->
+
+                <div class="heading">
+						<h3><?php 
+						$translate = new Zend_View_Helper_Translate($adapter);
+						print $translate->translate('page_heading');	?>
+						</h3>
+
+                    <div class="resBtnSearch">
+                        <a href="#"><span class="icon16 brocco-icon-search"></span></a>
+                    </div>
+
+                    <div class="search">
+
+                        <form id="searchform" action="post" method="<?php echo $this->baseUrl()?>/admin/user/find-users" onsubmit='findUser();'/>
+                            <input type="text" name='email' id='email'class="top-search" placeholder="Search here ..." />
+                            <input type="submit" class="search-btn" value="" />
+                        </form>
+                
+                    </div><!-- End search -->
+				</div><!-- End .heading-->
+    			
+				                <div class="row-fluid">
+
+										<div class="span12">
+
+											<div class="box gradient">
+
+												<div class="title">
+													<h4>
+														<span>Users List</span>
+													</h4>
+												</div>
+							
+												<div class="content noPad clearfix" id='result'>
+													<table cellpadding="0" cellspacing="0" border="0" class="responsive dynamicTable display table table-bordered" width="100%">
+														<thead>
+															<tr>
+																<th>User Name</th>
+																<th>Email</th>
+																<th>Role</th>
+																<?php if($this->user['role_id'] == 1){?>
+																<th>Assign Branch</th>
+																<th>Un Asssign Branch</th>
+																<th>Edit</th>
+																<th>Delete</th>
+																<?php }?>
+															</tr>
+														</thead>		
+														<tbody>
+                                          
+														<?php if (count($this->paginator)){ ?>
+													
+														<?php foreach ($this->paginator as $item): ?>
+														<tr class="odd gradeX">
+															<td>
+															<?php echo $item['firstname'] ." ". $item['lastname']  ?>
+															</td>
+
+															<td><?php echo $item['email']?></td>
+															<td><?php
+															$role_id = $item['role_id']==0?'':'Yes';
+															 echo $role[$item['role_id']]?></td>
+															<?php if($this->user['role_id'] == 1){?>
+											 
+															<td><a href="<?php echo $this->baseUrl(); ?>/admin/user/assign-branch/user_id/<?php echo $item['user_id'] ?>">Assign Branch</a></td>
+															<td><a href="<?php echo $this->baseUrl(); ?>/admin/user/unassign-branch/user_id/<?php echo $item['user_id'] ?>">UnAssign Branch</a></td>
+															<td><a href="<?php echo $this->baseUrl(); ?>/admin/user/edit/user_id/<?php echo $item['user_id'] ?>">Edit</a></td>
+															<td><a href="<?php echo $this->baseUrl(); ?>/admin/user/confirm-delete/user_id/<?php echo $item['user_id'] ?>">Delete</a></td>
+															 <?php }?>
+															</tr>
+															<?php endforeach; ?>
+															<tr><td colspan='6'>
+															<?php echo $this->paginationControl($this->paginator, 'Sliding', 'my_pagination_control.phtml'); ?>
+															</td>
+															</tr><?php }else{ ?>
+											
+															<tr><td colspan="6"><h4>There are no clips created! Please create a few</h4></td></tr>
+															<?php } ?>
+
+														</table>
+												</div>
+
+											</div><!-- End .box -->
+
+										</div><!-- End .span12 -->
+
+								</div><!-- End .row-fluid -->
+					  
+					  
+			<script>
+					window.onload = function () { 
+					}
+					function findUser(){
+						var email = $('#email').val();
+						 if(email == "")return;
+					
+						$.ajax('post',"<?php echo $this->baseUrl()?>/admin/user/find-users", {email: email},
+						//this is response from controller
+						function(data){
+							alert(data);
+							//$('div#result').html(data);
+							
+							//$('div#state').show();
+						});
+					
+					}
+			</script>

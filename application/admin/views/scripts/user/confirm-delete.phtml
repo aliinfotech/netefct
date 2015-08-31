@@ -1,0 +1,28 @@
+ <!-- link media="screen, projection" href="<?php //echo $this->baseUrl(); ?>/css/products.css" rel="stylesheet" -->
+<div class="span-17">&nbsp;</div>
+ <div class="span-20 last box" style="position: relative; top:100px;">
+<div><h2>Are your sure you want to delete user <?php echo $this->firstname; ?> </h2> 
+    <center>
+        
+        <table>
+        <tr>
+            <td>
+                <form action="<?php echo $this->baseUrl(); ?>/admin/user/delete/user_id/<?php echo $this->user_id ?>" method="post">
+                    <input type="submit" value="Yes Delete"/>
+                </form>
+            </td>
+            <td>
+                    <form action="<?php echo $this->baseUrl(); ?>/admin/product/list" method="post">
+                    <input type="submit" value="Cancel"/>
+                </form>
+
+
+            </td>
+
+        </tr>
+    </table>
+    </center>    
+
+</div>
+ </div>
+    

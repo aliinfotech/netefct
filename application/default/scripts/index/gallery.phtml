@@ -1,0 +1,70 @@
+
+ 
+ <div class="row main-row">
+<div class="container">
+<h1 class="fastival-heading"><span style="color:#000">Photo</span> Gallery</h1>
+<div class="col-md-12">
+<div id='carousel-gallery' class='carousel slide' data-ride='carousel'>
+<!-- Modal -->
+<div class="modal fade" id="photoGallery" tabindex="-1" role="dialog" aria-labelledby="photoGalleryLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="photoGalleryLabel">Photo Gallery</h4>
+      </div>
+      <div class="modal-body">
+  	   	<div class='carousel-outer'>
+        <!-- Wrapper for slides -->
+        <div class='carousel-inner'>    
+<?php 
+$counter = 0; 
+foreach($this->images as $gallery){ ?>
+<div class='item <?php if($counter == 0){ echo "active" ; $counter++; }?>'>
+	  <center>
+          <img class="img-responsive" src="<?php echo $this->baseUrl(); ?>/images/gallery-images/500X500/<?php echo  $gallery['photo_name'];?>"  alt='' /> 
+         </center>    
+			</div>
+<?php	
+}	
+?>	
+	</div>
+        <!-- Controls -->
+        <a class='left carousel-control' href='#carousel-gallery' data-slide='prev'>
+        <span class='glyphicon glyphicon-chevron-left'></span>
+        </a>
+        <a class='right carousel-control' href='#carousel-gallery' data-slide='next'>
+        <span class='glyphicon glyphicon-chevron-right'></span>
+        </a>
+    </div>  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <!-- Indicators -->
+ 	    <ol class='carousel-indicators'> 
+<?php 
+$pcounter = 0;
+foreach($this->images as $gallery){ ?>
+<li data-target='#carousel-gallery' data-slide-to='<?php echo $pcounter; $pcounter++; ?>' class='active'>
+	 <center>
+<img class="img-responsive" src="<?php echo $this->baseUrl(); ?>/images/gallery-images/200X200/<?php echo $gallery['photo_name'];?>" alt='' data-toggle="modal" data-target="#photoGallery"/>
+    </center> </li> 	
+	
+<?php	
+}	
+?>	
+</ol>
+</div>
+<div>
+</div>
+
+
+
+
+</div>
+</div>
+</div>

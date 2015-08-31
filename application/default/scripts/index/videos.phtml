@@ -1,0 +1,89 @@
+
+<div class="row video-seprator">
+<?php
+$myservice = $this->main_video->url_video;
+$youtube = strpos($myservice, 'you');
+if ($youtube > 0) { ?>
+
+
+<div class="col-md-6 col-md-offset-3 set-video">
+<iframe width="560" height="315" src="<?php echo trim($this->main_video->url_video);?>" frameborder="0" allowfullscreen></iframe>
+<?php
+	}else{
+?>
+<div class="col-md-8 col-md-offset-2 set-video">
+
+<iframe src="https://player.vimeo.com/video/<?php echo trim($this->main_video->url_video);?>?badge=0" width="750" height="422" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/<?php echo trim($this->main_video->url_video);?>">Lightbox: Grey</a> from <a href="https://vimeo.com/philevans">nHotPursuit</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+	<?php } ?>
+
+	<br/>
+</div><!--col-md-6 end-->
+</div><!--row end-->
+
+<div class="row set-setting">
+<?php 
+$counter = 0;
+if (count($this->paginator)){ 
+foreach ($this->paginator as $item): ?>
+<div class="col-md-3 col-md-offset-1 set-video-colum">   
+<a href="<?php echo $this->baseUrl(); ?>/index/videos/id/<?php echo $item['v_id']; ?>">
+<div class="responsive-image video-image">
+<img src="<?php echo $this->baseUrl();?>/images/video/200X200/<?php echo $item['video_img']; ?>" alt="video-image"/>
+
+<h4 class="set-video-water-mark">
+<span>
+<div style="width: 100px; height: 100px">
+<img style="max-width:100%; max-height: 100%" src="<?php echo $this->baseUrl();?>/images/video-paly1.png" alt="video-image"/>
+
+</div>
+<span>
+</h4>
+</div>
+<br/>
+<center>
+<p class="set-video-title">
+<?php echo $item['title'] ?>
+</p>
+<p class="set-video-description">
+<?php echo $item['short_description'] ?> 
+</p>
+</center>
+</a>
+</div>
+<?php 
+$counter++;
+if($counter > 2){
+echo "</div><div class='row set-setting'>"; 
+$counter = 0;
+}
+
+
+endforeach;
+}
+ ?>
+
+</div><!--End of last row -->
+<div class="row">
+<div class="col-md-4 col-md-offset-4"><center>
+<?php echo $this->paginationControl($this->paginator, 'Sliding', 'video_pagination_control.phtml'); ?>
+</center>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4 col-md-offset-4">
+&nbsp;
+</div>
+</div>
+
+ <script language="Javascript" type="text/javascript">
+window.onload = function () { 
+ $("h2")
+        .wrapInner("<span>")
+
+    $("h2 br")
+        .before("<span class='spacer'>")
+        .after("<span class='spacer'>");
+ }
+			
+	
+ </script>

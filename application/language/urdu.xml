@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<tmx version="1.4">
+	<header creationtool="XYZTool" creationtoolversion="1.01-023"
+		datatype="PlainText" segtype="sentence" adminlang="en" srclang="EN"
+		o-tmf="ABCTransMem">
+	</header>
+	<body>
+		<tu tuid="UserID" datatype="plaintext">
+			<tuv xml:lang="ur">
+				<seg>&#1740;&#1608;&#1586;&#1585; &#1570;&#1574;&#1672;&#1740;:</seg>
+			</tuv>
+		</tu>
+		<tu tuid="FirstName" datatype="plaintext">
+			<tuv xml:lang="ur">
+				<seg>&#x0627;&#x06CC;&#x06A9; &#x0646;&#x06CC;&#x0627;
+
+				&#x0635;&#x0627;&#x0631;&#x0641; &#x0634;&#x0627;&#x0645;&#x0644; &#x06A9;&#x0631;&#x06CC;&#x06BA;</seg>
+			</tuv>
+		</tu>
+		<tu tuid="Enter Email" datatype="plaintext">
+			<tuv xml:lang="ur">
+				<seg>&#x0627;&#x06CC; &#x0645;&#x06CC;&#x0644; &#x062F;&#x0631;&#x062C; &#x06A9;&#x0631;&#x06CC;&#x06BA;</seg>
+			</tuv>
+		</tu>
+		<tu tuid="Submit" datatype="plaintext">
+			<tuv xml:lang="ur">
+				<seg>&#1576;&#1726;&#1580;&#1740;&#1722;</seg>
+			</tuv>
+		</tu>
+
+<!--Validation Messages -->		
+		<tu tuid="NotEmpty" datatype="plaintext">
+			<tuv xml:lang="ur">
+				<seg>&#1570;&#1574;&#1672;&#1740; &#1582;&#1575;&#1604;&#1740;  &#1729;&#1746;</seg>
+			</tuv>
+		</tu>
+		<tu tuid="StringLength" datatype="plaintext">
+			<tuv xml:lang="ur">
+				<seg>&#1581;&#1585;&#1608;&#1601;  &#1705;&#1605;  &#1729;&#1740;&#1722;</seg>
+			</tuv>
+		</tu>
+
+		
+		
+	
+	</body>
+</tmx>
+
+
+<!--
+<?xml version="1.0" encoding="UTF-8"?>
+  <tu tuid="someelement">
+    <tuv xml:lang="ur"><seg>&#x0396</seg></tuv>
+    <tuv xml:lang="de"><seg>Der Benutzer wurde erfolgreich angemeldet.</seg></tuv>
+    <tuv xml:lang="en"><seg>User was successfully logged in.</seg></tuv>
+  </tu>
+  -->

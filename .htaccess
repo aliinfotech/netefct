@@ -1,0 +1,10 @@
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !/images/.*
+RewriteCond %{REQUEST_URI} !/js/.*
+RewriteCond %{REQUEST_URI} !/css/.*
+RewriteCond %{REQUEST_URI} !/tiny_mce/.*
+RewriteCond %{REQUEST_URI} !/cms/.*
+RewriteCond %{REQUEST_URI} !/analytics/.*
+RewriteCond %{REQUEST_URI} !sitemap.xml
+RewriteRule !\.(ico|gif|jpg|png|swf|flv)$ index.php
+RewriteRule ^index\.php$ - [L]

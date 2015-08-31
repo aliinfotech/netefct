@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <?php //general settings 
+        $registry = Zend_Registry::getInstance();
+        ?>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!-- Bootstrap Core CSS -->
+<!-- link href="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/css/bootstrap.min.css" rel="stylesheet" media="screen" -->    
+<link rel="stylesheet" href="<?php echo $this->baseUrl();?>/css/bootstrap-3.2.0/themes/metro-ui/min/metro-bootstrap.min.css">
+<link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/metro-ui/min/metro-bootstrap-responsive.min.css">
+<link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/metro-ui/min/iconFont.min.css">
+<link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/metro-ui/docs/css/docs.css">
+<link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/metro-ui/docs/prettify/prettify.css">
+
+<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $this->baseUrl() ?>/css/style.css"/>  
+<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $this->baseUrl() ?>/css/responsive.css"/>  
+
+ <title>JJ Smith Online</title> 
+ 	<script src="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/metro-ui/min/jquery.min.js"></script>
+    <script src="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/metro-ui/min/jquery.widget.min.js"></script>
+    <script src="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/metro-ui/js/mousewheel.js"></script>
+    <script src="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/metro-ui/docs/js/prettify/prettify.js"></script>
+    <script src="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/metro-ui/docs/js/holder/holder.js"></script>
+    <script src="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/metro-ui/load-metro.js"></script>
+    <script src="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/metro-ui/docs/js/docs.js"></script>
+    
+    
+  </head> 
+   <body  class="metro">
+    <?php echo $this->render("header-details.phtml"); ?>
+     <!--main container start -->
+    <?php echo $this->layout()->content; ?>
+   <!--main container end-->
+   	<?php echo $this->render("footer.phtml"); ?>
+    <!-- end of the container -->
+    <link REL="SHORTCUT ICON" HREF=""/>
+   <script src="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/metro-ui/hitua.js"></script>
+       </body>
+</html>
+

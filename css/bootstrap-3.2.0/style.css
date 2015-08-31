@@ -1,0 +1,68 @@
+#header-image{
+    background:url('../images/website/background4.jpg') no-repeat center center;
+    height: 500px;
+	background-size:100% auto;
+}
+
+	
+.menu{list-style-type:none;
+}
+
+.search-box{
+
+padding-top: 20px;
+border-radius: 10px;}
+
+
+
+/*.main_container{ margin:auto; width:1200px; height:auto}
+.nav_bg{
+	background:url('../images/theme/bg.jpg');
+	background-repeat:no-repeat;
+	width:100%;
+	margin:auto;
+	height:669px;
+}
+.logo{margin-left: 80px;
+padding-top: 17px;
+float:left;
+}
+
+.links{ float: left;
+color: #FFF;
+margin-top: -45px;
+margin-left: 646px;}
+.links>a{ text-decoration:none; color:#FFF; font-family:proxima nova regular}
+
+.search_box{ background-color: #f86e0f;
+height: 97px;
+width: 586px;
+padding-top: 20px;
+margin-top: 250px;
+margin-left: 85px;
+border-radius: 10px;}
+
+.search_box_1 { height:40px;
+ width:215px;}
+
+.search_box_2 { height:40px;
+ width:215px;}
+
+.btn_clr{ background-color: #000;
+color: #FFF;
+margin-left: 9px;
+width: 100px;}
+
+.btn_clr:hover{ background-color: #000;
+color: #FFF;
+margin-left: 9px;
+width: 100px;}
+
+
+.clr_wht{ color:#FFF}
+
+/* error class for Zend Framework error message */
+.errors {
+	color: red; 
+	font-weight:bold;
+	}

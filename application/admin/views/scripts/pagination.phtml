@@ -1,0 +1,95 @@
+<style type="text/css">
+<!--
+#tnt_pagination {
+	display:block;
+	text-align:left;
+	height:22px;
+	line-height:21px;
+	clear:both;
+	padding-top:3px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:normal;
+}
+
+#tnt_pagination a:link, #tnt_pagination a:visited{
+	padding:7px;
+	padding-top:2px;
+	padding-bottom:2px;
+	border:1px solid #EBEBEB;
+	margin-left:10px;
+	text-decoration:none;
+	background-color:#F5F5F5;
+	color:#0072bc;
+	width:22px;
+	font-weight:normal;
+}
+
+#tnt_pagination a:hover {
+	background-color:#DDEEFF;
+	border:1px solid #BBDDFF;
+	color:#0072BC;	
+}
+
+#tnt_pagination .active_tnt_link {
+	padding:7px;
+	padding-top:2px;
+	padding-bottom:2px;
+	border:1px solid #BBDDFF;
+	margin-left:10px;
+	text-decoration:none;
+	background-color:#DDEEFF;
+	color:#0072BC;
+	cursor:default;
+}
+
+#tnt_pagination .disabled_tnt_pagination {
+	padding:7px;
+	padding-top:2px;
+	padding-bottom:2px;
+	border:1px solid #EBEBEB;
+	margin-left:10px;
+	text-decoration:none;
+	background-color:#F5F5F5;
+	color:#D7D7D7;
+	cursor:default;
+}
+-->
+</style>
+<div id="tnt_pagination">
+    <?php
+$allParams = Zend_Controller_Front::getInstance()->getRequest()->getParams();
+if (isset($this->previous)): ?>
+
+    <span class="disabled_tnt_pagination">  
+<a href="<?php echo $this->url(array_merge($allParams, array('page' => $this->next))); ?>">Start</a></span>  | <?php else: ?> <span class="disabled">Start</span>
+| <?php endif; ?>
+
+<?php
+if (isset($this->previous)): ?>
+<a href="<?php echo $this->url(array_merge($allParams,array('page' => $this->previous))); ?>">&lt;
+Previous</a> | <?php else: ?> <span class="disabled">&lt; Previous</span>
+| <?php endif; ?>
+
+
+<?php
+foreach($this->pagesInRange as $page){
+     if($this->current != $page){
+    echo ' <a href="'.$this->url(array_merge($allParams,array('page' => $page))).'">'.$page.'</a> | '; 
+}else{
+    echo $page. ' | ';
+}
+}
+?>
+<?php
+if (isset($this->next)): ?>
+<a href="<?php echo $this->url(array_merge($allParams,array('page' => $this->next))); ?>">
+Next &gt;</a> <?php else: ?> <span class="disabled"> Next &gt;</span>
+<?php endif; 
+?>
+
+<?php
+if (isset($this->next)): ?>
+<a href="<?php echo $this->url(array_merge($allParams,array('page' => $this->last))); ?>"> | End</a> <?php else: ?> | <span class="disabled">End</span>
+<?php endif; ?>
+</div>

@@ -1,0 +1,219 @@
+
+<div class="row">
+<div class="col-md-11 col-md-offset-1">
+
+
+			<div class="post-head">
+	
+			<h1><?php echo $this->page_data['heading'];?></h1>
+			
+			</div><!--post-heading end-->
+			
+			<div class="row">
+			<div class="col-md-10 inner-row">
+			<div class="col-md-4">by <h4 class="author-name"> admin</h4></div>
+			<div class="col-md-6"><p>Date: <?php echo $this->page_data['date_created'];?></p></div>
+			</div>
+			</div><!--inner row end-->
+
+<div class="row">
+<div class="col-md-10 set-summary">
+	<img class="img-responsive" src="<?php echo $this->baseUrl(); ?>/images/posts/500X500/<?php echo $this->page_data['image'] ?>" alt="Post Image" />
+			<!--<div  style="position: relative; width: 800px; height: 450px">
+<img style="max-width:100%; max-height: 100%" class="img-responsive" src="<?php echo $this->baseUrl(); ?>/images/posts/800/<?php echo $this->list['image'] ?>" alt="" />
+</div>-->
+
+<p><?php echo $this->page_data['description'];?></p>
+</div>
+</div>
+<?php if($this->page_data['is_comment']== 0){ ?>
+<div class="row">
+			<div class="col-md-10 set-head"> 
+			<h2> <i class="fa fa-comments fa-2x"></i> Comments</h2>
+			<?php 
+
+foreach ($this->comment as $items):
+?>
+			<div class="row ">
+	<div class="col-md-9 set-summary">
+			<h4><i class="fa fa-user" ></i> &nbsp <?php echo $items['name'] ?> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <i class="fa fa-clock-o" ></i>&nbsp  <?php echo $items['comment_date'] ?> </h4>
+			<p class="set-comment">
+			<?php echo $items['comment'] ?>
+			</p>
+			
+
+
+			</div>
+			</div>
+				<?php  endforeach;?>
+			</div>
+			</div>
+		<!-- end approved comment -->
+<div class="row">
+<div class="col-md-10 set-head"> 
+  
+			<form id="frm"  method="post">
+             	 <?php echo $this->form->csrf ?>
+				 <h3 class="reply">Leave a Reply</h3>
+				 <div class="msg">
+            		  
+            		</div>
+                               <input type="hidden" name="post_id" value="<?php echo $this->page_data['post_id']; ?>" />       	  
+										  <h3 class="c-headings"> * Name:</h3>
+									   <?php echo $this->form->name; ?>
+									   <span id="name-error"></span>
+                                        <h3 class="c-headings"> * Email:</h3>
+										 <?php echo $this->form->email; ?>
+										 <span id="email-error"></span>
+										 <h3 class="c-headings">* Comment:</h3>
+										 <?php echo $this->form->comment; ?>
+										 <span id="comment-error"></span><br/>
+										 <b>Toatl Charecters:</b>2000/<span id="count"></span>
+										 <?php echo $this->form->submit?>
+            </form>
+ 
+ </div><!--col-10 end-->
+ </div>
+<?php } ?>
+</div>
+</div>
+<script type="text/javascript">
+
+$('#comment').keyup(function() {
+    var cs = $(this).val().length;
+    $('#count').text(cs);
+});
+    function isValidEmailAddress(emailAddress) {
+    var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
+     //alert( pattern.test(emailAddress) );
+    return pattern.test(emailAddress);
+};
+    
+   $(function(){
+   
+   $("#first_name").keyup(function(){ 
+        var txt = $(this);
+        
+        if (txt.val() == '' || txt.length == 0)
+        {
+            $(this).css({"border-color": "red", 
+                     "border-width":"1px", 
+                     "border-style":"solid"});
+            $('#name-error').css('color', 'red').text('Name is required.').show();
+        }
+        else
+        {
+            $(this).css({"border-color": "#CCCCCC", 
+                     "border-width":"1px", 
+                     "border-style":"solid"});
+            $('#name-error').hide();
+        }
+    });
+    
+    $("#email").keyup(function(){ 
+        var txt = $(this);
+        
+        if (txt.val() == '' || txt.length == 0)
+        {
+            $(this).css({"border-color": "red", 
+                     "border-width":"1px", 
+                     "border-style":"solid"});
+            $('#email-error').css('color', 'red').text('Eamil is required.').show();
+        }
+        else if(txt.val() != '' && !isValidEmailAddress(txt.val()))
+        {
+            $(this).css({"border-color": "red", 
+                     "border-width":"1px", 
+                     "border-style":"solid"});
+            $('#email-error').css('color', 'red').val('Eamil address is not valid.').show();
+        }
+        else
+        {
+            $(this).css({"border-color": "#CCCCCC", 
+                     "border-width":"1px", 
+                     "border-style":"solid"});
+            $('#email-error').hide();
+        }
+    });
+    
+    $("#comment").keyup(function(){ 
+        var txt = $(this);
+        
+        if (txt.val() == '' || txt.length == 0)
+        {
+            $(this).css({"border-color": "red", 
+                     "border-width":"1px", 
+                     "border-style":"solid"});
+            $('#comment-error').css('color', 'red').text('Comment is required.').show();
+        }        
+        else
+        {
+            $(this).css({"border-color": "#CCCCCC", 
+                     "border-width":"1px", 
+                     "border-style":"solid"});
+            $('#comment-error').hide();
+        }
+    });
+   
+    //function saveComments()
+    $('#frm').submit(function(e) 
+    {    
+        var name = $('#first_name');
+        if(name.val() == '' || name.length == 0)
+        {
+            name.css({"border-color": "red", 
+                     "border-width":"1px", 
+                     "border-style":"solid"});
+            name.focus();
+            return false;
+        }
+        
+        var email = $('#email');
+        if(email.val() == '' || email.length == 0)
+        {
+            email.css({"border-color": "red", 
+                     "border-width":"1px", 
+                     "border-style":"solid"});
+            email.focus();
+            return false;
+        }
+        
+        var comment = $('#comment');
+        if(comment.val() == '' || comment.length == 0)
+        {
+            comment.css({"border-color": "red", 
+                     "border-width":"1px", 
+                     "border-style":"solid"});
+            comment.focus();
+            return false;
+        }
+        
+       $.ajax({
+             type: 'POST',
+             url: "<?php echo $this->baseUrl()?>/blog/save-post-comments",
+             data: $(this).serialize(),
+                success: function(result) {
+               console.log('success : '+ result);
+                    if(result == 'success')
+                    {
+                        $('.msg').html("<div class='alert alert-success'>Comments Added Successfully!</div>").show().delay(5000).fadeOut(1000);
+                        name.val('');
+                        email.val('');
+                        comment.val('');
+                    }
+				},
+                error: function(result)
+                {
+                     console.log('error : '+ result);
+                     if(result == 'error')
+                     {
+                        $('.msg').html("<div class='alert alert-danger'>Some error in saving record</div>").show().delay(5000).fadeOut(1000);
+                        }
+                }
+        }); //ajax end
+             
+            //return false;
+            e.preventDefault();
+    });
+  });
+ </script>

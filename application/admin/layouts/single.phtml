@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+	  <?php //general settings 
+        $registry = Zend_Registry::getInstance();
+        ?>
+    <title>n Hot Pursuit</title>
+    <meta name="author" content=" " />
+    <meta name="description" content="BTR Admin " />
+    <meta name="keywords" content="Admin" />
+    <!-- Mobile Specific Metas --> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <!-- <link href="fav-icon.png">-->
+<!-- Latest compiled and minified CSS -->
+<link href="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Optional theme -->
+<link href="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/themes/jumbotron-narrow.css" rel="stylesheet">
+
+ <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<style>
+	.errors{
+color: red;
+font-weight: bold;	
+	}
+.set-img{
+padding-left: 100px;
+	}	
+	</style>
+	
+    </head>
+   <body>
+
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+		<!--<li class="active"><a href="<?php echo $this->baseUrl(); ?>/admin/login/xp-login">Experts Login</a></li>
+		<li class="active"><a href="<?php echo $this->baseUrl(); ?>/admin/login/admin-login">Administrator Login</a></li>-->
+		<li class="active"><a href="<?php echo $this->baseUrl(); ?>">Home</a></li>
+        </ul>
+        <h3 class="text-muted">Welcome to n Hot Pursuit</h3> 
+     </div>
+
+      <div class="jumbotron">
+        <h1 class="set-img"><img class="img-responsive" src="<?php echo $this->baseUrl(); ?>/images/nhot-image/logo.png" alt="logo"></h1>
+        <p class="lead">
+<?php echo $this->layout()->content; ?>       
+        </p>
+      </div>
+<div class="footer">
+        <p>&copy; nhotpursuit 2015</p>
+      </div>
+
+    </div> <!-- /container -->
+ <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="<?php echo $this->baseUrl(); ?>/css/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+</body>
+</html>

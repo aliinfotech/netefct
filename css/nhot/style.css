@@ -1,0 +1,471 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+body{
+background-color:#fff;
+}
+@media only screen and (min-width: 800px) and (max-width: 1200px) {
+.navbar-brand {
+    float: left;
+    font-size: 18px;
+    height: 50px;
+    line-height: 20px;
+    padding: 0px !important;
+	margin: 0px !important;
+	width: 320px;
+	height: 70px;
+}
+}
+@media only screen and (min-width: 300px) and (max-width: 799px){
+	.navbar-brand {
+    float: left;
+    font-size: 18px;
+    height: 50px;
+    line-height: 20px;
+    padding: 0px !important;
+	margin: 0px !important;
+	width: 320px;
+	height: 70px;
+}
+.set-testimonial-btn {
+    background-color: #272727 !important;
+    border-color: #272727;
+    border-radius: 4px;
+    color: rgb(255, 255, 255) !important;
+    float: right;
+    margin: 0 !important;
+}
+.navbar-nav > li {
+    padding: 0 0 0 15px !important;
+}
+
+}
+
+@media only screen and (min-width: 300px) and (max-width: 991px){
+.master{
+border-bottom:1px solid #d2d2d2;
+margin:10px 0;
+}
+
+.master-border{
+	border-right:0px solid !important ; 
+}
+.set-testimonial-text {
+    float: left;
+    margin: 15px 0 !important;
+    padding: 0 !important;
+}
+
+.quote {
+    background-image: url("/images/nhot-image/quote-2.png") !important;
+    background-repeat: no-repeat !important;
+    bottom: 0 !important;
+    left: 90% !important;
+    padding: 8px !important;
+    position: relative !important;
+    width: 18px !important;
+}
+
+}
+
+
+
+			/*header section start*/
+		
+.social-1 {
+    margin: 0 !important;
+    padding-top: 5px !important;
+}
+
+.social-icons {
+    margin: 0 !important;
+    padding: 5px 5px 0 0 !important;
+}
+
+.set-tumblr{
+	width:29px;
+	height:29px;
+}
+
+.social-icons > li{
+	display: inline-block;
+}
+.navbar-default {
+    background-color: #efebeb;
+    border: none !important;
+/*	background-image: url("/nhot/images/nhot-image/header-texture.jpg") !important;
+	background-repeat: repeat-x !important;*/
+	width: 100%;
+}
+.navbar-nav {
+
+	margin-top: 15px !important;
+	text-align:center;
+	margin-right:0 !important;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color:#F63234 !important;
+    color: #fff;
+	padding: 8px 15px 8px 15px !important;
+}
+
+.navbar-nav > li {
+
+    padding: 0 0 0 30px !important;
+}
+.navbar-default .navbar-nav > li > a {
+    color: rgb(119, 119, 119);
+    padding: 8px 15px 8px 15px !important;
+	line-height:15px;
+}
+
+.navbar-header {
+    float:none;
+}
+.navbar {
+    border-radius: 0 !important;
+}
+.nav.navbar-nav.navbar-right > li a.active {
+    background-color:#F63234;
+    color:#fff !important ;
+}
+
+.navbar-default {
+    background-color: rgb(255, 255, 255);
+     margin: 0;
+	 border-bottom: 1px solid #F63234 !important;;
+
+}
+											
+				
+											/*header section end*/
+											
+										
+											/*banner section start*/
+											
+	.carousel-caption {
+    bottom: 120px !important;
+    padding: 0;
+    right: 0;
+    text-align: left;
+}											
+
+.carousel-caption {
+    left: 12% !important;
+    padding-bottom: 0px !important;
+    right: 0 !important;
+    width:75%;
+}
+
+											
+
+			/*banner section end*/
+											
+											/*form section start*/
+.row {
+    margin-left: 0 !important ;
+    margin-right: 0 !important ;
+}
+
+.client{
+	background-color:#F00;
+}
+	
+.client h3 {
+    color: rgb(255, 255, 255);
+    font-size: 25px;
+	margin:10px 0 0 0;
+
+}
+a:hover, a:focus {
+    color: #2a6496;
+    text-decoration: none !important;
+}
+
+.form-group {
+   
+}	
+
+.set-btn {
+    background-color: #272727 !important;
+     color: rgb(255, 255, 255) !important;
+    margin: 23px 0 10px !important;
+	border-radius:4px;
+	border-color:#272727;
+
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
+    background-color: #272727;
+    border-color: #272727;
+    color: #fff;
+}
+
+	.row {
+    margin-left: -15px;
+    margin-right: 0 !important;
+}
+
+
+											/*end form section*/
+
+											/*content section start*/
+											.content{
+	text-align:center;
+	margin:20px 0 50px 0;
+}
+.content h4{
+	font-size:20px;
+	line-height:27px;
+}
+.content p{
+	font-size:17px;
+}
+
+											
+											/*content section end*/
+
+
+											/*work section start*/
+											
+.work{
+	background-color:#f3f3f3;
+	padding:25px 70px;
+		font-family: 'Open Sans', sans-serif;
+		text-align:center;
+} 
+.work h1{
+text-align:center;
+	font-family: 'Open Sans', sans-serif;
+}
+.master-border{
+	border-right:1px solid #d2d2d2;
+}
+
+
+
+
+
+
+											/*end work section*/
+											
+											/*testimonials section start*/
+
+.blogs {
+    border-left: 1px solid;
+	float:left;	
+    border-right: 1px solid;
+    padding: 0; 
+}
+     
+.blogs h3 {
+    background-image: url("/images/nhot-image/b-blog.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: #fff;
+    line-height: 44px;
+    margin: 0;
+    padding: 0 0 0 15px;
+	background-size:cover;
+	width:100%;
+}
+
+
+.gulity-image{
+	float:left;
+	margin-top:23px;
+	margin-left:20px;
+	
+}
+ 
+
+
+.gulity{
+	/*float:right;
+	width:370px !important;*/
+	margin-top:20px;
+	margin-left:20px;
+}
+
+ 
+.gulity h5 {
+    color: #515050;
+    margin: 0;
+    padding: 0px ;
+	line-height:25px;
+	font-size:17px;
+}
+
+.gulity h4 {
+    color: #515050;
+    float: left;
+    margin: 0;
+    padding: 0px;
+	line-height:25px;
+	font-size:17px;
+}
+
+
+
+.seprator {
+    float: left;
+    padding:8px 8px 0 8px;
+}
+
+.video-box{
+margin:30px 0;
+}
+
+
+.border-bottom {
+    border: 1px dotted;
+    margin-top: 20px;
+  
+}
+.set-background-image {
+    height: 44px;
+	width:665px;
+}
+
+
+.bottom-blog {
+    background-color:#333131;
+ 
+    height: 40px;
+    margin-top: 20px;
+}
+
+blockquote {
+	background: url("/images/nhot-image/quote-1.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+	float: left;
+	margin: 0;
+	font-size:15px !important;
+	color:#969696
+}
+
+blockquote {
+    border-left: 0px solid #eee !important;
+    font-size: 17.5px;
+    margin: 0;
+
+}
+
+.quote {
+    background-image: url("/images/nhot-image/quote-2.png");
+  /*  background-position: right bottom;*/
+    background-repeat: no-repeat;
+    bottom: 0px;
+    left: 45%;
+    padding: 8px;
+    position: absolute;
+    width: 18px;
+}
+/* 
+.set-testimonial-image{
+	padding:35px 0;
+}
+
+.testimonial-heading-set {
+  position:absolute;
+  bottom:30%;
+  right:22%;
+}*/
+
+.set-description {
+	font-size:17px;
+	margin:0;
+	color:#515050;
+	float:left;
+}
+
+p{
+	margin:0;
+}
+
+
+.set-testimonial-btn {
+    background-color: #272727 !important;
+     color: rgb(255, 255, 255) !important;
+    margin:0px !important;
+	float:right;
+	border-radius:4px;
+	border-color:#272727;
+
+}
+
+.testimonial-heading-set {
+    margin: 0 !important;
+    padding-top: 45px;
+}
+.set-testimonial-text-btn {
+    float: left !important;
+
+}
+
+
+
+/* for pagination control custom class start*/
+
+.pagination__page {
+   background-color: #f5f7f8;
+   border: 1px solid #dae1e5;
+   border-radius: 4px;
+   box-shadow: none;
+   color: #000;
+   display: inline-block;
+   font: bold 14px/30px "Helvetica Neue",Arial,sans-serif;
+   height: 32px;
+   margin: 0 5px;
+   padding: 0px 10px;
+   text-decoration: none;
+   
+}
+.pagination__page--current{
+background-color:#136fd2;
+border:1px solid #136fd2;
+color:#fefefe;
+font-weight:bold;
+}
+.pagination__page:hover, .pagination__page:active, .pagination__page:focus{
+background-color:#d7dfe3;
+color:#2a3744;
+text-decoration: none;
+}
+.set-paginatr
+{text-align:center;
+}
+.paginationControl {
+    color: #fff;
+    padding: 4px 0 0;
+}/*
+@media only screen and (min-width: 300px) and (max-width: 991px){
+
+.set-testimonial-text {
+    float: left;
+    margin: 15px 0 !important;
+    padding: 0 !important;
+}
+
+.quote {
+    background-image: url("/images/nhot-image/quote-2.png") !important;
+    background-repeat: no-repeat !important;
+    bottom: 0 !important;
+    left: 90% !important;
+    padding: 8px !important;
+    position: relative !important;
+    width: 18px !important;
+}
+
+}
+*/
+
+
+/* for pagination control custom class end*/
+
+									
+											/*testimonials section end*/
+											
+											
+											

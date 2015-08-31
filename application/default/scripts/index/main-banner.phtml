@@ -1,0 +1,17 @@
+<div class="row">
+
+<div class="col-md-12">
+<?php
+$banner_img = $this->main_banner->banner_img;
+$img = strpos($banner_img, 'you');
+if ($img > 0) { ?>
+
+<img src="<?php echo $this->baseUrl();?>/images/banner-images/original/<?php echo $item['banner_img']?>" alt="banner image"/>
+<?php
+	}else{
+?>
+<img src="<?php echo $this->baseUrl();?>/images/banner-images/original/main-banner.png" alt="banner image"/>
+<?php } ?>
+</div>
+
+</div>

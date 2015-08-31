@@ -1,0 +1,92 @@
+
+<div class="row">
+<div class="col-md-8">
+<?php 
+if (count($this->paginator)){ 
+foreach ($this->paginator as $item):
+    $skip_space = strrpos($item['short_dsc'], ' ');
+?>
+
+			<div class="post-head">
+	
+			<h1><a href="<?php echo $this->baseUrl();?>/blog/post/id/<?php echo $item['post_id'] ?>"><?php echo $item['heading'];?></a></h1>
+			
+			</div><!--post-heading end-->
+			 
+			<div class="row">
+			<div class="col-md-12 inner-row">
+			<div class="col-md-3"><i class="fa fa-user" ></i> &nbsp <h4 class="author-name"> admin</h4></div> 
+			<div class="col-md-4"><p><i class="fa fa-clock-o" ></i> &nbsp <?php echo $item['date_created'];?></p></div>
+			<div class="col-md-4"><p><i class="fa fa-comment" ></i> &nbsp <?php 
+				$count=0;
+				foreach($this->comments as $cmt):
+				if($cmt['post_id']== $item['post_id']){
+					$count++;
+				}
+				endforeach;
+				echo $count;
+			?></p></div>
+			</div>
+			</div><!--inner row end-->
+
+<div class="row ">
+<div class="col-md-9 set-summary">
+	<a href="<?php echo $this->baseUrl();?>/blog/post/id/<?php echo $item['post_id'] ?>" ><img class="img-responsive" src="<?php echo $this->baseUrl(); ?>/images/posts/500X500/<?php echo $item['image'] ?>" alt="Post Image" /></a>
+			<!--<div  style="position: relative; width: 800px; height: 450px">
+<img style="max-width:100%; max-height: 100%" class="img-responsive" src="<?php echo $this->baseUrl(); ?>/images/posts/800/<?php echo $item['image'] ?>" alt="" />
+</div>-->
+
+    <p><?php echo substr($item['short_dsc'], 0, $skip_space);?>&#8230;
+        <span><a class="btn btn-default btn-sm pull-right" href="<?php echo $this->baseUrl();?>/blog/post/id/<?php echo $item['post_id'] ?>">Read More</a></span>
+    </p>
+</div>
+</div>
+
+<?php endforeach; ?>
+
+<table>
+<tr>
+   <td colspan='9' style="text-align:center">
+    <?php echo $this->paginationControl($this->paginator, 'Sliding', 'my_pagination_control.phtml'); ?>
+   </td>
+   </tr>
+   </table>
+  
+               
+  <?php }else{ ?>
+  <h4> There are no posts..</h4>
+  <?php } ?>
+  </div><!--col-md-8 end-->
+
+  <!-- sidebar section-->
+<div class="col-md-4 set-sidebar">
+
+<div class="row">
+<div class="col-md-13">
+        <form class="form-inline" action="<?php echo $this->baseUrl()?>/blog" action="post">
+                        
+         <div class="input-group custom-search-form col-md-12">
+           <input type="text" name="query_string" id="query_string" class="form-control" placeholder="Search Post by title,tags"> 
+             <span class="input-group-btn">
+               <button class="btn btn-default" type="submit">
+                 <i class="fa fa-search"></i>
+               </button>
+             </span>
+		</div>
+	  </form>
+</div>
+</div>
+
+<div> <h3> Recent Posts... </h3>	</div>
+<?php foreach ($this->list as $recent):?>
+<?php if ($this->i<4){$this->i++; ?>
+<div class="row set-recent">
+<div class="col-md-12">
+<p><?php echo $recent['date_created'];?></p>
+<h4><a href="<?php echo $this->baseUrl();?>/blog/post/id/<?php echo $recent['post_id'] ?>"><?php echo $recent['heading'];?></a><h4>
+</div>
+</div>
+<?php } endforeach; ?>
+</div>
+</div>
+

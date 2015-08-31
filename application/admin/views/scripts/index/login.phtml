@@ -1,0 +1,44 @@
+<style>
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    border-top-color: #ddd;
+    border-top-style: none !important; 
+}
+</style>
+
+	<form class="form-signin" action="<?php echo $this->form->getAction() ;?>" method="post" name="UserLogin" id="UserLogin" />
+	<?php echo $this->form->csrf ?>
+	<h2 class="form-signin-heading"> Sign in as administrator</h2>
+	<table class="table table-responsive">
+	<tr id='msg'><td colspan='2'><?php echo $this->msg; ?></td></tr>
+	<?php echo $this->form->email ?>
+	<?php echo $this->form->password ?>
+	</table>
+		<div class="boder-footer1">
+					<i class="glyphicon glyphicon-lock"></i>
+                             <a href="<?php echo $this->baseUrl(); ?>/admin/login/admin-recover-pass" id="forgot_from_1" style="color:#333; font-weight:bold;">Forgot password?</a>
+                            </div>
+							</br> 
+        <button class="btn btn-lg btn-success" type="submit">Sign in</button>
+      </form>
+
+		<script>
+		window.onload = function () { 
+ <?php if(!isset($this->msg)){ ?>
+			$('tr#msg').hide();
+			
+		<?php  } else{
+		?>
+			$('tr#msg').show();
+		<?php } ?>
+ }
+		
+		function clearEmail(){
+		$('#email').val("");
+		}
+		
+		
+		function clearPassword(){
+		$('#password').val("");
+		}
+		</script>
+	
