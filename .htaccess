@@ -6,5 +6,6 @@ RewriteCond %{REQUEST_URI} !/tiny_mce/.*
 RewriteCond %{REQUEST_URI} !/cms/.*
 RewriteCond %{REQUEST_URI} !/analytics/.*
 RewriteCond %{REQUEST_URI} !sitemap.xml
+RewriteCond %{REQUEST_URI} !robots.txt
 RewriteRule !\.(ico|gif|jpg|png|swf|flv)$ index.php
 RewriteRule ^index\.php$ - [L]

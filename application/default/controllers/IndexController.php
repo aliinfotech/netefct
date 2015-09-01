@@ -4,10 +4,10 @@
  * April 27 2015
  * kuala lumpur Malaysia
  */
- /** 
+ /**
  LANDING PAGE:
  */
-  
+
 class IndexController extends Zend_Controller_Action {
     private $baseurl = '';
 	var $user_session = null;
@@ -22,8 +22,8 @@ class IndexController extends Zend_Controller_Action {
 	private $mainBanner = null;
 	private $social = null;
 	private $photos = null;
-	 
-    public function init() { 
+
+    public function init() {
 		$this->_helper->layout->setLayout('layout');
         $this->baseurl = Zend_Controller_Front::getInstance()->getBaseUrl();
         $this->db = Zend_Db_Table::getDefaultAdapter();
@@ -36,26 +36,26 @@ class IndexController extends Zend_Controller_Action {
 	    $this->mainBanner = new Application_Model_Banner();
 		$this->social = new Application_Model_SocialLinks();
 		}
-		
-		
-    public function indexAction() { 
+
+
+    public function indexAction() {
 
 	//get landing page text
 	$mptext = new Application_Model_Mpr();
 	$this->view->row_text = $mptext->getText();
-	
+
 	// for banner
 	$banner = new Application_Model_Banner();
 	$this->view->banner = $banner->getMainBanner();
-	
+
 	//for social links
 	$links =  new Application_Model_SocialLinks();
 	$this->view->links = $links->getSocialLinks();
-	
+
 	//for strip banner
 	$strip = new Application_Model_StripBanner();
 	$this->view->strip = $strip->getMainStripBanner();
-	
+
 	//for videos
     $results = $this->video->getFeaturedVideos();
 	  	if (count($results) > 0) {
@@ -63,33 +63,33 @@ class IndexController extends Zend_Controller_Action {
         } else {
         $this->view->empty_rec = true;
 		}
-     
+
 	//for testimonial is featured
-	
+
 	 $result = $this->testimonial->getFeaturedTestimonial();
 	 $this->view->i = 1;
 	 $this->view->list = $result;
 	}
-	
+
 	public function moreTestimonialsAction(){
-	
+
 			//for social links
 		$links =  new Application_Model_SocialLinks();
 		$this->view->links = $links->getSocialLinks();
-		
+
 	  $results = $this->testimonial->getAllTestimonials();
 	  $this->TestimonialPaginator($results);
 	}
-	
-	
+
+
 	public function videosAction(){
-		
+
 		//for social links
 	$links =  new Application_Model_SocialLinks();
 	$this->view->links = $links->getSocialLinks();
-		
-	$id = $this->_request->getParam('id');  
-	
+
+	$id = $this->_request->getParam('id');
+
 if(!isset($id) || $id < 1){
 	$this->view->main_video = $this->video->getMainVideo();
 }
@@ -98,13 +98,13 @@ $this->view->main_video = $this->video->getVideo($id);
 }
  	$results = $this->video->getAllVideos();
 	$this->VideoPaginator($results);
-	
+
 //	$this->view->list = $results;
-		
+
 
 		}
-	
-   
+
+
    public function Paginator($results) {
         $page = $this->_getParam('page', 1);
         $paginator = Zend_Paginator::factory($results);
@@ -120,7 +120,7 @@ public function VideoPaginator($results) {
         $paginator->setCurrentPageNumber($page);
         $this->view->paginator = $paginator;
     }
-	
+
 	public function TestimonialPaginator($results) {
         $page = $this->_getParam('page', 1);
         $paginator = Zend_Paginator::factory($results);
@@ -128,7 +128,7 @@ public function VideoPaginator($results) {
         $paginator->setCurrentPageNumber($page);
         $this->view->paginator = $paginator;
     }
-	
+
 	public function BannerPaginator($results) {
         $page = $this->_getParam('page', 1);
         $paginator = Zend_Paginator::factory($results);
@@ -136,7 +136,7 @@ public function VideoPaginator($results) {
         $paginator->setCurrentPageNumber($page);
         $this->view->paginator = $paginator;
     }
-   
+
 public function savevAction(){
 $this->ajaxed();
  $url_video = $this->getRequest()->getParam('url_video');
@@ -149,9 +149,9 @@ $results = $this->video->updateVideo($this->db, $data);
 }
 
  public function mainBannerAction(){
-	
-	$id = $this->_request->getParam('banner_id');  
-	
+
+	$id = $this->_request->getParam('banner_id');
+
 if(!isset($id) || $id < 1){
 	$this->view->main_banner = $this->banner->getMainBanner();
 }
@@ -166,7 +166,7 @@ $this->view->main_banner = $this->video->getBanner($id);
 			$links =  new Application_Model_SocialLinks();
 	$this->view->links = $links->getSocialLinks();
 			}
-			
+
 		public function galleryAction(){
 		$links =  new Application_Model_SocialLinks();
 		$this->view->links = $links->getSocialLinks();
@@ -197,4 +197,4 @@ $this->view->main_banner = $this->video->getBanner($id);
 
     }
 }
-//.end of class 
+//.end of class

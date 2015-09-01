@@ -35,7 +35,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $this->setupConfiguration();
 		$this->setupFrontController();
 		$this->startSession();
-		$this->setupView('defualt');//current theme direcotry
+		$this->setupView('default');//current theme direcotry
 		$this->setupLanguage();
  		     }
 
@@ -82,11 +82,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$view->setEncoding('UTF-8');
 		$viewRenderer = new Zend_Controller_Action_Helper_ViewRenderer($view);
 		Zend_Controller_Action_HelperBroker::addHelper($viewRenderer);
-		$view->setScriptPath($this->root .'/application/default/scripts/');
-		$view->setHelperPath($this->root .'/application/default/helpers');
+		$view->setScriptPath($this->root .'/application/'.$crt_theme.'/scripts/');
+		$view->setHelperPath($this->root .'/application/'.$crt_theme.'/helpers');
 		$this->layout = Zend_Layout::startMvc(
 		array(
-                'layoutPath' => $this->root . '/application/default/layouts',
+                'layoutPath' => $this->root . '/application/'.$crt_theme.'/layouts',
                 'layout' => 'layout'
                 )
                 );
