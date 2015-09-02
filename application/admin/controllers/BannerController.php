@@ -59,12 +59,12 @@ public function newBannerAction()
 			$file_name = $time . $random . $banner_img;
 			$formData["banner_img"] = $file_name;
 	 
-			move_uploaded_file($_FILES["banner_img"]['tmp_name'], SYSTEM_PATH."/images/banners/original/".$file_name);
-			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/banners/original/".$file_name);
+			move_uploaded_file($_FILES["banner_img"]['tmp_name'], SYSTEM_PATH."/images/admin/banners/original/".$file_name);
+			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/admin/banners/admin/original/".$file_name);
 			$thumb->resize(200,200);
-			$thumb->save(SYSTEM_PATH.'/images/banners/200X200/'.$file_name);
+			$thumb->save(SYSTEM_PATH.'/images/admin/banners/200X200/'.$file_name);
 			$thumb->resize(1600,1600);
-			$thumb->save(SYSTEM_PATH.'/images/banners/1600/'.$file_name);
+			$thumb->save(SYSTEM_PATH.'/images/admin/banners/1600/'.$file_name);
 			
 		}
 		 
@@ -136,9 +136,9 @@ $image_name= $_FILES["banner_img"]["name"];
 	
 	try {
 				if(isset($this->user_session->video_image)){
-				unlink(SYSTEM_PATH."/images/banners/original/".$result->banner_img);
-				unlink(SYSTEM_PATH."/images/banners/200X200/".$result->banner_img);
-				unlink(SYSTEM_PATH.'/images/banners/1600/'.$result->banner_img);
+				unlink(SYSTEM_PATH."/images/admin/banners/original/".$result->banner_img);
+				unlink(SYSTEM_PATH."/images/admin/banners/200X200/".$result->banner_img);
+				unlink(SYSTEM_PATH.'/images/admin/banners/1600/'.$result->banner_img);
 				}
 				 
 			$banner_img = $_FILES['banner_img']['name'];
@@ -147,12 +147,12 @@ $image_name= $_FILES["banner_img"]["name"];
 			$file_name = $time . $random . $banner_img;
 			$formData["banner_img"] = $file_name;
 	 
-			move_uploaded_file($_FILES["banner_img"]['tmp_name'], SYSTEM_PATH."/images/banners/original/".$file_name);
-			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/banners/original/".$file_name);
+			move_uploaded_file($_FILES["banner_img"]['tmp_name'], SYSTEM_PATH."/images/admin/banners/original/".$file_name);
+			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/admin/banners/original/".$file_name);
 			$thumb->resize(200,200); 
-			$thumb->save(SYSTEM_PATH.'/images/banners/200X200/'.$file_name);
+			$thumb->save(SYSTEM_PATH.'/images/admin/banners/200X200/'.$file_name);
 			$thumb->resize(1600,1600);
-			$thumb->save(SYSTEM_PATH.'/images/banners/1600/'.$file_name);
+			$thumb->save(SYSTEM_PATH.'/images/admin/banners/1600/'.$file_name);
 		}
 		
 	catch (Zend_File_Transfer_Exception $e)
@@ -175,13 +175,13 @@ $formData['banner_img']= $this->user_session->banner_img;
 	{
 		
 	 $this->_helper->viewRenderer->setNoRender();
-     $this->_helper->layout()->disableLayout();
+     $this->_helper->layout()->disableLayout(); 
   
 		$id = $this->_request->getParam('id');
 		$result = $this->banner->getBanner($id);
-		unlink(SYSTEM_PATH.'/images/banners/200X200/'.$result->banner_img);
-		unlink(SYSTEM_PATH.'/images/banners/originals/'.$result->banner_img);
-		unlink(SYSTEM_PATH.'/images/banners/1600/'.$result->banner_img);
+		unlink(SYSTEM_PATH.'/images/admin/banners/200X200/'.$result->banner_img);
+		unlink(SYSTEM_PATH.'/images/admin/banners/originals/'.$result->banner_img);
+		unlink(SYSTEM_PATH.'/images/admin/banners/1600/'.$result->banner_img);
 		
 		$this->banner->removeBanner($this->db, $id);
 		$this->_redirect('/admin/banner/banner-list');

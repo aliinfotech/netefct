@@ -35,54 +35,55 @@
 <!--end dropdown menu script-->
 
   <div class="container"> 
+  	 <div class="row">
      <div class="col-md-12">  
      <div class="social-1 pull-right">
           <ul class="social-icons">   
 														 <?php 
 																if(strlen($this->links->facebook) > 6) { ?>
-															   <li><a target="_blank" href="<?php echo  $this->links->facebook;?>"><img src="<?php echo $this->baseUrl();?>/images/nhot-image/facebok.png"></a></li>
+															   <li><a target="_blank" href="<?php echo  $this->links->facebook;?>"><img src="<?php echo $this->baseUrl();?>/images/default/facebok.png"></a></li>
 															   <?php
 																}else{
 																	?>
-																<li><img src="<?php echo $this->baseUrl();?>/images/nhot-image/facebok.png"></li>
+																<li><img src="<?php echo $this->baseUrl();?>/images/default/facebok.png"></li>
 																										   
 																<?php 	
 																} 
 																
 																if(strlen($this->links->linkedin) > 6) { ?>
-															  <li><a target="_blank" href="<?php echo  $this->links->linkedin;?>"><img src="<?php echo $this->baseUrl();?>/images/nhot-image/in.png"></a></li>
+															  <li><a target="_blank" href="<?php echo  $this->links->linkedin;?>"><img src="<?php echo $this->baseUrl();?>/images/default/in.png"></a></li>
 															   <?php
 																}else{
 																	?>
-																<li><img src="<?php echo $this->baseUrl();?>/images/nhot-image/in.png"></li>
+																<li><img src="<?php echo $this->baseUrl();?>/images/default/in.png"></li>
 																										   
 																<?php 	
 																} 
 																
 																if(strlen($this->links->twitter) > 6) { ?>
-															 <li><a target="_blank" href="<?php echo  $this->links->twitter;?>"><img src="<?php echo $this->baseUrl();?>/images/nhot-image/DOT.png"></a></li>
+															 <li><a target="_blank" href="<?php echo  $this->links->twitter;?>"><img src="<?php echo $this->baseUrl();?>/images/default/twitter.png"></a></li>
 															   <?php
 																}else{
 																	?>
-																<li><img src="<?php echo $this->baseUrl();?>/images/nhot-image/DOT.png"></li>
+																<li><img src="<?php echo $this->baseUrl();?>/images/default/twitter.png"></li>
 																										   
 																<?php 	
 																}
 																
 																if(strlen($this->links->youtube) > 6) { ?>
-															 <li><a target="_blank" href="<?php echo  $this->links->youtube;?>"><img src="<?php echo $this->baseUrl();?>/images/nhot-image/email.png"></a></li>
+															 <li><a target="_blank" href="<?php echo  $this->links->youtube;?>"><img src="<?php echo $this->baseUrl();?>/images/default/youtube.png"></a></li>
 															   <?php
 																}else{
 																	?>
-																<li><img src="<?php echo $this->baseUrl();?>/images/nhot-image/email.png"></li>
+																<li><img src="<?php echo $this->baseUrl();?>/images/default/youtube.png"></li>
 																										   
 																<?php 	
 																}if(strlen($this->links->instagram) > 6) { ?>
-															 <li><a target="_blank" href="<?php echo  $this->links->instagram;?>"><img src="<?php echo $this->baseUrl();?>/images/nhot-image/instagram.png"></a></li>
+															 <li><a target="_blank" href="<?php echo  $this->links->instagram;?>"><img src="<?php echo $this->baseUrl();?>/images/default/instagram.png"></a></li>
 															   <?php
 																}else{
 																	?>
-																<li><img src="<?php echo $this->baseUrl();?>/images/nhot-image/instagram.png"></li>
+																<li><img src="<?php echo $this->baseUrl();?>/images/default/instagram.png"></li>
 																										   
 																<?php 	
 																}
@@ -114,7 +115,7 @@
 		   </ul>
      </div>
    </div>
-
+   </div><!--row end-->
    
    </div>
  <nav class="navbar navbar-default" role="navigation"> 
@@ -127,7 +128,7 @@
                     <span class="icon-bar"></span> 
                     <span class="icon-bar"></span>
                 </button>
-			<a class="navbar-brand" href="<?php echo $this->baseUrl(); ?>/index"><img class="img-responsive" src="<?php echo $this->baseUrl();?>/images/nhot-image/logo.png"/></a>
+			<a class="navbar-brand" href="<?php echo $this->baseUrl(); ?>/index"><img class="img-responsive" src="<?php echo $this->baseUrl();?>/images/default/logo.png"/></a>
             </div>  
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

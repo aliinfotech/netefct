@@ -59,10 +59,10 @@ public function newStripBannerAction()
 			$file_name = $time . $random . $banner_img;
 			$formData["banner_img"] = $file_name;
 	 
-			move_uploaded_file($_FILES["banner_img"]['tmp_name'], SYSTEM_PATH."/images/strip-banner-images/original/".$file_name);
+			move_uploaded_file($_FILES["banner_img"]['tmp_name'], SYSTEM_PATH."/images/admin/strip-banner-images/original/".$file_name);
 			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/strip-banner-images/original/".$file_name);
 			$thumb->resize(200,200);
-			$thumb->save(SYSTEM_PATH.'/images/strip-banner-images/200X200/'.$file_name);
+			$thumb->save(SYSTEM_PATH.'/images/admin/strip-banner-images/200X200/'.$file_name);
 		}
 		 
 		catch (Zend_File_Transfer_Exception $e)
@@ -140,8 +140,8 @@ $image_name= $_FILES["banner_img"]["name"];
 	
 	try {
 				if(isset($this->user_session->video_image)){
-				unlink(SYSTEM_PATH."/images/strip-banner-images/original/".$result->banner_img);
-				unlink(SYSTEM_PATH."/images/strip-banner-images/200X200/".$result->banner_img);
+				unlink(SYSTEM_PATH."/images/admin/strip-banner-images/original/".$result->banner_img);
+				unlink(SYSTEM_PATH."/images/admin/strip-banner-images/200X200/".$result->banner_img);
 				}
 				 
 			$banner_img = $_FILES['banner_img']['name'];
@@ -150,16 +150,16 @@ $image_name= $_FILES["banner_img"]["name"];
 			$file_name = $time . $random . $banner_img;
 			$formData["banner_img"] = $file_name;
 	 
-			move_uploaded_file($_FILES["banner_img"]['tmp_name'], SYSTEM_PATH."/images/strip-banner-images/original/".$file_name);
-			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/strip-banner-images/original/".$file_name);
+			move_uploaded_file($_FILES["banner_img"]['tmp_name'], SYSTEM_PATH."/images/admin/strip-banner-images/original/".$file_name);
+			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/admin/strip-banner-images/original/".$file_name);
 			$thumb->resize(200,200); 
-			$thumb->save(SYSTEM_PATH.'/images/strip-banner-images/200X200/'.$file_name);
+			$thumb->save(SYSTEM_PATH.'/images/admin/strip-banner-images/200X200/'.$file_name);
 			
 		}
 		
 	catch (Zend_File_Transfer_Exception $e)
 		{
-			throw new Exception('Bad data: '.$e->getMessage());
+			throw new Exception('Bad data: '.$e->getMessage()); 
 		}
 }else{
 
@@ -178,8 +178,8 @@ $formData['banner_img']= $this->user_session->banner_img;
 		$id = $this->_request->getParam('id'); 
 		
 		$result = $this->stripBanner->getStripBanner($id);
-		unlink(SYSTEM_PATH.'/images/strip-banner-images/200X200/'.$result->banner_img);
-		unlink(SYSTEM_PATH.'/images/strip-banner-images/originals/'.$result->banner_img);
+		unlink(SYSTEM_PATH.'/images/admin/strip-banner-images/200X200/'.$result->banner_img);
+		unlink(SYSTEM_PATH.'/images/admin/strip-banner-images/originals/'.$result->banner_img);
 		
 		$delete = $this->stripBanner->removeStripBanner($this->db, $id);
 		$this->user_session->msg  = $delete; 
