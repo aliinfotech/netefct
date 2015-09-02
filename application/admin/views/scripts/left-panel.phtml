@@ -2,13 +2,13 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/index"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="<?php echo $this->baseUrl(); ?>/admin/index/home-page-text"><i class="fa fa-file-text-o fa-fw"></i> Home Page Text</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-picture-o fa-fw"></i> Banners <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-picture-o fa-fw"></i> Banners</a>
                         <ul id="demo" class="collapse">
                             <li>
                                 <a href="<?php echo $this->baseUrl(); ?>/admin/banner/new-banner"><i class="fa fa-picture-o fa-fw"></i>  New Banner</a>
@@ -19,7 +19,7 @@
                         </ul>
                     </li>
 					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-picture-o fa-fw"></i> Strip Banners <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-picture-o fa-fw"></i> Strip Banners </a>
                         <ul id="demo1" class="collapse">
                             <li>
                                 <a href="<?php echo $this->baseUrl(); ?>/admin/Strip-Banner/new-strip-banner"><i class="fa fa-picture-o fa-fw"></i>  New Strip Banner</a>
@@ -124,7 +124,7 @@
                         </ul>
                     </li>
                     <li>
-						<a href="<?php echo $this->baseUrl(); ?>/admin/index/update-urls"><i class="fa fa-link fa-fw"></i> Update Urls</a> 
+						<a href="<?php echo $this->baseUrl(); ?>/admin/index/update-urls"><i class="fa fa-link fa-fw"></i> Update Urls</a>
 					</li>
 					<li>
                         <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>

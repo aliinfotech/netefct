@@ -1,3 +1,169 @@
+
+
+-------------current -------------------------------------
+ <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/index"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/index/home-page-text"><i class="fa fa-file-text-o fa-fw"></i> Home Page Text</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-picture-o fa-fw"></i> Banners</a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/banner/new-banner"><i class="fa fa-picture-o fa-fw"></i>  New Banner</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/banner/banner-list"><i class="fa fa-file-image-o"></i>Banner List</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-picture-o fa-fw"></i> Strip Banners </a>
+                        <ul id="demo1" class="collapse">
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/Strip-Banner/new-strip-banner"><i class="fa fa-picture-o fa-fw"></i>  New Strip Banner</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/Strip-Banner/strip-banner-list"><i class="fa fa-file-image-o"></i> Strip Banner List</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-users fa-fw"></i> Blog Posts <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo2" class="collapse">
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/blog/new-post"> New Blog Post</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/blog/posts-list">Blog Post List</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/post-comments/post-list">Comments</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-users fa-fw"></i> Pages<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo3" class="collapse">
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/page/new-page"> Add New Page</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/page/lists">Pages List</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/comments/page-list">Comments</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo4"><i class="fa fa-video-camera fa-fw"></i> Videos <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo4" class="collapse">
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/index/new-videolink"><i class="fa fa-video-camera fa-fw"></i>  New Video</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/index/video-list"><i class="fa fa-video-camera fa-fw"></i>Videos List</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo5"><i class="fa fa-comments fa-fw"></i> Testimoniasl <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo5" class="collapse">
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/index/new-testimonial"><i class="fa fa-comments fa-fw"></i>  New Testimonial </a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/index/testimonial-list"><i class="fa fa-comments"></i> Testimonials List </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/Social-Link/edit-social-links"><i class="fa fa-share fa-fw"></i> Social Media Links </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo6"><i class="fa fa-comments fa-fw"></i> Categories <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo6" class="collapse">
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/categories/new-category"> Add New Category </a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/categories/list"> List </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo7"><i class="fa fa-users fa-fw"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo7" class="collapse">
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/user/new"> Add New</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/user/list">List</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo8"><i class="glyphicon glyphicon-comment"></i> Settings <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo8" class="collapse">
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/gd/index"> Google Analytics</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo9"><i class="fa fa-image"></i> Gallery <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo9" class="collapse">
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/gallery/new-photo"> Add New Image</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/gallery/photo-list">Gallery List</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/index/update-urls"><i class="fa fa-link fa-fw"></i> Update Urls</a>
+                    </li>
+                    <li>
+                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="#">Dropdown Item</a>
+                            </li>
+                            <li>
+                                <a href="#">Dropdown Item</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                    </li>
+                    <li>
+                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+
+
+
+
+
+--------------------- last version --------------------
+
  <li>
                             <a class="active" href="<?php echo $this->baseUrl(); ?>/admin/index/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
