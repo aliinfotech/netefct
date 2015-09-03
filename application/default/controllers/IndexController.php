@@ -55,6 +55,8 @@ class IndexController extends Zend_Controller_Action {
 	//for strip banner
 	$strip = new Application_Model_StripBanner();
 	$this->view->strip = $strip->getMainStripBanner();
+	
+
 
 	//for videos
     $results = $this->video->getFeaturedVideos();
