@@ -29,67 +29,39 @@ class Admin_TextBlocksController extends Zend_Controller_Action
         }
 	}
 
-
-	// this is default output function
+//@ following function will server as the list function of text blocks
 	public function indexAction()
 {
-}
+if(isset($this->user_session->msg)){
+    $this->view->msg = $this->user_session->msg;
+    unset($this->user_session->msg);
+    }
 
-	public function textBlocksListAction(){
-
-	if(isset($this->user_session->msg)){
-	$this->view->msg = $this->user_session->msg;
-	unset($this->user_session->msg);
-	}
-
-	$results = $this->textBlock->getAllTextBlocks();
+    $results = $this->textBlock->getAllTextBlocks();
        if (count($results) > 0) {
-		 $this->Paginator($results);
+         $this->Paginator($results);
         } else {
         $this->view->empty_rec = true;
-		}
+        }
 }
 
-	public function editTextBlockAction(){
+public function editTextBlockAction(){
 
-	$id = $this->_request->getParam('tb_id');
-	$form = new Application_Form_TextBlockForm();
-	$this->view->tb_id = $id;
-
-if(isset($id)){
-	$this->user_session->tb_id = $id;
-}
-
-if(isset($id) || isset($this->user_session->tb_id)){
-  	$result = $this->textBlock->getTextBlock($this->user_session->tb_id);
-
-	//var_dump($result);
-	//return;
-	$this->view->tb_id = $result->tb_id;
-    $form->tb_name->setValue($result->tb_name);
+	$id = $this->_request->getParam('id');
+	if(!isset($id)) $this->_redirect('admin/text-blocks/index');
+            $form = new Application_Form_TextBlockForm();
+// get text block data from text_block table
+  	$result = $this->textBlock->getTextBlock($id);
+            $form->tb_name->setValue($result->tb_name);
 	$form->tb_text->setValue($result->tb_text);
-	//$form->message->setValue($result->message);
-
-	    $this->view->form = $form;
-}
-     if (!$this->_request->isPost()) {
-			$this->view->form = $form;
-			return;
-        }
-
-        $formData = $this->_request->getPost();
-
-	   if (!$form->isValid($formData)) {
-			$this->view->form = $form;
-			return;
-        }
-
-
-	$formData['tb_id']= $this->user_session->tb_id;
-
+            $this->view->block_name = $result->tb_name;
+	$this->view->form = $form;
+             if (!$this->_request->isPost()) return;
+              $formData = $this->_request->getPost();
+             if (!$form->isValid($formData)) return;
+            $formData['tb_id']= $id;
 	$result = $this->textBlock->editTextBlock($formData);
 	$this->view->msg = $result;
-	$this->_redirect("/admin/text-blocks/text-blocks-list");
 	}
 
 
