@@ -60,7 +60,7 @@ public function newStripBannerAction()
 			$formData["banner_img"] = $file_name;
 	 
 			move_uploaded_file($_FILES["banner_img"]['tmp_name'], SYSTEM_PATH."/images/admin/strip-banner-images/original/".$file_name);
-			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/strip-banner-images/original/".$file_name);
+			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/admin/strip-banner-images/original/".$file_name); 
 			$thumb->resize(200,200);
 			$thumb->save(SYSTEM_PATH.'/images/admin/strip-banner-images/200X200/'.$file_name);
 		}
