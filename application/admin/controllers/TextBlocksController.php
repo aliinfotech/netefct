@@ -33,8 +33,7 @@ class Admin_TextBlocksController extends Zend_Controller_Action
 	// this is default output function
 	public function indexAction()
 {
-}
-
+} 
 
 	
 	public function textBlocksListAction(){

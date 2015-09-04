@@ -15,7 +15,6 @@ class Application_Model_TextBlocks extends Zend_Db_Table
  }
  
  
- 
      // for get all Banner
  public function getAllTextBlocks(){
 $select = $this->select();
