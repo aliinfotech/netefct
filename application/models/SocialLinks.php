@@ -9,7 +9,7 @@ class Application_Model_SocialLinks extends Zend_Db_Table
    
    public function getSocialLinks(){
 	$select = $this->select();
-	$select->from($this)->where("is_enabled = ?", 1);
+	$select->from($this);
 	$result = $this->fetchRow($select);
 	return $result; 
 	 }

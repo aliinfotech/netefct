@@ -1,21 +1,43 @@
   <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-picture-o fa-fw"></i> Strip Banners<i class="fa fa-fw fa-caret-down"></i> </a>
-                        <ul id="demo1" class="collapse">
-                            <li>
-                                <a href="<?php echo $this->baseUrl(); ?>/admin/Strip-Banner/new-strip-banner"><i class="fa fa-picture-o fa-fw"></i>  New Strip Banner</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo $this->baseUrl(); ?>/admin/Strip-Banner/strip-banner-list"><i class="fa fa-file-image-o"></i> Strip Banner List</a>
-                            </li>
-                        </ul>
+                <ul class="nav navbar-nav side-nav">    
+  					<li>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/posts/new-post"><i class="fa fa-file-o fa-fw"> </i> New Post</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo10"><i class="fa fa-file-text-o fa-fw"></i> Text Block <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo10" class="collapse">
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/page/new-page"><i class="fa fa-file-o fa-fw"></i> New Page</a>
+                        </li>
+                         <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-file-o fa-fw"></i> CMS Lists<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo3" class="collapse">
                             <li>
-                                <a href="<?php echo $this->baseUrl(); ?>/admin/Text-Blocks/text-blocks-list"><i class="fa fa-file-text-o"></i> Text Block List</a>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/posts/posts-list"> Posts</a>
                             </li>
-                        </ul>
-                                </div>
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/page/page-list">Pages</a>
+                            </li>
+                            </ul>
+                         </li>
+                          <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo4"><i class="fa fa-comments-o fa-fw"></i> Comments<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo4" class="collapse">
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/post-comments/post-list"> Posts</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/comments/page-list">Pages</a>
+                            </li>
+                            </ul>
+                         </li>
+                         <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo5"><i class="fa fa-comments-o fa-fw"></i> Landing Page<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo5" class="collapse">
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/text-blocks/index"> Text Blocks</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/index">Image Blocks</a>
+                            </li>
+                            </ul>
+                         </li>
+                    </ul>
+   </div>

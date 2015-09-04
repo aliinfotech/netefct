@@ -1,3 +1,12 @@
-body{
+  /* Text Size Classes */
+.page-title {
+    font-size: 22px;
+    line-height: normal;
+color: #618CA4;
+}
 
-  }
+.errors{
+color: red;
+font-weight: bold;
+}
+

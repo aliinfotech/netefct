@@ -40,10 +40,6 @@ class IndexController extends Zend_Controller_Action {
 
     public function indexAction() {
 
-	//get landing page text
-	$mptext = new Application_Model_Mpr();
-	$this->view->row_text = $mptext->getText();
-
 	// for banner
 	$banner = new Application_Model_Banner();
 	$this->view->banner = $banner->getMainBanner();
@@ -51,11 +47,6 @@ class IndexController extends Zend_Controller_Action {
 	//for social links
 	$links =  new Application_Model_SocialLinks();
 	$this->view->links = $links->getSocialLinks();
-
-	//for strip banner
-	$strip = new Application_Model_StripBanner();
-	$this->view->strip = $strip->getMainStripBanner();
-	
 
 
 	//for videos

@@ -1,0 +1,54 @@
+
+ <div class="row">
+ <div class="col-md-12">
+ <div class="page-title">Manage Image Blocks</div>
+</div><!-- /.col-md-12-->
+</div><!-- /.row -->
+
+<div class="row">
+<div class="col-md-12">
+<div class="panel-body">
+<form action="" enctype="multipart/form-data" method="post">
+<div class="table-responsive">
+				<table class="table table-striped table-bordered table-hover">
+					<tr id='msg'><td colspan='4'><?php echo $this->msg ?></td></tr>
+					<tr><td>
+                    <?php echo $this->form->name1 ?>
+                    <strong>Link</strong>
+                    <?php echo $this->form->link1 ?>
+                    <strong>Image Caption</strong>
+                    <?php echo $this->form->caption1 ?>
+                    </td>
+                    <td>
+                    <strong>Location Image on the landing page</strong>
+                    </td>
+                    <td>
+                    <strong>Size Instructions for best results</strong>
+					</td>
+					</tr>				
+					<tr>
+					<td colspan="3">
+                    <?php echo $this->form->submit ?>
+                    </td></tr>
+					</table>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+ <script language="Javascript" type="text/javascript">
+window.onload = function () {
+ <?php if(!isset($this->msg)){ ?>
+      $('tr#msg').hide();
+
+    <?php  } else{
+    ?>
+      $('tr#msg').show().delay(3000).hide('slow');
+
+    <?php } ?>
+       // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+               CKEDITOR.replace( 'editor1' );
+ }
+ </script>
