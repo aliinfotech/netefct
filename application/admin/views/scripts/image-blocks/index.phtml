@@ -37,18 +37,14 @@
 </div>
 </div>
 
- <script language="Javascript" type="text/javascript">
-window.onload = function () {
+  <script language="Javascript" type="text/javascript">
+window.onload = function () { 
  <?php if(!isset($this->msg)){ ?>
-      $('tr#msg').hide();
-
-    <?php  } else{
-    ?>
-      $('tr#msg').show().delay(3000).hide('slow');
-
-    <?php } ?>
-       // Replace the <textarea id="editor1"> with a CKEditor
-                // instance, using default configuration.
-               CKEDITOR.replace( 'editor1' );
+			$('tr#msg').hide();
+			
+		<?php  } else{
+		?>
+			$('tr#msg').show();
+		<?php } ?>
  }
  </script>
