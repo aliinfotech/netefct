@@ -1,50 +1,308 @@
+  <link href="<?php echo $this->baseUrl();?>/css/admin/ajax-file-upload/style.css" rel="stylesheet" type="text/css">
+  <link href="<?php echo $this->baseUrl(); ?>/css/admin/jquery.fileupload.css" rel="stylesheet">
 
+ <script src="<?php echo $this->baseUrl();?>/js/admin/jquery.form.js"></script>
+ <script type="text/javascript">
+$(document).ready(function() {
+
+});
+</script>
+<style>
+#progressOverlay .progress {
+    position:relative;
+    width:80%;
+    top:50%;
+    margin:0 auto;
+}
+
+#progressOverlay {
+    position:relative;
+    height:100%;
+}
+
+.cellCompnct{
+
+
+}
+</style>
  <div class="row">
  <div class="col-md-12">
  <div class="page-title">Manage Image Blocks</div>
-</div><!-- /.col-md-12-->
+<hr/>
+ <div class="table-responsive ">
+                                        <table class="table table-striped table-bordered space-mangead">
+                                        <tr id='msg'><td colspan='3'><?php echo $this->msg ?></td></tr>
+    <tr>
+    <td >
+   <center>
+   <div onclick="return showChangeImage();">
+    <?php if(strlen($this->block1) > 5){ ?>
+    <img class="img-responsive" src="<?php echo $this->baseUrl(); ?>/images/user/image-blocks/files/thumbnail/<?php echo $this->block1 ?>"/>
+    <?php }else{ ?>
+    <img class="img-responsive" src="<?php echo $this->baseUrl(); ?>/images/admin/image-block-location/placeholder200X200.png"/>
+    <?php }?>
+       </div>
+       </center>
+    </td>
+<td rowspan="2">
+  <div class="form-group">
+    <label for="capation1">Caption</label>
+    <input type="input" class="form-control" id="caption1" placeholder="Caption">
+  </div>
+  <div class="form-group">
+    <label for="link1">Link</label>
+    <input type="input" class="form-control" id="link1" placeholder="Link URL as http://website.com">
+  </div>
+  <div class="form-group">
+    <button class="btn btn-warning">
+        <i class="glyphicon glyphicon-plus"></i>
+        <span>Update Record</span>
+    </button>
+    </div>
+ <div>
+ </div>
+  </td>
+
+<td class="cell-compact">
+ <div>
+  <img class="img-responsive" src="<?php echo $this->baseUrl(); ?>/images/admin/image-block-location/block1-thumbnail.png"/>
+ </div>
+  </td>
+
+    </tr>
+
+<tr>
+<td>
+<center>
+<div>
+    <span class="btn btn-success fileinput-button">
+        <i class="glyphicon glyphicon-plus"></i>
+        <span>Update Image 1</span>
+        <!-- The file input field used as target for the file upload widget -->
+        <input id="update-image1" type="file" name="files[]">
+    </span>
+    </div>
+    </center>
+    </td>
+<td>
+<div>
+Image Block Width: 300 pixels<br/>
+Image Block Height: 300 pixels<br/>
+</div>
+</td>
+</tr>
+
+</table>
+    </div>
+</div>
 </div><!-- /.row -->
 
-<div class="row">
-<div class="col-md-12">
-<div class="panel-body">
-<form action="" enctype="multipart/form-data" method="post">
-<div class="table-responsive">
-				<table class="table table-striped table-bordered table-hover">
-					<tr id='msg'><td colspan='4'><?php echo $this->msg ?></td></tr>
-					<tr><td>
-                    <?php echo $this->form->name1 ?>
-                    <strong>Link</strong>
-                    <?php echo $this->form->link1 ?>
-                    <strong>Image Caption</strong>
-                    <?php echo $this->form->caption1 ?>
-                    </td>
-                    <td>
-                    <strong>Location Image on the landing page</strong>
-                    </td>
-                    <td>
-                    <strong>Size Instructions for best results</strong>
-					</td>
-					</tr>				
-					<tr>
-					<td colspan="3">
-                    <?php echo $this->form->submit ?>
-                    </td></tr>
-					</table>
-</div>
-</form>
-</div>
-</div>
-</div>
+ <script src="<?php echo $this->baseUrl(); ?>/js/jQuery-File-Upload-9.8.0/js/vendor/jquery.ui.widget.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="<?php echo $this->baseUrl(); ?>/js/jQuery-File-Upload-9.8.0/js/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="<?php echo $this->baseUrl(); ?>/js/jQuery-File-Upload-9.8.0/js/jquery.fileupload.js"></script>
 
-  <script language="Javascript" type="text/javascript">
-window.onload = function () { 
+<script type="text/javascript">
+
+$(function () {
+
  <?php if(!isset($this->msg)){ ?>
-			$('tr#msg').hide();
-			
-		<?php  } else{
-		?>
-			$('tr#msg').show();
-		<?php } ?>
- }
+            $('tr#msg').hide();
+
+        <?php  } else{
+        ?>
+            $('tr#msg').show();
+        <?php } ?>
+    'use strict';
+    // Change this to the location of your server-side upload ` handler:
+    var url = "<?php echo $this->baseUrl(); ?>/images/list-images/index.php";
+    //var url = "<?php //echo $this->baseUrl(); ?>/members/upt";
+    $('#update-image1').fileupload({
+        url: url,
+        dataType: 'json',
+        done: function (e, data) {
+
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo('#files1');
+
+            var ad_id =  $('#ad_id').val();
+            $.post("<?php echo $this->baseUrl()?>/members/update-image1/", {image: file.name, ad_id: ad_id},
+    function(data){
+        if(data){
+        location.reload();
+        }else{
+            alert("Please try again to upload image");
+            }
+
+        });
+            });
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress1 .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+        }
+    }).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+
+
+/* IMAGE 2 UPDATE CODE */
+    $('#update-image2').fileupload({
+        url: url,
+        dataType: 'json',
+        done: function (e, data) {
+
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo('#files2');
+
+            var ad_id =  $('#ad_id').val();
+            $.post("<?php echo $this->baseUrl()?>/members/update-image2/", {image: file.name, ad_id: ad_id},
+    function(data){
+        if(data){
+        location.reload();
+        }else{
+            alert("Please try again to upload image");
+            }
+
+        });
+            });
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress2 .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+        }
+    }).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+
+/* IMAGE 3 UPDATE CODE */
+    $('#update-image3').fileupload({
+        url: url,
+        dataType: 'json',
+        done: function (e, data) {
+
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo('#files3');
+
+            var ad_id =  $('#ad_id').val();
+            $.post("<?php echo $this->baseUrl()?>/members/update-image3/", {image: file.name, ad_id: ad_id},
+    function(data){
+        if(data){
+        location.reload();
+        }else{
+            alert("Please try again to upload image");
+            }
+
+        });
+            });
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress3 .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+        }
+    }).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+
+/* IMAGE 4 UPDATE CODE */
+    $('#update-image4').fileupload({
+        url: url,
+        dataType: 'json',
+        done: function (e, data) {
+
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo('#files4');
+
+            var ad_id =  $('#ad_id').val();
+            $.post("<?php echo $this->baseUrl()?>/members/update-image4/", {image: file.name, ad_id: ad_id},
+    function(data){
+        if(data){
+        location.reload();
+        }else{
+            alert("Please try again to upload image");
+            }
+
+        });
+            });
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress4 .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+        }
+    }).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+
+/* IMAGE 5 UPDATE CODE */
+    $('#update-image5').fileupload({
+        url: url,
+        dataType: 'json',
+        done: function (e, data) {
+
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo('#files5');
+
+            var ad_id =  $('#ad_id').val();
+            $.post("<?php echo $this->baseUrl()?>/members/update-image5/", {image: file.name, ad_id: ad_id},
+    function(data){
+        if(data){
+        location.reload();
+        }else{
+            alert("Please try again to upload image");
+            }
+
+        });
+            });
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress5 .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+        }
+    }).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+
+        /* IMAGE 6 UPDATE CODE */
+    $('#update-image6').fileupload({
+        url: url,
+        dataType: 'json',
+        done: function (e, data) {
+
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo('#files6');
+
+            var ad_id =  $('#ad_id').val();
+            $.post("<?php echo $this->baseUrl()?>/members/update-image6/", {image: file.name, ad_id: ad_id},
+    function(data){
+        if(data){
+        location.reload();
+        }else{
+            alert("Please try again to upload image");
+            }
+
+        });
+            });
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress6 .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+        }
+    }).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+        });
+
  </script>

@@ -1,7 +1,7 @@
 <?php
 /**
   Author: Musavir Ifitkahr:
- * April 27 2015
+ * July 2015
  * kuala lumpur Malaysia
  */
  /**
@@ -168,7 +168,7 @@ $this->view->main_banner = $this->video->getBanner($id);
 			$this->view->images = $results;
 		}
 
-		public function __call($method, $args) {
+public function __call($method, $args) {
         if ('Action' == substr($method, -6)) {
             // If the action method was not found, forward to the
             // index action

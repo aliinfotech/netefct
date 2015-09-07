@@ -43,9 +43,9 @@ if(isset($this->user_session->msg)){
         } else {
         $this->view->empty_rec = true;
         }
-} 
+}
 
-	
+
 	public function textBlocksListAction(){
 
 if(isset($this->user_session->msg)){

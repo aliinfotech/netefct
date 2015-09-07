@@ -1,18 +1,1 @@
-<link rel="stylesheet" href="<?= $this->baseUrl()?>/application/default/views/<?php echo Zend_Registry::get('theme');?>/css/customer.css" media="screen, projection"/> 
-<div id="login_box" class="span-15 box">
-    <div style="position:relative;top:-15px;"><strong>Shop / Office Owner Login information</strong></div>
-<form action="<?php echo $this->escape($this->form->getAction()) ?>" method="<?php echo $this->escape($this->form->getMethod()) ?>">
-    <table>
-        <?php echo $this->msg ?>
-<?php echo $this->escape($this->form->email); ?>
-<?php echo $this->escape($this->form->password); ?>
-<?php echo $this->escape($this->form->submit); ?>
-</table>
-</form>
-
-</div><div class="span-10 last">&nbsp;</div>
-<div class="span-24 last" id="forget-pass"> If you have forgotten your password? <span id="forget_box"><a href="<?= $this->baseUrl();?>/vendor/forgot">Get a new password</a></span></div>
-<div id="reg" class="span-24 last">&nbsp;<hr/></div>
-
-
 

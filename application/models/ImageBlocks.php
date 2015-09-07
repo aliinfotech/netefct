@@ -4,7 +4,7 @@
     protected $_name = 'image_blocks';
     protected $_primary = 'ib_id';
 
- public function getImageBlock($id){
+ public function getByID($id){
 	 $select = $this->select();
 	 $select->from($this)->where("ib_id = ?", $id);
 	 $result = $this->fetchRow($select);
@@ -12,10 +12,10 @@
  }
 
  // For get all Text Block
- public function getAllImageBlocks(){
+ public function getBlocks(){
 $select = $this->select();
-$select->from($this, array('ib_id','name1','link1','caption1'));
-$result = $this->fetchAll($select);
+$select->from($this);
+$result = $this->fetchRow($select);
 return $result;
  }
 
