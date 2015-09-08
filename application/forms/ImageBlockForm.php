@@ -7,26 +7,41 @@ public function init()
 				$this->setName('image_block');
 				$this->setAttrib('enctype', 'multipart/form-data');
 			
-			$name1 = new Zend_Form_Element_File('name1');
-			$name1->addValidator('Count', false, 1)     // ensure only 1 file
+			$block = new Zend_Form_Element_File('block');
+			$block->addValidator('Count', false, 1)     // ensure only 1 file
 				->addValidator('FilesSize',false,array('min' => '10kB', 'max' => '5MB'))
 				->addValidator('ImageSize', false,
                             array('minwidth' => 200,
                             'minheight' => 500)
                 )
+                ->addFilter('StringTrim')
 				->setErrorMessages(array("Upload an image"))
 				->addValidator('Extension', false, 'jpg,png,gif');// only JPEG, PNG, and GIFs
 				
-			$caption1 = new Zend_Form_Element_Text('caption1',array('disableLoadDefaultDecorators' =>false));
-			$caption1->setRequired(true)
-				->setAttrib('id', 'caption')
+			$name = new Zend_Form_Element_Text('name',array('disableLoadDefaultDecorators' =>true));
+			$name->setRequired(true)
+				->setAttrib('id', 'image-name')
 				->addFilter('StringTrim')
+				->addValidator('NotEmpty')
 				->setAttrib("class", "form-control")
 				->removeDecorator('htmlTag');
-				
-			$link1 = new Zend_Form_Element_Text('link1',array('disableLoadDefaultDecorators' =>false));
-			$link1->setRequired(true)
-				->setAttrib('id', 'link')
+
+			$caption = new Zend_Form_Element_Text('caption',array('disableLoadDefaultDecorators' =>true));
+			$caption->setRequired(true)
+				->setAttrib('id', 'caption')
+				->addFilter('StringTrim')
+				->addValidator('NotEmpty')
+				->setAttrib("class", "form-control")
+				->removeDecorator('htmlTag');
+			
+			$disable_link = new Zend_Form_Element_Checkbox('disable_link',array('disableLoadDefaultDecorators' =>true));
+				$disable_link->setAttrib("id","disable_link")
+				->setAttrib("class", "form-control")
+				->addFilter('StringTrim')
+				->removeDecorator('htmlTag');
+
+			$link = new Zend_Form_Element_Text('link',array('disableLoadDefaultDecorators' =>true));
+			$link->setAttrib('id', 'link')
 				->addFilter('StringTrim')
 				->setAttrib("class", "form-control")
 				->removeDecorator('htmlTag');
@@ -43,9 +58,9 @@ public function init()
 				'ViewHelper',
 				array('decorator' => array('td' => 'HtmlTag'), 'options' => array('tag' => 'td')),
 				array('decorator' => array('tr' => 'HtmlTag'), 'options' => array('tag' => 'tr'))),
-				array('name1','link1','caption1')); 
+				array('block','name','link','caption','disable_link')); 
 				
-				$this->addElements(array( $name1,$link1,$caption1,$submit));
+				$this->addElements(array( $block,$name,$link,$caption,$disable_link,$submit));
 
         }
 }
