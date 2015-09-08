@@ -14,7 +14,7 @@
  // For get all Text Block
  public function getAllTextBlocks(){
 $select = $this->select();
-$select->from($this, array('tb_id','tb_name','tb_text'));
+$select->from($this);
 $result = $this->fetchAll($select);
 return $result;
  }

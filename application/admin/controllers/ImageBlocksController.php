@@ -31,29 +31,8 @@ class Admin_ImageBlocksController extends Zend_Controller_Action
 	}
 
 
-	// this is default index
-	public function indexAction()
+  public function indexAction()
 {
-
-  $result = $this->image_blocks->getBlocks();
-// var_dump($result);
-$this->view->block1 = $result['block1'];
-
-  /*
-  $this->view->$block2 = $result->block2;
-  $this->view->$block3 = $result->block3;
-  $this->view->$block4 = $result->block4;
-  $this->view->$block5 = $result->block5;
-  $this->view->$block6 = $result->block6;
-  $this->view->$block7 = $result->block7;
-  $this->view->$block8 = $result->block8;
-  $this->view->$block9 = $result->block9;
-*/
-  $this->view->caption1 = $result['caption1'];
-  $this->view->link1 = $result['link1'];
-
-
-
 
 
 }
@@ -80,14 +59,25 @@ public function __call($method, $args) {
 
     }
 
+
 	// Paginator action
-	public function Paginator($results) {
+  public function Paginator($results, $records) {
         $page = $this->_getParam('page', 1);
         $paginator = Zend_Paginator::factory($results);
-        $paginator->setItemCountPerPage(10);
+        $paginator->setItemCountPerPage($records);
         $paginator->setCurrentPageNumber($page);
         $this->view->paginator = $paginator;
     }
 
+/* Do not delete we created this for ajax base system.
+public function indexAjaxedAction()
+{
+  $result = $this->image_blocks->getBlocks();
+// var_dump($result);
+$this->view->block1 = $result['block1'];
+$this->view->caption1 = $result['caption1'];
+  $this->view->link1 = $result['link1'];
 }
-?>
+*/
+
+}
