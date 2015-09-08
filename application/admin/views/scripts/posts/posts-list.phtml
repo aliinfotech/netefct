@@ -10,7 +10,7 @@
 				<div class="row" style="height:50px; padding:0; margin:0"><!-- row 1-->
                  <div class="col-xs-3">
                  	<table class="table">
-                    <tr><td> <a href="<?php echo $this->baseUrl(); ?>/admin/blog/new-post"> <i class="btn btn-sm btn-primary">New Blog Post</i></a></td>
+                    <tr><td> <a href="<?php echo $this->baseUrl(); ?>/admin/posts/new-post"> <i class="btn btn-sm btn-primary">New Blog Post</i></a></td>
                     </tr>
                     </table>
                  </div>
@@ -90,7 +90,7 @@
 															</td>
 
 															
-                                                            <td style="text-align:center;"><a class="btn btn-sm btn-warning float-right" href="<?php echo $this->baseUrl(); ?>/admin/blog/edit-post/post_id/<?php echo $item['post_id'] ?>">Edit</a></td>
+                                                            <td style="text-align:center;"><a class="btn btn-sm btn-warning float-right" href="<?php echo $this->baseUrl(); ?>/admin/posts/edit-post/post_id/<?php echo $item['post_id'] ?>">Edit</a></td>
 															 <td  style="text-align:center;"><a class="btn btn-danger" href="#" onclick="return confirmDelete(<?php echo $item['post_id'] ?> )" href="">Delete </a></td>
 														</tr>  
 															<?php endforeach; ?>
@@ -141,7 +141,7 @@
   function confirmDelete(id){
 	var r = confirm("Are you sure to Delete this Post! " );
 	if (r == true) {
-	window.location.assign("<?php echo $this->baseUrl(); ?>/admin/blog/delete-post/id/" + id);    
+	window.location.assign("<?php echo $this->baseUrl(); ?>/admin/posts/delete-post/id/" + id);    
 	} else {
 	return false;
 	}
