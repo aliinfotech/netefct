@@ -162,11 +162,13 @@ class Admin_PageController extends Zend_Controller_Action
 	public function listsAction(){ 
    
 	  //page list form
-      $form = new Application_Form_FilterPagesForm();
-      $this->view->form = $form;
+      //$form = new Application_Form_FilterPagesForm();
+      //$this->view->form = $form;
 	   
 	   // main condition
-	  if($this->_request->isPost()){$query_string = $this->_request->getParam("query_string");
+	 /* if($this->_request->isPost())
+      {
+        $query_string = $this->_request->getParam("query_string");
 	   
       $query_string = trim($query_string);
 	  	  
@@ -194,9 +196,9 @@ class Admin_PageController extends Zend_Controller_Action
         }
 	}
 	
-	else{
+	else{ */
     $results = $this->page->getAllPages($this->db);
-	}		
+	//}		
        if (count($results) > 0) {
 	   $this->Paginator($results);
        } else {

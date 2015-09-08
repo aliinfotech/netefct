@@ -156,11 +156,13 @@ class Admin_PostsController extends Zend_Controller_Action
 	public function postsListAction(){
 
 	  //post list form
-      $form = new Application_Form_FilterPostsForm();
-      $this->view->form = $form;
+     // $form = new Application_Form_FilterPostsForm();
+     // $this->view->form = $form;
 
 	   // main condition
-	  if($this->_request->isPost()){$query_string = $this->_request->getParam("query_string");
+	/*  if($this->_request->isPost())
+      {
+        $query_string = $this->_request->getParam("query_string");
 
       $query_string = trim($query_string);
 
@@ -188,9 +190,9 @@ class Admin_PostsController extends Zend_Controller_Action
         }
 	}
 
-	else{
-    $results = $this->post->getAllPosts($this->db);
-	}
+	else{ */
+        $results = $this->post->getAllPosts($this->db);
+	//}
        if (count($results) > 0) {
 	   $this->Paginator($results);
        } else {
