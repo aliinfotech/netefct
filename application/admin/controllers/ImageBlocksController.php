@@ -10,7 +10,7 @@ class Admin_ImageBlocksController extends Zend_Controller_Action
 
 	public function init(){
 		Zend_Layout::startMvc(
-		array('layoutPath'=>  APPLICATION_PATH . '/admin/layouts',  'layout' => 'layout'));
+		array('layoutPath'=>  APPLICATION_PATH . '/admin/layouts',  'layout' => 'image-block'));
 
                         $this->db = Zend_Db_Table::getDefaultAdapter();
                         $this->authAdapter = new Zend_Auth_Adapter_DbTable($this->db);
