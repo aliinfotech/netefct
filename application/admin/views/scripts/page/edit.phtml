@@ -1,20 +1,4 @@
-<script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/js/tinymce/js/tinymce/tinymce.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
- 
-<script>tinymce.init({
-	selector:'textarea',
-      theme: "modern",
-	plugins: [
-        "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-        "searchreplace wordcount visualblocks visualchars code fullscreen",
-        "insertdatetime media nonbreaking save table contextmenu directionality",
-        "emoticons template paste textcolor"
-    ],
-    toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-    toolbar2: "print preview media | forecolor backcolor emoticons",
-    image_advtab: true,
-  });
-</script>
+<script src="<?php echo $this->baseUrl();?>/js/admin/ckeditor/ckeditor.js"></script>
 
 <style>
 .space-mangead{
@@ -36,88 +20,63 @@
     padding: 3px 6px 0 0;
 }
 .update-btn{
-margin-bottom:10px !important;
+margin-right:20px;
 }
 </style>
 
-<!-- Page Content -->
-        <div id="page-wrapper">
-            <div class="row">
-            <div class="col-lg-12">
+<div class="row">
+    <div class="col-lg-12">
 			 <div class="row" style="height:50px; padding:0; margin:0"><!-- row 1-->
                  <div class="col-xs-3">
-                 	<table class="table">
-                    <tr><td> <a href="<?php echo $this->baseUrl(); ?>/admin/page/new-page"> <i class="btn btn-sm btn-primary"> New Page</i></a></td>
-                    <td> <a href="<?php echo $this->baseUrl(); ?>/admin/page/lists"> <i class="btn btn-sm btn-primary"> Pages List</i></a></td>
-					</tr>
-                    </table>
-                 </div>
+                 	<a href="<?php echo $this->baseUrl(); ?>/admin/page/new-page"> <i class="btn btn-sm btn-primary"> New Page</i></a>
+                    <a href="<?php echo $this->baseUrl(); ?>/admin/page/lists"> <i class="btn btn-sm btn-primary"> Pages List</i></a>
+					</div>
                  </div><!-- ./ row 1-->
-			<div class="col-lg-11">
-          
-                    
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-comments fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">Edit Page</div>
-                            
-                                </div>
-                            </div>
-                        </div>
-                            <div class="panel-body">
-                             
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix">
-                                  <div id="basic_info">
+    </div>
+</div>
+
+<div class="row">
+ <div class="col-md-12">
+ <div class="page-title"><strong>Edit Page</strong></div>
+</div><!-- /.col-md-12-->
+</div><!-- /.row -->
+
+<div class="row">
+        <div class="col-md-12">
                                     <form class="form-horizontal" action="" method="post" enctype="multipart/form-data" >
-									<div class="table-responsive">
-                                       	<table class="table-responsive table table-striped table-bordered table-hover space-mangead">
+									
+                                       	<table class="table space-mangead">
                                     	<tr id='msg'><td colspan='2'><?php echo $this->msg ?></td></tr>
-										<!--<tr><td colspan="2"><strong><a href="#">Basic Information</a></strong></td></tr>--> 
-         							     
 									   <!--<?php echo $this->form->csrf ?>-->				
                                        
 									   <?php echo $this->form->title; ?>
 									   <tr><td><Label>* Page Url Slug</Label></td><td><p class="set-slug"><?php echo $this->page_url;?></p><?php echo $this->form->url_slug; ?></td></tr> 
 									   <tr><td><Label>* Current Url Slug</Label></td><td><p class="set-slug"><?php echo $this->page_url;?><?php echo $this->url_slug; ?></p></td></tr>
-                                       <tr><td><Label>Page Image:</Label></td><td><? if($this->page_id>0){?><img src="<?php echo $this->baseUrl();?>/images/pages/500X500/<?php echo $this->image;?>" alt="" style="float:left; width:150px;"/><?php }?></td></tr>									  
+                                       <tr><td><Label>Page Image:</Label></td>
+                                       <td><img src="<?php echo $this->baseUrl();?>/images/pages/500X500/<?php echo $this->image;?>" alt="" style="float:left; width:150px;"/>
+                                           </td></tr>									  
                                        <input type="hidden" name="post_id" value="<?php echo $this->post_id?>"/>
                                        <tr><td><Label>Change 800 pixel wide image</Label></td><td><?php echo $this->form->image;?></td></tr>							    
-                                         <?php echo $this->form->description; ?>
+                                         <?php //echo $this->form->description; ?>
+                                         
+                                         <tr>
+                                            <td colspan="2">
+                                                <textarea contenteditable="true" cols="80" rows="24" class="form-control" id="description" name="description"></textarea>
+                                            </td>
+                                         </tr>
+                                         
 										 <?php echo $this->form->is_comment; ?>
-                                       <tr><td>&nbsp;</td><td>
+                                       <tr>
+                                       <td colspan="2">
                                         <!--<?php echo $this->form->submit?>-->
-										<button class="btn btn-lg btn-primary update-btn" value="0" name="submit" type="submit">Update and Continue</button>
-										<button class="btn btn-lg btn-primary set-save-draft" value="1" name="submit" type="submit">Save as Draft</button>
+										<button class="btn btn-lg btn-primary update-btn" value="0" name="submit" type="submit" style="margin-right: 20px;">Update and Continue</button>
+										<button class="btn btn-lg btn-primary" value="1" name="submit" type="submit">Save as Draft</button>
 										
 										</td></tr>   
                                         </table>
-										</div>
                                    </form>
-	                            </div>
-                            </div>
-                      
-                    </div>
-                       <a href="#">
-                         <div class="panel-footer">
-                         </div>
-                        </a>
-                </div>
-                
-                
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /#page-wrapper -->
-
-
-
+	  </div>                          
+</div>
  <script language="Javascript" type="text/javascript">
 window.onload = function () { 
  <?php if(!isset($this->msg)){ ?>
@@ -127,6 +86,8 @@ window.onload = function () {
 		?>
 			$('tr#msg').show();
 		<?php } ?>
+ 
+    CKEDITOR.replace('description');
  }
 
 // make slug from title

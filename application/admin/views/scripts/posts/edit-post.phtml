@@ -1,3 +1,4 @@
+<!--
 <script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/js/tinymce/js/tinymce/tinymce.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
  
@@ -14,8 +15,9 @@
     toolbar2: "print preview media | forecolor backcolor emoticons",
     image_advtab: true,
   });
-</script>
+</script> -->
 
+<script src="<?php echo $this->baseUrl();?>/js/admin/ckeditor/ckeditor.js"></script>
 <style>
 .space-mangead{
 	margin-top: 3%;
@@ -42,85 +44,61 @@ float:left;
 }
 </style>
 
-<!-- Page Content -->
-        <div id="page-wrapper">
-            <div class="row">
-            <div class="col-lg-12">
-			 <div class="row" style="height:50px; padding:0; margin:0"><!-- row 1-->
-                 <div class="col-xs-3">
-                 	<table class="table">
-                    <tr><td> <a href="<?php echo $this->baseUrl(); ?>/admin/blog/new-post"> <i class="btn btn-sm btn-primary"> New Blog Post</i></a></td>
-                    <td> <a href="<?php echo $this->baseUrl(); ?>/admin/blog/posts-list"> <i class="btn btn-sm btn-primary"> Blog Posts List</i></a></td>
-					</tr>
-                    </table>
-                 </div>
-                 </div><!-- ./ row 1-->
-			<div class="col-lg-11">
-          
-                    	
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-comments fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">Edit Blog Post</div>
-                            
-                                </div>
-                            </div>
-                        </div>
-                            <div class="panel-body">
-                             
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix">
-                                  <div id="basic_info">
+<div class="row">
+   <div class="col-lg-12">
+        <div class="row" style="height:50px; padding:0; margin:0"><!-- row 1-->
+            <div class="col-md-12">
+                <a href="<?php echo $this->baseUrl(); ?>/admin/posts/new-post"> <i class="btn btn-sm btn-primary"> New Blog Post</i></a>
+                <a href="<?php echo $this->baseUrl(); ?>/admin/posts/posts-list"> <i class="btn btn-sm btn-primary"> Blog Posts List</i></a>					
+            </div>
+        </div>
+   </div>
+</div>
+<div class="row">
+ <div class="col-md-12">
+ <div class="page-title"><strong>Edit Blog Post</strong></div>
+</div><!-- /.col-md-12-->
+</div><!-- /.row -->
+
+
+    <div class="row">
+        <div class="col-md-12">
                                     <form class="form-horizontal" action="" method="post" enctype="multipart/form-data" >
-									<div class="table table-responsive">
-                                       	<table class="table-responsive table table-striped table-bordered table-hover space-mangead">
+									
+                                       	<table class="table space-mangead">
                                     	<tr id='msg'><td colspan='2'><?php echo $this->msg; ?></td></tr>
-										<!--<tr><td colspan="2"><strong><a href="#">Basic Information</a></strong></td></tr>--> 
+										 
          							     
 									   <!--<?php echo $this->form->csrf ?>-->				
                                        
 									   <?php echo $this->form->heading; ?>
-									   <tr><td><Label>* Blog Post Url Slug</Label></td><td><p class="set-slug"><?php echo $this->post_url; ?></p><?php echo $this->form->url; ?></td></tr>
-									   <tr><td><Label>* Current Url Slug</Label></td><td><p class="set-slug"><?php echo $this->post_url; ?><span id="label1" ><?php echo $this->url_slug; ?></span></p></td></tr>
-                                       <tr><td><Label>Blog Post Image:</Label></td><td><? if($this->post_id>0){?><img src="<?php echo $this->baseUrl();?>/images/posts/500X500/<?php echo $this->image;?>" alt="" style="float:left; width:150px;"/><?php }?></td></tr>									  
+									   <tr><td><label>* Blog Post Url Slug</label></td><td><p class="set-slug"><?php echo $this->post_url; ?></p><?php echo $this->form->url; ?></td></tr>
+									   <tr><td><label>* Current Url Slug</label></td><td><p class="set-slug"><?php echo $this->post_url; ?><span id="label1" ><?php echo $this->url_slug; ?></span></p></td></tr>
+                                       <tr><td><label>Blog Post Image:</label></td>
+                                       <td><img src="<?php echo $this->baseUrl();?>/images/posts/500X500/<?php echo $this->image;?>" alt="" style="float:left; width:150px;"/></td></tr>									  
                                        <input type="hidden" name="post_id" value="<?php echo $this->post_id?>"/>
-                                       <tr><td><Label>Change 800 pixel wide image</Label></td><td><?php echo $this->form->image;?></td></tr>							    
-                                         <?php echo $this->form->description; ?>
+                                       <tr><td><label>Change 800 pixel wide image</label></td><td><?php echo $this->form->image;?></td></tr>							    
+                                         <?php //echo $this->form->description; ?>
+                                         <tr>
+                                            <td colspan="2">
+                                                <textarea contenteditable="true" cols="80" rows="24" class="form-control" id="description" name="description"></textarea>
+                                            </td>
+                                         </tr>
 										 <?php echo $this->form->is_comment; ?>
 										 <?php echo $this->form->categories; ?>
 										 <?php echo $this->form->tags; ?>
-                                       <tr><td>&nbsp;</td><td>
+                                       <tr>
+                                       <td colspan="2">
                                         <!--<?php echo $this->form->submit?>-->
-										<button class="btn btn-lg btn-primary update-btn" value="0" name="submit" type="submit">Update and Continue</button>
+										<button class="btn btn-lg btn-primary update-btn" value="0" name="submit" type="submit" style="margin-right: 20px;">Update and Continue</button>
 										<button class="btn btn-lg btn-primary set-save-draft" value="1" name="submit" type="submit">Save as Draft</button>
 										
 										</td></tr>   
                                         </table>
-										</div>
                                    </form>
-	                            </div>
-                            </div>
-                      
-                    </div>
-                       <a href="#">
-                         <div class="panel-footer">
-                         </div>
-                        </a>
-                </div>
-                
-                
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
         </div>
-        <!-- /#page-wrapper -->
-
- 
+    </div>
+    
 
  <script language="Javascript" type="text/javascript">
 window.onload = function () { 
@@ -131,6 +109,8 @@ window.onload = function () {
 		?>
 			$('tr#msg').show();
 		<?php } ?>
+        
+        CKEDITOR.replace('description');
  }
 
 // make slug from title
@@ -152,9 +132,11 @@ $("#url").keyup(function(){
         $("#url").val(Text);
 	 	$("#label1").text($(this).val());
 });
+
 $("#url").keyup(function(){
    $("#label1").text($(this).val());   
 });
+
 $("#heading").keyup(function(){
 		var Text = $(this).val();
         Text = Text.toLowerCase();
