@@ -65,7 +65,32 @@ public function init()
 					->addFilter('StringTrim')
 					->setAttrib("class", "form-control")
 					->removeDecorator('htmlTag');
+
+				$pinterest = new Zend_Form_Element_Text('pinterest',array('disableLoadDefaultDecorators' =>true));
+				$pinterest->setLabel(' Pinterest:')
+					->setAttrib('id', 'pinterest')
+					->addFilter('StripTags')
+					->addFilter('StringTrim')
+					->setAttrib("class", "form-control")
+					->removeDecorator('htmlTag');
 					
+				$dailymotion = new Zend_Form_Element_Text('dailymotion',array('disableLoadDefaultDecorators' =>true));
+				$dailymotion->setLabel(' Dailymotion:')
+					->setAttrib('id', 'dailymotion')
+					->addFilter('StripTags')
+					->addFilter('StringTrim')
+					->setAttrib("class", "form-control")
+					->removeDecorator('htmlTag');
+					
+				$vimeo = new Zend_Form_Element_Text('vimeo',array('disableLoadDefaultDecorators' =>true));
+				$vimeo->setLabel(' Vimeo:')
+					->setAttrib('id', 'vimeo')
+					->addFilter('StripTags')
+					->addFilter('StringTrim')
+					->setAttrib("class", "form-control")
+					->removeDecorator('htmlTag');
+					
+
 		        $submit = new Zend_Form_Element_Submit('submit');
 				$submit->setAttrib('id', 'submitbutton');
 				$submit->setAttrib('class', 'btn btn-lg btn-primary float-right')
@@ -79,11 +104,11 @@ public function init()
 				array('decorator' => array('td' => 'HtmlTag'), 'options' => array('tag' => 'td')),
 				array('Label', array('tag' => 'td')),
 				array('decorator' => array('tr' => 'HtmlTag'), 'options' => array('tag' => 'tr'))),
-				array('twitter','facebook','tumblr','google_plus','youtube','linkedin','instagram'));
+				array('twitter','vimeo','dailytmotion','pinterest','facebook','tumblr','google_plus','youtube','linkedin','instagram'));
 				
 				///$this->addElement('hash', 'csrf', array('ignore' => true,));
 				
-				$this->addElements(array($twitter,$google_plus,$tumblr,$facebook,$youtube,$instagram,$linkedin,$submit));
+				$this->addElements(array($twitter,$vimeo,$dailymotion,$pinterest,$google_plus,$tumblr,$facebook,$youtube,$instagram,$linkedin,$submit));
 
         }
 }

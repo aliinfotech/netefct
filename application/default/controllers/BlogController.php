@@ -9,6 +9,8 @@ class BlogController extends Zend_Controller_Action {
 	private $post = null;
 	private $social = null;
 	private $comment = null;
+	private $social_sharing = null;
+	
 	 
     public function init() { 
 		$this->_helper->layout->setLayout('layout');
@@ -17,6 +19,7 @@ class BlogController extends Zend_Controller_Action {
 		$this->post = new Application_Model_Posts();
 		$this->social = new Application_Model_SocialLinks();
 		$this->comment = new Application_Model_PostComments();
+		$this->social_sharing = new Application_Model_SocialSharing();
 		}
 		
 	public function indexAction(){
@@ -54,8 +57,8 @@ class BlogController extends Zend_Controller_Action {
         //for social links
 		$links =  new Application_Model_SocialLinks();
 		$this->view->links = $links->getSocialLinks();
-	
-		
+		$this->view->social = $this->social_sharing->getSocialSharing();
+				
 		$id = $this->_request->getParam('id');
 		//$this->view->id = $id;		
 		$result = $this->post->getPostByID($id);

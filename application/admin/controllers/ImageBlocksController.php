@@ -74,25 +74,29 @@ class Admin_ImageBlocksController extends Zend_Controller_Action
     if(isset($image_name) && strlen($image_name) > 0 ) {
     
     try {
-                if(isset($result->block)){
+              /*  if(isset($result->block)){
                 unlink(SYSTEM_PATH."/images/user/image-blocks/".$result->block);
-                unlink(SYSTEM_PATH."/images/user/image-blocks/200X200/".$result->block);
-                unlink(SYSTEM_PATH."/images/user/image-blocks/500X500/".$result->block);
-                }
+              //  unlink(SYSTEM_PATH."/images/user/image-blocks/200X200/".$result->block);
+               // unlink(SYSTEM_PATH."/images/user/image-blocks/500X500/".$result->block);
+                }*/
                  
             $block = $_FILES['block']['name'];
             $random = rand(10,10000);
             $time = time() + (7 * 24 * 60 * 60);
             $file_name = $time . $random . $block;
-            $formData["block"] = $file_name;
+            $formData["block"] = $block;
      
-            move_uploaded_file($_FILES["block"]['tmp_name'], SYSTEM_PATH."/images/user/image-blocks/".$file_name);
-            $thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/admin/user/image-blocks/".$file_name);
-            $thumb->resize(200,200); 
-            $thumb->save(SYSTEM_PATH."/images/admin/user/image-blocks/200X200/".$file_name);
+            move_uploaded_file($_FILES["block"]['tmp_name'], SYSTEM_PATH."images/user/image-blocks/".$block);
+            $thumb = new Application_Model_Thumbnail(SYSTEM_PATH."images/admin/user/image-blocks/".$block);
+           
             $thumb->resize(500,500);
-            $thumb->save(SYSTEM_PATH."/images/admin/user/image-blocks/500X500/".$file_name);
-            var_dump($thumb);
+            $thumb->save(SYSTEM_PATH."images/admin/user/image-blocks/500X500/".$block);
+
+           /* $thumb->resize(200,200); 
+            $thumb->save(SYSTEM_PATH."images/admin/user/image-blocks/200X200/".$file_name);
+            $thumb->resize(500,500);
+            $thumb->save(SYSTEM_PATH."images/admin/user/image-blocks/500X500/".$file_name);
+            var_dump($thumb);*/
         }
         
     catch (Zend_File_Transfer_Exception $e)
@@ -101,10 +105,9 @@ class Admin_ImageBlocksController extends Zend_Controller_Action
         }
 }else{
 
-$formData['block']= $file_name;
+$formData['block']= $block;
 }
-var_dump($formData);
-return;
+
     $formData['ib_id']= $id;
     $result = $this->image_blocks->editBlockImage($formData);
     $this->view->msg = $result;

@@ -1,1 +1,50 @@
  
+ <div class="row">
+ <div class="col-md-12">
+ <div class="page-title"><h1>Edit Social Sharing Links</h1></div>
+ </div><!-- /.col-md-12-->
+</div><!-- /.row -->
+            <div class="row">
+            <div class="col-lg-12">
+			
+                               <div id="basic_info">
+                                 <form class="form-horizontal" action="" method="post" enctype="multipart/form-data" >
+								
+                              	<table class="table space-mangead">
+                                    	<tr id='msg'><td colspan='2'><?php echo $this->msg ?></td></tr>
+										         							  
+                                        <?php echo $this->form->facebook; ?>
+                                        <?php echo $this->form->linkedin; ?>
+									    <?php echo $this->form->twitter; ?>
+									    <?php echo $this->form->youtube; ?>
+									    <?php echo $this->form->instagram; ?>
+								        <?php echo $this->form->google_plus; ?>
+									    <?php echo $this->form->tumblr; ?>
+									    <?php echo $this->form->vimeo; ?>
+								        <?php echo $this->form->dailymotion; ?>
+									    <?php echo $this->form->pinterest; ?>
+										
+                                       <tr><td>&nbsp;</td><td>
+                                        <?php echo $this->form->submit?>
+										</td></tr>   
+                                        </table>
+                                   </form>
+	                            </div>
+                                                 
+                    </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+     
+ <script language="Javascript" type="text/javascript">
+window.onload = function () {
+ <?php if(!isset($this->msg)){ ?>
+      $('tr#msg').hide();
+
+    <?php  } else{
+    ?>
+      $('tr#msg').show().delay(3000).hide('slow');
+
+    <?php } ?>
+ }
+ </script>
