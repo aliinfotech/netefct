@@ -40,6 +40,7 @@ class Admin_SocialController extends Zend_Controller_Action
 		}
 		$form = new Application_Form_SocialLinkForm();
 		$record = $this->social->getSocialSharing();
+		$this->view->id = $record->ss_id;
 		$form->facebook->setValue($record->facebook);
 		$form->linkedin->setValue($record->linkedin);
 		$form->twitter->setValue($record->twitter);
@@ -47,10 +48,9 @@ class Admin_SocialController extends Zend_Controller_Action
 		$form->instagram->setValue($record->instagram);
 		$form->google_plus->setValue($record->google_plus);
 		$form->tumblr->setValue($record->tumblr);
-		$form->dailymotion->setValue($record->dailymotion);
-		$form->vimeo->setValue($record->vimeo);
 		$form->pinterest->setValue($record->pinterest);
 		$this->view->form = $form;
+
 		if($this->user_session->msg!=null)
 		{
 			$this->view->msg = $this->user_session->msg;
@@ -60,7 +60,6 @@ class Admin_SocialController extends Zend_Controller_Action
 		if (!$this->_request->isPost())return;
 		$formData = $this->_request->getPost();
 		if (!$form->isValid($formData)) return;
-		
 		$result = $this->social->updateSocialSharing($formData);
 		$this->view->msg = $result;
 }
