@@ -1,4 +1,4 @@
- 
+
  <div class="row">
   <div class="col-md-12">
   <div class="page-title">Edit  <strong><?php echo $this->escape($this->name); ?></strong> Image Block</div>
@@ -6,20 +6,23 @@
  </div><!-- /.row -->
 
  <div class="row">
-  <div class="col-md-12">
    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data" >
+  <div class="col-md-6">
     <table class="table space-mangead">
      <tr id='msg'><td ><?php echo $this->msg ?></td></tr>
-      <tr><td><strong>Block Image:</strong></td></tr><td><img src="<?php echo $this->baseUrl();?>/images/user/image-blocks/200X200/<?php echo $this->block;?>" alt="image-block" style="float:left; width:150px;"/></td>
-  
-      <tr><td><strong>Image Name:</strong></td></tr>
+      <tr><td><strong>Block Image:</strong></td></tr><td>
+      <img src="<?php echo $this->baseUrl();?>/images/user/image-blocks/500X500/<?php echo $this->block;?>" alt="image-block" style="float:left; width:300px"/></td>
+      <tr><td><strong>Change Image:</strong>  <?php echo $this->form->block; ?></td></tr>
+  </table>
+</div>
+ <div class="col-md-6">
+    <table class="table space-mangead">
+       <tr><td><strong>Image Name:</strong></td></tr>
       <?php echo $this->form->name; ?>
       <tr><td><strong>Image Link:</strong></td></tr>
       <?php echo $this->form->link; ?>
       <tr><td><strong>Image Caption:</strong></td></tr>
       <?php echo $this->form->caption; ?>
-      <tr><td><strong>Change Image:</strong></td></tr>
-      <tr><td><?php echo $this->form->block; ?></td></tr>
       <tr><td><strong>Disable Link:</strong></td></tr>
       <?php echo $this->form->disable_link; ?>
       <tr><td > <?php echo $this->form->submit?></td></tr>

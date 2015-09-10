@@ -6,23 +6,20 @@
 </div><!-- /.row -->
              <div class="row">
                          <div class="col-md-12">
-                   
+
                                        <div class="table-responsive">
                                                     <table cellpadding="0" cellspacing="0" border="0" class="responsive dynamicTable display table table-bordered  set-table" width="100%">
                                                         <thead>
 
                                                             <tr>
-                                                            <th style="text-align:center;">Block No.</th>
-                                                                <th style="text-align:center;">Block Image</th>
+                                                            <th style="text-align:center;">No.</th>
+                                                                <th style="text-align:center;">Block</th>
                                                                 <th style="text-align:center;">Name</th>
-                                                                <th style="text-align:center;">Image Link</th>
                                                                 <th style="text-align:center;">Caption </th>
-                                                                <th style="text-align:center;">Link Status</th>
+                                                                <th style="text-align:center;">Link</th>
+                                                                <th style="text-align:center;">LE</th>
                                                                 <th style="text-align:center;">Edit </th>
-                                                                <th style="text-align:center;">Location on Home Page </th>
-                                                                <th style="text-align:center;">Size Instructions </th>
-
-                                                            </tr>
+                                                          </tr>
                                                         </thead>
                                                         <tbody>
 
@@ -32,7 +29,7 @@
 
                                                         <tr class="odd gradeX">
                                                         <td style="text-align:center;">
-                                                            <?php echo $item['ib_id'] ?> 
+                                                            <?php echo $item['ib_id'] ?>
                                                             </td>
                                                         <td style="text-align:center;">
                                                          <div  style="position: relative; width: 50px; height: 50px">
@@ -42,40 +39,31 @@
                                                         <td style="text-align:center;">
                                                         <?php echo $item['name'] ?>
                                                         </td>
-														<td style="text-align:center;"> 
-                                                        
-                                                        <?php 
-															if($item['disable_link'] == 0) { ?>
-										                    <?php echo $item['link'] ?>
-										                    <?php
-														    }else{
-																?>
-										                    No Link
-										                                                               
-										                    <?php 	
-												        	} ?>
-                                                        </td>
                                                         <td style="text-align:center;">
                                                         <?php echo $item['caption'] ?>
                                                         </td>
+														<td style="text-align:center;">
+                                                          <?php echo $item['link'] ?>
+										                </td>
+
                                                         <td style="text-align:center;">
-										                <?php 
+										                <?php
 															if($item['disable_link'] == 0) { ?>
-										                   Active 
+										                   Yes
 										                    <?php
 														    }else{
 																?>
-										                    UnActive
-										                                                               
-										                    <?php 	
+										                    No
+										                    <?php
 												        	} ?>
                                                         </td>
-                                                        <td style="text-align:center;"><a class="btn btn-sm btn-warning float-right" href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/edit-image-block/id/<?php echo $item['ib_id'] ?>">Edit</a></td>
+                                                        <td style="text-align:center;">
+                                                        <a class="btn btn-sm btn-warning float-right"
+                                                        href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/edit/id/<?php echo $item['ib_id'] ?>">
+                                                        Edit</a></td>
 
-                                                        <td>
-                                                        </td>
-                                                        <td>
-                                                        </td>
+
+
 
                                                                 </tr>
                                                             <?php endforeach; ?>
@@ -87,9 +75,9 @@
 
                                                         </table>
                                                         </div><!-- div responsive end-->
-                                                
+
                                 </div>
 
 
-                    </div>
+                  `  </div>
                  <!-- /.row -->
