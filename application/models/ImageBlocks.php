@@ -11,13 +11,6 @@
 	 return $result;
  }
 
- // For get Image Block
- public function getBlocks(){
-$select = $this->select();
-$select->from($this);
-$result = $this->fetchRow($select);
-return $result;
- }
 
  // For get all Image Block
  public function getAllImageBlocks(){
