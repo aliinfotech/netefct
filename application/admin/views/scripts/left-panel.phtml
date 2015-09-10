@@ -50,8 +50,19 @@
                             </li>
                             </ul>
                           </li>
-                          <li>
-                         <a href="<?php echo $this->baseUrl(); ?>/admin/gallery"><i class="fa fa-picture-o fa-fw"></i> Photo Gallery</a>
+                            <li>
+                         <a href="javascript:;" data-toggle="collapse" data-target="#demo7"><i class="fa fa-picture-o fa-fw"></i> Photo Gallery<i class="fa fa-fw fa-caret-down"></i></a>
+                         <ul id="demo7" class="collapse">
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/gallery/new-photo"> Add Photo</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/gallery">Gallery List</a>
+                            </li>
+                             <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/gallery">Categories</a>
+                            </li>
+                            </ul>
                           </li>
-                    </ul>
+                         </ul>
    </div>

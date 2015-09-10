@@ -1,30 +1,28 @@
 <?php
  
-class Application_Model_Category extends Zend_Db_Table
+class Application_Model_PGCategory extends Zend_Db_Table
 { 
-    protected $_name = 'category';
-    protected $_primary = 'category_id';
+    protected $_name = 'pg_categories';
+    protected $_primary = 'pg_at_id';
     protected $result = null;
   
  
  public function getCategoryByID($id){
 	 $select = $this->select();
-	 $select->from($this)->where("category_id = ?", $id);
+	 $select->from($this)->where("pg_at_id = ?", $id);
 	 $result = $this->fetchRow($select);
 	 return $result;
  }
  
- // add new page
-public function addCategory($formData) {
-	
-	
- $data = array('category' => $formData['category']);
-				 
+   // add new photo category
+ public function addPhotoCategory($formData) {
+
+ $data = array('category_name' => $formData['category_name'], 'banner' => $formData['banner']);			 
  $result = $this->insert($data); 
 		 if($result){
-			return  "<div class='alert alert-success'>New Category Added Successfully </div>" ;
+			return  "<div class='alert alert-success'>New Photo Category Added Successfully </div>" ;
 		}  else {
-			return "Some error occurred in Creating a Category";
+			return "Some error occurred in Creating a New Photo Category";
 		}
    }
  
@@ -57,7 +55,7 @@ public function addCategory($formData) {
 	public function checkCategoryName($category){
 
 	$select = $this->select();
-	$select->from($this)->where('category = ?', $category);
+	$select->from($this)->where('category_name = ?', $category);
 	$result = $this->fetchRow($select);
 	if(is_object($result)){
 		return true;
@@ -66,7 +64,7 @@ public function addCategory($formData) {
 
  
      // for get all categories 
- public function getAllCategories(){
+ public function getAllCPhotoategories(){
 $select = $this->select();
 $select->from($this, array('category_id','category'));
 $result = $this->fetchAll($select);
