@@ -1,0 +1,54 @@
+   
+<div class="row">
+ <div class="col-md-12">
+  <div class="page-title"><h1>Photo Gallery List</h1></div>
+ </div><!-- /.col-md-12-->
+</div><!-- /.row -->
+        
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+				      <table cellpadding="0" cellspacing="0" border="0" class="responsive dynamicTable display table table-bordered  set-table" width="100%">
+							<thead>
+						     <tr>
+							  <th style="text-align:center;">Image</th>
+							  <th style="text-align:center;">Caption</th>
+							  <th style="text-align:center;">Description</th>
+							  <th style="text-align:center;">Link</th>										
+							  <th style="text-align:center;">Edit </th>
+							 </tr>
+							</thead>		
+							<tbody>
+                              <?php if (count($this->paginator)){ ?>
+								<?php foreach ($this->paginator as $item): ?>
+									<tr class="odd gradeX">
+									 <td style="text-align:center;">
+									  <div  style="position: relative; width: 50px; height: 50px">
+										<img style="max-width:100%; max-height: 100%  text-align:center;" src="<?php echo $this->baseUrl(); ?>/images/user/photo_gallery/200X200/<?php echo $item['photo_name'] ?>" alt="photo-gallery" />
+									  </div>
+									  </td>
+									  <td style="text-align:center;">
+									   <?php echo $item['caption'] ?>
+									  </td>  
+									  <td style="text-align:center;">
+									   <?php echo $item['description'] ?>
+									  </td>  
+									  <td style="text-align:center;">
+									   <?php echo $item['link'] ?>
+									  </td>                                                              
+	                                  <td style="text-align:center;"><a class="btn btn-sm btn-warning float-right" href="<?php echo $this->baseUrl(); ?>/admin/gallery/edit-photo/id/<?php echo $item['photo_id'] ?>">Edit</a></td>
+									</tr>
+								<?php endforeach; ?>
+                                   <tr><td colspan='9' style="text-align:center;">
+                                      <?php echo $this->paginationControl($this->paginator, 'Sliding', 'my_pagination_control.phtml'); ?>
+                                        </td>
+                                         </tr><?php } ?>
+                             </tbody>
+
+						   </table>
+						</div><!-- div responsive end-->
+												    
+                </div>
+                 <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->

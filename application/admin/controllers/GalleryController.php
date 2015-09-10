@@ -28,6 +28,13 @@ class Admin_GalleryController extends Zend_Controller_Action
     // this is default output function
     public function indexAction() {
 
+    	$results = $this->photos->getAllPhotos();
+       if (count($results) > 0) {
+		 $this->Paginator($results);
+        } else {
+        $this->view->empty_rec = true;
+		}
+		
         }
 		
 	
@@ -53,8 +60,7 @@ class Admin_GalleryController extends Zend_Controller_Action
 		 try {
 			$photo_name = $_FILES['photo_name']['name'];
 			$random = rand(10,10000);
-			$time = time() + (7 * 24 * 60 * 60);
-			$file_name = $time . $random . $photo_name;
+			$file_name = $random . $photo_name;
 			$formData["photo_name"] = $file_name;
 	 
 			move_uploaded_file($_FILES["photo_name"]['tmp_name'], SYSTEM_PATH."/images/gallery-images/originals/".$file_name);

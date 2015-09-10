@@ -31,7 +31,7 @@ public function addPhoto($formData) {
      // for get all Photos
    public function getAllPhotos(){
 	$select = $this->select();
-	$select->from($this, array('photo_id','photo_name'));
+	$select->from($this);
 	$result = $this->fetchAll($select);
 	return $result;
 	 }
