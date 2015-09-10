@@ -1,0 +1,77 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="page-title">
+			<h1>
+				Sliders List
+			</h1>
+		</div>
+	</div>
+	<!-- /.col-md-12-->
+</div>
+<!-- /.row -->
+<div class="row">
+	<div class="col-md-12">
+    <div id="msg"><?php echo $this->msg ?></div>
+    <div class="clearfix"></div>
+    <br />
+		<div class="table-responsive">
+			<table class="table">
+				<tbody>
+					<?php if (count($this->paginator)){ ?>
+						<?php foreach ($this->paginator as $item): ?>
+							<tr>
+								<td colspan="2">
+									<?php echo $item['slider_name'] ?>
+								</td>
+                            </tr>
+                            <tr>    
+								<td >
+									<div class="col-md4">
+										<img src="<?php echo $this->baseUrl(); ?>/images/user/slider-images/200X200/<?php echo $item['slider1'] ?>" alt="slider-image" />
+									</div>
+                                    <div class="col-md4">
+                                    <?php echo $item['slider1_link'] ?>
+                                    </div>
+								</td>
+								<td style="text-align:center;">
+									<div class="col-md4">
+										<img src="<?php echo $this->baseUrl(); ?>/images/user/slider-images/200X200/<?php echo $item['slider2'] ?>" alt="slider-image" />
+									</div>
+                                    <div class="col-md4">
+                                    <?php echo $item['slider2_link'] ?>
+                                    </div>
+								</td>
+							</tr>
+                            <tr>
+                            	<td colspan="2" class="pull-right">
+									<a class="btn btn-sm btn-warning float-right" href="<?php echo $this->baseUrl(); ?>/admin/sliders/edit-slider/id/<?php echo $item['id'] ?>">Edit</a>
+								</td>								
+							</tr>
+							<?php endforeach; ?>
+								<tr>
+									<td colspan='9' style="text-align:center;">
+										<?php echo $this->
+											paginationControl($this->paginator, 'Sliding', 'my_pagination_control.phtml'); ?>
+									</td>
+								</tr>
+								<?php } ?>
+				</tbody>
+			</table>
+		</div>
+		<!-- div responsive end-->
+	</div>
+</div>
+<!-- /.row -->
+
+<script>
+$(function () {
+
+ <?php if(!isset($this->msg)){ ?>
+            $('#msg').hide();
+
+        <?php  } else{
+        ?>
+            $('#msg').show();
+        <?php } ?>
+    });        
+</script>
