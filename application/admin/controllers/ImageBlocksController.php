@@ -91,7 +91,7 @@ if (file_exists($image_file)) {
  }
 
             $block = $_FILES['block']['name'];
-            $random = rand(9,999990);
+            $random = rand(9,999999);
             $file_name = $random . $block;
             $formData["block"] = $file_name;
 
