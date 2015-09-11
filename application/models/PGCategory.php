@@ -3,13 +3,13 @@
 class Application_Model_PGCategory extends Zend_Db_Table
 { 
     protected $_name = 'pg_categories';
-    protected $_primary = 'pg_at_id';
+    protected $_primary = 'pg_cat_id';
     protected $result = null;
   
  
  public function getCategoryByID($id){
 	 $select = $this->select();
-	 $select->from($this)->where("pg_at_id = ?", $id);
+	 $select->from($this)->where("pg_cat_id = ?", $id);
 	 $result = $this->fetchRow($select);
 	 return $result;
  }
@@ -20,35 +20,38 @@ class Application_Model_PGCategory extends Zend_Db_Table
  $data = array('category_name' => $formData['category_name'], 'banner' => $formData['banner']);			 
  $result = $this->insert($data); 
 		 if($result){
-			return  "<div class='alert alert-success'>New Photo Category Added Successfully </div>" ;
+			return  "<div class='alert alert-success'>New Category Added Successfully </div>" ;
 		}  else {
 			return "Some error occurred in Creating a New Photo Category";
 		}
    }
  
-    public function updateCategory($formData){
-
-	$data = array("category" => $formData['category']);
-	$where = "category_id = " . (int) $formData["id"];
-	$this->id=$this->update($data,$where);
-
-	if($this->id){
-		return  "<div class='alert alert-success'> ".$formData['category'] ." Update Successfully </div>" ;
-	}  else {
-		return "<div class='alert alert-danger'>Some error in update record</div>";
-	} 
-	}
-
+   public function editCategory($formData)
+  {
+	$data = array('banner' => $formData['banner'],
+	'category_name' => $formData['category_name']);
+      $where = $this->getAdapter()->quoteInto('pg_cat_id = ?',$formData['pg_cat_id']);
+	 $result = $this->update($data,$where);
+	 if($result){
+			return  "<div class='alert alert-success'>Category Updated Successfully </div>" ;
+		}  else {
+			return "<div class='alert alert-danger'>Some error in updating record</div>";
+		}
+	 return $result;
+  }
     // for delete categories
-	public function deleteCategory($id){
+	public function deleteCategory($db,$id){
 
-	$where = "category_id = " . (int) $id;
-    $id = $this->delete($where);
-    if($id > 0){
-        return true;
-    }else{
-        return false;
-    }  
+	$rowset   = $this->fetchAll();
+	   $rowCount = count($rowset);
+	   if($rowCount < 2 || $rowCount == 1) return 3;
+
+		$id = $this->delete($db->quoteInto("pg_cat_id = ?", $id));
+		if($id > 0){
+			return 1;
+		}else{
+			return 2;
+		}
 	}
 	 
    // for check categoery name
@@ -62,17 +65,13 @@ class Application_Model_PGCategory extends Zend_Db_Table
 		}else return false; 
 	} 
 
- 
      // for get all categories 
- public function getAllCPhotoategories(){
-$select = $this->select();
-$select->from($this, array('category_id','category'));
-$result = $this->fetchAll($select);
-return $result;
- }
-  
- 
- 
-  
+    public function getAllCategories(){
+     $select = $this->select();
+     $select->from($this);
+     $result = $this->fetchAll($select);
+     return $result;
+   }
+
 }
 ?>

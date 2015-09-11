@@ -1,0 +1,38 @@
+
+<div class="row">
+ <div class="col-md-12">
+ <div class="page-title">Add New Photo Category</div>
+ </div><!-- /.col-md-12-->
+ </div><!-- /.row -->
+</div> 
+
+          <div class="row">
+            <div class="col-lg-12">
+			  <form class="form-horizontal" action="" method="post" enctype="multipart/form-data" >
+				<div id="table-responsive">
+                 <table class="table space-mangead">
+                    <tr id='msg'><td colspan='2'><?php echo $this->msg ?></td></tr> 
+                    <tr><td><strong>Category Name:</strong></td></tr> 
+                     <?php echo $this->form->category_name; ?>
+                     <tr><td><strong>Banner Image:</strong>  <?php echo $this->form->banner; ?></td></tr>
+                     <tr><td > <?php echo $this->form->submit?></td></tr>
+				  </table>
+                 </div>
+               </form>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+         </div>
+
+<script language="Javascript" type="text/javascript">
+window.onload = function () {
+ <?php if(!isset($this->msg)){ ?>
+      $('tr#msg').hide();
+
+    <?php  } else{
+    ?>
+      $('tr#msg').show().delay(3000).hide('slow');
+
+    <?php } ?>
+ }
+ </script>

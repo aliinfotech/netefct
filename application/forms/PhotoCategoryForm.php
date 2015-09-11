@@ -38,7 +38,7 @@ public function init()
 				array('decorator' => array('tr' => 'HtmlTag'), 'options' => array('tag' => 'tr'))),
 				array('category_name','banner'));
 											
-				$this->addElements(array($category,$banner,$submit));
+				$this->addElements(array($category_name,$banner,$submit));
 
         }
 }

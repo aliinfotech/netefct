@@ -6,9 +6,9 @@ public function init()
 			  $this->setName('photo_gallery');
 					
               $photo_name = new Zend_Form_Element_File('photo_name');
-			  $photo_name->setAttrib('multiple', true)
-			  ->setAttrib('name', 'photo_name[]')
+			  $photo_name->setAttrib('name', 'photo_name[]')
 			  //->addValidator('Count', false, 1)     // ensure only 1 file
+	          ->setAttrib('multiple', true)
 	          ->addValidator('FilesSize',false,array('min' => '1kB', 'max' => '10MB'))
 	          ->addValidator('ImageSize', false,
                 array('minwidth' => 10,
@@ -49,7 +49,7 @@ public function init()
 				$submit->setAttrib('class', 'btn btn-md btn-primary float-right')
 				->removeDecorator('HtmlTag')
 				->removeDecorator('Label')
-				->setLabel("Update");
+				->setLabel("Save");
 				
 				$this->setElementDecorators(array(
 				'Errors',

@@ -49,30 +49,39 @@ class Admin_GalleryController extends Zend_Controller_Action
 		if (!$this->_request->isPost())return;
 		$formData = $this->_request->getPost();
 		if (!$form->isValid($formData)) return;
-
+        //var_dump($formData);
+        //return;
 		//For Images
+        if(isset($_FILES['photo_name'])){
 		$file_name = NULL;
-		
+	
 		 try {
-			$photo_name = $_FILES['photo_name']['name'];
-			for($i=0; $i < count($photo_name); $i++){
+			$photo_name = $_FILES['photo_name'];
+           // var_dump($photo_name);
+           // return;
+            for($i=0; $i < count($photo_name); $i++){
+
 			$random = rand(9,99999);
-			$file_name = $random . $photo_name;
+			$file_name = $random . $photo_name['name'][$i];
+            var_dump($file_name);
 			$formData["photo_name"] = $file_name;
 	 
 			move_uploaded_file($photo_name[$i], SYSTEM_PATH."/images/user/photo_gallery/".$file_name);
-			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images//user/photo_gallery/".$file_name);
+			/*$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images//user/photo_gallery/".$file_name);
 			$thumb->resize(500,500);
 			$thumb->save(SYSTEM_PATH.'/images/user/photo_gallery/500X500/'.$file_name);
 			$thumb->resize(200,200);
-			$thumb->save(SYSTEM_PATH.'/images/user/photo_gallery/200X200/'.$file_name);
+			$thumb->save(SYSTEM_PATH.'/images/user/photo_gallery/200X200/'.$file_name);*/
 		} 
+
+            return;
 		 }
+        
 		catch (Zend_File_Transfer_Exception $e)
 		{
 			throw new Exception('Bad data: '.$e->getMessage());
 		}
-
+}
  		$result = $this->photos->addPhoto($formData);
 		$this->view->msg = $result;
 		//clear all form fields 
