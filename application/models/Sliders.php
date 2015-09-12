@@ -1,8 +1,8 @@
 <?php
- class Application_Model_Sliders extends Zend_Db_Table
- {
+ class Application_Model_Sliders extends Zend_Db_Table {
+
     protected $_name = 'sliders';
-    protected $_primary = 'id';
+    protected $_primary = 'slider_id';
 
  public function getSliderByID($id){
 	 $select = $this->select();
@@ -33,7 +33,7 @@
     'slider4_link' => $formData['slider4_link'],
     'slider5_link' => $formData['slider5_link'],
     'slider6_link' => $formData['slider6_link'],);
-        
+
       $where = $this->getAdapter()->quoteInto('id = ?',$formData['id']);
 	 $result = $this->update($data, $where);
 	 if($result){
