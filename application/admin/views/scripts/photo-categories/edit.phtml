@@ -1,0 +1,45 @@
+
+<div class="row">
+ <div class="col-md-12">
+ <div class="page-title">Edit <strong><?php echo $this->escape($this->name); ?></strong> Photo Category</div>
+ </div><!-- /.col-md-12-->
+ </div><!-- /.row -->
+</div> 
+
+          <div class="row">
+            <form class="form-horizontal" action="" method="post" enctype="multipart/form-data" >
+              <div class="col-md-6">
+                 <div id="table-responsive">
+                   <table class="table space-mangead">
+                     <tr id='msg'><td ><?php echo $this->msg ?></td></tr>
+                     <tr><td><strong>Banner:</strong></td></tr><td>
+                <img src="<?php echo $this->baseUrl();?>/images/user/photo_gallery/categories/500X500/<?php echo $this->banner;?>" alt="banner-image" style="float:left; width:300px"/></td>
+                     <tr><td><strong>Change Banner:</strong>  <?php echo $this->form->banner; ?></td></tr>
+                   </table>
+                 </div>
+                 </div>
+
+              <div class="col-md-6">
+               <div id="table-responsive">
+               <table class="table space-mangead">
+                <tr><td><strong>Category Name:</strong></td></tr>
+                <?php echo $this->form->category_name; ?>
+                <tr><td > <?php echo $this->form->submit?></td></tr>
+               </table>
+               </div>
+            </form>   
+            <!-- /.row -->
+          </div>
+
+<script language="Javascript" type="text/javascript">
+window.onload = function () {
+ <?php if(!isset($this->msg)){ ?>
+      $('tr#msg').hide();
+
+    <?php  } else{
+    ?>
+      $('tr#msg').show().delay(3000).hide('slow');
+
+    <?php } ?>
+ }
+ </script>

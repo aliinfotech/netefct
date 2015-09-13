@@ -195,4 +195,3 @@ $result = $this->update($data, $db->quoteInto("comment_id = ?", $formData['comme
  
 
 }
-?>

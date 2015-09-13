@@ -242,5 +242,3 @@ class Application_Model_Posts extends Zend_Db_Table
     }
 
 }
-
-?>

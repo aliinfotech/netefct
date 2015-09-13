@@ -36,4 +36,3 @@ class Application_Model_SocialSharing extends Zend_Db_Table
   }
   
 }
-?>

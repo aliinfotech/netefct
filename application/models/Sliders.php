@@ -6,12 +6,12 @@
 
  public function getSliderByID($id){
 	 $select = $this->select();
-	 $select->from($this)->where("id = ?", $id);
+	 $select->from($this)->where("slider_id = ?", $id);
 	 $result = $this->fetchRow($select);
 	 return $result;
  }
 
- public function getAllSliders(){
+ public function getAllSlides(){
     $select = $this->select();
     $select->from($this);
     $result = $this->fetchAll($select);
@@ -20,21 +20,22 @@
 
  public function updateSlider($formData)
   {
-	$data = array('slider_name' => $formData['slider_name'],
-	'slider1' => $formData['slider1'],
-    'slider2' => $formData['slider2'],
-    'slider3' => $formData['slider3'],
-    'slider4' => $formData['slider4'],
-    'slider5' => $formData['slider5'],
-    'slider6' => $formData['slider6'],
-    'slider1_link' => $formData['slider1_link'],
-    'slider2_link' => $formData['slider2_link'],
-    'slider3_link' => $formData['slider3_link'],
-    'slider4_link' => $formData['slider4_link'],
-    'slider5_link' => $formData['slider5_link'],
-    'slider6_link' => $formData['slider6_link'],);
 
-      $where = $this->getAdapter()->quoteInto('id = ?',$formData['id']);
+	$data = array('name' => $formData['name'],
+	'slide1' => $formData['slide1'],
+    'slide2' => $formData['slide2'],
+    'slide3' => $formData['slide3'],
+    'slide4' => $formData['slide4'],
+    'slide5' => $formData['slide5'],
+    'slide6' => $formData['slide6'],
+    'link1' => $formData['link1'],
+    'link2' => $formData['link2'],
+    'link3' => $formData['link3'],
+    'link4' => $formData['link4'],
+    'link5' => $formData['link5'],
+    'link6' => $formData['link6'],);
+        
+     $where = $this->getAdapter()->quoteInto('slider_id = ?',$formData['id']);
 	 $result = $this->update($data, $where);
 	 if($result){
 			return  1;

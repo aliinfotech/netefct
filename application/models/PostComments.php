@@ -124,4 +124,3 @@ $result = $this->update($data, $db->quoteInto("pc_id = ?", $formData['pc_id']));
  
 
 }
-?>

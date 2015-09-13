@@ -15,12 +15,7 @@ class Application_Model_Testimonials extends Zend_Db_Table
  }
  
  // add new testimonial
-public function addTestimonials($formData) {
-	
-if(isset($formData['is_featured']) && $formData['is_featured'] == true){
- $data = array('is_featured' => 0);
- $result = $this->update($data);	
-}	
+public function addTestimonial($formData) {	
 	
  $data = array('first_name' => $formData['first_name'],
 				'last_name' => $formData['last_name'],
@@ -42,7 +37,7 @@ if(isset($formData['is_featured']) && $formData['is_featured'] == true){
      // for get all testimonials
  public function getAllTestimonials(){
 $select = $this->select();
-$select->from($this, array('test_id','email','first_name','short_description','last_name','image1','is_featured'));
+$select->from($this)->order('test_id DESC');
 $result = $this->fetchAll($select);
 return $result;
  }
@@ -66,44 +61,24 @@ return $result;
 }	
  
 
-  public function editTestimonial($formData)
+  public function edit($formData)
   {
-	  
-	if(isset($formData['is_featured']) && $formData['is_featured'] == true){
- $data = array('is_featured' => 0);
- $result = $this->update($data);	
-}	
-  
-	  
+	
 	 $data = array('first_name' => $formData['first_name'],
 	'last_name' => $formData['last_name'],
 	'email' => $formData['email'],
 	'is_featured' => $formData['is_featured'],
 	'image1' => $formData['image1'],	
 	'short_description' => $formData['short_description']);
-     $where = "test_id= ". $formData['t_id'];
+    $where = $this->getAdapter()->quoteInto('test_id = ?',$formData['test_id']);
 	 $result = $this->update($data,$where);
+	 if($result){
+			return  "<div class='alert alert-success'>Testimonial Updated Successfully </div>" ;
+		}  else {
+			return "<div class='alert alert-danger'>Some error in updating record</div>";
+		}
 	 return $result;
-  }
-  
-/* public function editTestimonial($id, $formData){
-	 
-	 $data = array('first_name' => $formData['first_name'],
-	'last_name' => $formData['last_name'],
-	'email' => $formData['email'],
-	'is_featured' => $formData['is_featured'],
-	'image1' => $formData['image1'],	
-	'short_description' => $formData['short_description']);
-     //$where['test_id = ?'] = $id; 
-	 $where['test_id = ?'] = $id;
-	 $result = $this->update($data,$where);
-	 if ($result > 0) {
-			 return true; 
-	 }else{
-		 return false; 
-		 }
-		  }*/
-
+}
 
    public function removeTestimonial($db, $id){
 	   
@@ -120,4 +95,3 @@ return $result;
 	 }
   
 }
-?>

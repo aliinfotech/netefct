@@ -1,0 +1,104 @@
+
+<div class="row">
+ <div class="col-md-12">
+ <div class="page-title">Testimonials List</div>
+ </div><!-- /.col-md-12-->
+</div><!-- /.row -->
+             <div class="row">
+                         <div class="col-md-12">
+                                       <div class="table-responsive">
+                                                     <table cellpadding="0" cellspacing="0" border="0" class="responsive dynamicTable display table table-bordered  set-table" width="100%">
+                                                        <thead>
+                                                        <?php 
+
+        if($this->msg == 1){
+        $this->msg = "<div class='alert alert-success'>Testimonial Deleted</div>";  
+        } 
+
+        if($this->msg == 3){
+        $this->msg = "<div class='alert alert-success'>You cant' delete all testimonial must keep at least one Featured Testimonial </div>";    
+        } 
+
+        if($this->msg == 2){
+        $this->msg = "<div class='alert alert-success'>Please try again!</div>";    
+        } 
+        if(isset($this->msg)){
+
+        ?>                                  <tr id='msg'><td colspan='5'><?php echo $this->msg ?></td></tr>
+        <?php } ?>
+                                                            <tr>
+                                                                <th style="text-align:center;">Name</th>
+                                                                <th style="text-align:center;">Email</th>
+                                                                <th style="text-align:center;">Featured</th>
+                                                                <th style="text-align:center;">Edit</th>
+                                                                <th style="text-align:center;">Delete </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        <?php if (count($this->paginator)){ ?>
+
+                                                        <?php foreach ($this->paginator as $item): ?>
+
+                                                        <tr class="odd gradeX">
+                                                       
+                                                        <td style="text-align:center;">
+                                                        <?php echo $item['first_name'] ?>&nbsp;<?php echo $item['last_name'] ?>
+                                                        </td>
+                                                             
+                                                        <td style="text-align:center;">
+                                                        <?php echo $item['email'] ?>
+                                                        </td> 
+                                                        
+                                                        <td style="text-align:center;">
+                                                         <?php 
+                                                                if($item['is_featured'] == 1) { ?>
+                                                               <i>Yes</i> 
+                                                                <?php
+                                                                }else{
+                                                                    ?>
+                                                                <i> No</i>
+                                                                                                           
+                                                                <?php   
+                                                                } ?></td>                                                           
+                                                            
+                                                            <td style="text-align:center;"><a class="btn btn-sm btn-warning float-right" href="<?php echo $this->baseUrl(); ?>/admin/testimonial/edit/id/<?php echo $item['test_id'] ?>">Edit</a></td>
+                                                             
+                                                             <td  style="text-align:center;"><a class="btn btn-danger" href="#" onclick="return confirmDelete(<?php echo $item['test_id'] ?> )" href="">Delete </a></td>
+                                                        </tr>
+                                                            <?php endforeach; ?>
+                                                            <tr><td colspan='9' style="text-align:center;">
+                                                            <?php echo $this->paginationControl($this->paginator, 'Sliding', 'my_pagination_control.phtml'); ?>
+                                                            </td>
+                                                            </tr><?php } ?>
+                                                        </tbody>
+
+                                                        </table>
+                                                        </div><!-- div responsive end-->
+
+                                </div>
+
+                  `  </div>
+                 <!-- /.row -->
+
+<script>
+window.onload = function () {
+ <?php if(!isset($this->msg)){ ?>
+      $('tr#msg').hide();
+
+    <?php  } else{
+    ?>
+      $('tr#msg').show().delay(3000).hide('slow');
+
+    <?php } ?>
+ }
+
+ function confirmDelete(id){
+    var r = confirm("Are you sure to Delete this Testimonial! " );
+    if (r == true) {
+    window.location.assign("<?php echo $this->baseUrl(); ?>/admin/testimonial/delete-testimonial/id/" + id);    
+    } else {
+    return false;
+    }
+    }  
+</script

@@ -29,4 +29,3 @@ class Application_Model_SocialLinks extends Zend_Db_Table
   }
   
 }
-?>

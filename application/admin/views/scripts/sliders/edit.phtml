@@ -1,0 +1,228 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="page-title">
+			Edit
+			<strong>
+				<?php echo $this->escape($this->name); ?>
+			</strong>
+			Slider
+		</div>
+	</div>
+	<!-- /.col-md-12-->
+</div>
+<!-- /.row -->
+<div id="msg"><?php echo $this->msg ?></div>
+<div class="clearfix"></div>
+<br />
+<div class="row">
+	<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+    <div class="col-md-6">
+    <strong>Slider Name: </strong>
+        <?php echo $this->form->name; ?>
+    </div>
+    <div class="col-md-6">
+        <?php echo $this->form->submit?>
+    </div>
+    <div class="clearfix"></div>
+<br />    
+<div class="col-md-12">
+		<div class="col-md-6">
+			<table class="table space-mangead">
+				<tr>
+					<td>
+						<strong>
+							Slide Image:
+						</strong>
+					</td>
+				</tr>
+				<td>
+					<img src="<?php echo $this->baseUrl();?>/images/user/slides/500X500/<?php echo $this->slide1; ?>" alt="<?php echo $this->slide1;?>" style="float:left; width:300px; height: 280px;"/>
+				</td>
+				<tr>
+					<td>
+						<strong>
+							Change Image:
+						</strong>
+						<?php echo $this->form->slide1; ?>
+					</td>
+				</tr>
+                <tr>
+						<td>
+							<strong>
+								Image Link:
+							</strong>
+						</td>
+				</tr>
+				<?php echo $this->form->link1; ?>
+			</table>
+		</div>
+		<div class="col-md-6">
+			<table class="table space-mangead">
+				<tr>
+					<td>
+						<strong>
+							Slide Image:
+						</strong>
+					</td>
+				</tr>
+				<td>
+					<img src="<?php echo $this->baseUrl();?>/images/user/slides/500X500/<?php echo $this->slide2;?>" alt="<?php echo $this->slide2;?>" style="float:left; width:300px; height: 280px;"/>
+				</td>
+				<tr>
+					<td>
+						<strong>
+							Change Image:
+						</strong>
+						<?php echo $this->form->slide2; ?>
+					</td>
+				</tr>
+                <tr>
+						<td>
+							<strong>
+								Image Link:
+							</strong>
+						</td>
+				</tr>
+				<?php echo $this->form->link2; ?>
+			</table>	
+	</div>
+    <div class="col-md-6">
+			<table class="table space-mangead">
+				<tr>
+					<td>
+						<strong>
+							Slide Image:
+						</strong>
+					</td>
+				</tr>
+				<td>
+					<img src="<?php echo $this->baseUrl();?>/images/user/slides/500X500/<?php echo $this->slide3;?>" alt="<?php echo $this->slide3;?>" style="float:left; width:300px; height: 280px;"/>
+				</td>
+				<tr>
+					<td>
+						<strong>
+							Change Image:
+						</strong>
+						<?php echo $this->form->slide3; ?>
+					</td>
+				</tr>
+                <tr>
+						<td>
+							<strong>
+								Image Link:
+							</strong>
+						</td>
+				</tr>
+				<?php echo $this->form->link3; ?>
+			</table>	
+	</div>
+    <div class="col-md-6">
+			<table class="table space-mangead">
+				<tr>
+					<td>
+						<strong>
+							Slide Image:
+						</strong>
+					</td>
+				</tr>
+				<td>
+					<img src="<?php echo $this->baseUrl();?>/images/user/slides/500X500/<?php echo $this->slide4;?>" alt="<?php echo $this->slide4;?>" style="float:left; width:300px; height: 280px;"/>
+				</td>
+				<tr>
+					<td>
+						<strong>
+							Change Image:
+						</strong>
+						<?php echo $this->form->slide4; ?>
+					</td>
+				</tr>
+                <tr>
+						<td>
+							<strong>
+								Image Link:
+							</strong>
+						</td>
+				</tr>
+				<?php echo $this->form->link4; ?>
+			</table>	
+	</div>
+    <div class="col-md-6">
+			<table class="table space-mangead">
+				<tr>
+					<td>
+						<strong>
+							Slide Image:
+						</strong>
+					</td>
+				</tr>
+				<td>
+					<img src="<?php echo $this->baseUrl();?>/images/user/slides/500X500/<?php echo $this->slide5;?>" alt="<?php echo $this->slide5;?>" style="float:left; width:300px; height: 280px;"/>
+				</td>
+				<tr>
+					<td>
+						<strong>
+							Change Image:
+						</strong>
+						<?php echo $this->form->slide5; ?>
+					</td>
+				</tr>
+                <tr>
+						<td>
+							<strong>
+								Image Link:
+							</strong>
+						</td>
+				</tr>
+				<?php echo $this->form->link5; ?>
+			</table>	
+	</div>
+    <div class="col-md-6">
+			<table class="table space-mangead">
+				<tr>
+					<td>
+						<strong>
+							Slide Image:
+						</strong>
+					</td>
+				</tr>
+				<td>
+					<img src="<?php echo $this->baseUrl();?>/images/user/slides/500X500/<?php echo $this->slide6;?>" alt="<?php echo $this->slide6;?>" style="float:left; width:300px; height: 280px;"/>
+				</td>
+				<tr>
+					<td>
+						<strong>
+							Change Image:
+						</strong>
+						<?php echo $this->form->slide6; ?>
+					</td>
+				</tr>
+                <tr>
+						<td>
+							<strong>
+								Image Link:
+							</strong>
+						</td>
+				</tr>
+				<?php echo $this->form->link6; ?>
+			</table>	
+	</div>
+</div>
+	<!-- /.col-md-12-->
+    </form>
+</div>
+<!-- /.row -->
+
+<script type="text/javascript">
+	
+window.onload = function () {
+ <?php if(!isset($this->msg)){ ?>
+      $('#msg').hide();
+
+    <?php  } else{
+    ?>
+      $('#msg').show().delay(3000).hide('slow');
+
+    <?php } ?>
+ }
+ 
+</script>
