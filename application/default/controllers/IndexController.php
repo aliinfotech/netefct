@@ -1,67 +1,47 @@
 <?php
-/**
-  Author: Musavir Ifitkahr:
- * July 2015
- * kuala lumpur Malaysia
- */
- /**
- LANDING PAGE:
- */
 
 class IndexController extends Zend_Controller_Action {
     private $baseurl = '';
 	var $user_session = null;
 	private $db = null;
     private $cookie = null;
-    private $mail = null;
-	private $video = null;
-	private $results = null;
-	private $contact = null;
-	private $comments = null;
-	private $testimonial = null;
-	private $mainBanner = null;
-	private $social = null;
-	private $photos = null;
+    private $text_block = null;
+    private $results = null;
+   	private $image = null;
 
     public function init() {
 		$this->_helper->layout->setLayout('layout');
         $this->baseurl = Zend_Controller_Front::getInstance()->getBaseUrl();
         $this->db = Zend_Db_Table::getDefaultAdapter();
-		$this->video = new Application_Model_Video();
-		$this->testimonial = new Application_Model_Testimonials();
-		/*$this->contact = new Application_Model_Contact();
-		$this->comments = new Application_Model_comment();*/
-		//$this->mail = new Application_Model_Email();
-	    $this->photos = new Application_Model_Photos();
-	    $this->mainBanner = new Application_Model_Banner();
-		$this->social = new Application_Model_SocialLinks();
+		$this->text_block = new Application_Model_TextBlocks();
+		$this->image =  new Application_Model_ImageBlocks();
 		}
 
 
     public function indexAction() {
+		/*for text blocks*/
+	$results = $this->text_block->getAllTextBlocks();
+	$this->view->list = $results;
+	$this->view->i = 0;
 
-	// for banner
-	$banner = new Application_Model_Banner();
-	$this->view->banner = $banner->getMainBanner();
+		/*for image blocks*/
+	$image =  new Application_Model_ImageBlocks();
+	$this->view->image = $image->getAllImageBlocks();
+	$this->view->v = 0;
+	//var_dump($this->view->image);
+	
+	}
+	
+	public function sliderAction() {
 
-	//for social links
-	$links =  new Application_Model_SocialLinks();
-	$this->view->links = $links->getSocialLinks();
+	}
 
+	public function textBlocksAction() {
 
-	//for videos
-    $results = $this->video->getFeaturedVideos();
-	  	if (count($results) > 0) {
-		 $this->Paginator($results);
-        } else {
-        $this->view->empty_rec = true;
-		}
+	}
 
-	//for testimonial is featured
+	public function imageBlocksAction() {
 
-	 $result = $this->testimonial->getFeaturedTestimonial();
-	 $this->view->i = 1;
-	 $this->view->list = $result;
 	}
 
 	public function moreTestimonialsAction(){

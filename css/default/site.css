@@ -1,9 +1,10 @@
 body{
 background-color:#fff;
   }
+  /* Text Size Classes */
 
   /*header section start*/
-
+/*
 .social-1 {
     margin: 0;
     padding-top: 5px;
@@ -61,5 +62,12 @@ background-color:#fff;
      margin: 0;
 	 border-bottom: 1px solid #F63234 !important;;
 
-}
+}*/
   /*header section end*/
+
+  .image-block1{
+padding-bottom: 20px;
+  }
+  .image-block2{
+padding-bottom: 20px;
+  }
