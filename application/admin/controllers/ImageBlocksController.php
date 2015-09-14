@@ -32,19 +32,20 @@ class Admin_ImageBlocksController extends Zend_Controller_Action
 
 
   public function indexAction()
-{
-    if(isset($this->user_session->msg)){
-    $this->view->msg = $this->user_session->msg;
-    unset($this->user_session->msg);
-    }
-
-    $results = $this->image_blocks->getAllImageBlocks();
-       if (count($results) > 0) {
-         $this->Paginator($results, 10);
-        } else {
-        $this->view->empty_rec = true;
+    {
+        if(isset($this->user_session->msg)){
+        $this->view->msg = $this->user_session->msg;
+        unset($this->user_session->msg);
         }
-}
+    
+        $results = $this->image_blocks->getAllImageBlocks();
+           $this->view->data = $results;
+           /*if (count($results) > 0) {
+             $this->Paginator($results, 10);
+            } else {
+            $this->view->empty_rec = true;
+            }*/
+    }
 
   public function editAction(){
 

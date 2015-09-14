@@ -32,15 +32,8 @@ class Admin_PageController extends Zend_Controller_Action
 		$this->_redirect('/admin/login/admin-login');
         }
 	}
-
-
-	// this is default output function
-	public function indexAction()
-	{
-	}
-
-	
-	//for new page
+    
+    //for new page
 	
 	public function newPageAction() 
 	{
@@ -159,7 +152,7 @@ class Admin_PageController extends Zend_Controller_Action
 	}
 	
 	//for post list
-	public function listsAction(){ 
+	public function indexAction(){ 
    
 	  //page list form
       //$form = new Application_Form_FilterPagesForm();
@@ -198,12 +191,13 @@ class Admin_PageController extends Zend_Controller_Action
 	
 	else{ */
     $results = $this->page->getAllPages($this->db);
-	//}		
+	$this->view->data = $results;
+    /*}		
        if (count($results) > 0) {
 	   $this->Paginator($results);
        } else {
        $this->view->empty_rec = true;
-     	}
+     	} */
    }
 	
 	// for edit post
@@ -229,7 +223,8 @@ if(isset($id) || isset($this->user_session->page_id)){
 	$form->url_slug->setValue($result->url_slug);
     $form->image->setValue($result->image);
 	$form->description->setValue($result->description);
-	$form->submit->setLabel("Update");
+	$this->view->save_description = $result->description;
+    $form->submit->setLabel("Update");
 	
 	
     $this->view->url_slug = $result->url_slug;

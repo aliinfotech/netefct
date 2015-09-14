@@ -28,7 +28,7 @@ margin-right:20px;
     <div class="col-lg-12">
         <a href="<?php echo $this->baseUrl(); ?>/admin/page/new-page"> <i class="btn btn-md btn-primary"> New Page</i></a>
         &nbsp;&nbsp;
-        <a href="<?php echo $this->baseUrl(); ?>/admin/page/lists"> <i class="btn btn-md btn-primary"> Pages List</i></a>
+        <a href="<?php echo $this->baseUrl(); ?>/admin/page/index"> <i class="btn btn-md btn-primary"> Pages List</i></a>
     </div>
 </div>
 <br />
@@ -41,15 +41,20 @@ margin-right:20px;
 
 <div class="row">
         <div class="col-md-12">
+        <div id="msg">
+			<?php echo $this->msg ?>
+		</div>
+		<div class="clearfix">
+		</div>
+		<br />
                                     <form class="form-horizontal" action="" method="post" enctype="multipart/form-data" >
 									
                                        	<table class="table space-mangead">
-                                    	<tr id='msg'><td colspan='2'><?php echo $this->msg ?></td></tr>
-									   <!--<?php echo $this->form->csrf ?>-->				
+                                    	<!--<?php echo $this->form->csrf ?>-->				
                                        
 									   <?php echo $this->form->title; ?>
 									   <tr><td><Label>* Page Url Slug</Label></td><td><p class="set-slug"><?php echo $this->page_url;?></p><?php echo $this->form->url_slug; ?></td></tr> 
-									   <tr><td><Label>* Current Url Slug</Label></td><td><p class="set-slug"><?php echo $this->page_url;?><?php echo $this->url_slug; ?></p></td></tr>
+									   <tr><td><Label>* Current Url Slug</Label></td><td><p class="set-slug"><?php echo $this->page_url;?><span id="label1" ><?php echo $this->url_slug; ?></span></p></td></tr>
                                        <tr><td><Label>Page Image:</Label></td>
                                        <td>
                                             <?php if(!empty($this->image)) {?>
@@ -64,7 +69,7 @@ margin-right:20px;
                                          
                                          <tr>
                                             <td colspan="2">
-                                                <textarea contenteditable="true" cols="80" rows="24" class="form-control" id="description" name="description"></textarea>
+                                                <textarea contenteditable="true" cols="80" rows="24" class="form-control" id="description" name="description"><?php echo $this->save_description; ?></textarea>
                                             </td>
                                          </tr>
                                          
@@ -83,11 +88,11 @@ margin-right:20px;
  <script language="Javascript" type="text/javascript">
 window.onload = function () { 
  <?php if(!isset($this->msg)){ ?>
-			$('tr#msg').hide();
+			$('#msg').hide();
 			
 		<?php  } else{
 		?>
-			$('tr#msg').show();
+			$('#msg').show();
 		<?php } ?>
  
     CKEDITOR.replace('description');
@@ -110,5 +115,15 @@ $("#url").keyup(function(){
         Text = Text.replace(regExp,'-');
         $("#url").val(Text);        
 }); 
-	
+	$("#url").keyup(function(){
+   $("#label1").text($(this).val());   
+});
+
+$("#heading").keyup(function(){
+		var Text = $(this).val();
+        Text = Text.toLowerCase();
+        var regExp = /\s+/g;
+        Text = Text.replace(regExp,'-');
+   $("#label1").text(Text);   
+});
  </script>

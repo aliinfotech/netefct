@@ -1,15 +1,28 @@
+<div class="row">
+    <div class="col-lg-12">
+        <a href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/index"> <i class="btn btn-md btn-primary">Image Blocks List</i></a>
+    </div>
+</div>
+<br />
+<div class="row">
+ <div class="col-md-12">
+ <div class="page-title">Edit  <strong><?php echo $this->escape($this->name); ?></strong> Image Block</div>
+</div><!-- /.col-md-12-->
+</div><!-- /.row -->
 
  <div class="row">
-  <div class="col-md-12">
-  <div class="page-title">Edit  <strong><?php echo $this->escape($this->name); ?></strong> Image Block</div>
-  </div><!-- /.col-md-12-->
- </div><!-- /.row -->
-
- <div class="row">
+   <div class="col-md-12">
+    
+    <div id="msg">
+			<?php echo $this->msg ?>
+		</div>
+		<div class="clearfix">
+		</div>
+		<br />
    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data" >
   <div class="col-md-6">
     <table class="table space-mangead">
-     <tr id='msg'><td ><?php echo $this->msg ?></td></tr>
+     
       <tr><td><strong>Block Image:</strong></td></tr><td>
       <img src="<?php echo $this->baseUrl();?>/images/user/image-blocks/500X500/<?php echo $this->block;?>" alt="image-block" style="float:left; width:300px"/></td>
       <tr><td><strong>Change Image:</strong>  <?php echo $this->form->block; ?></td></tr>
@@ -28,17 +41,19 @@
       <tr><td > <?php echo $this->form->submit?></td></tr>
      </table>
     </form>
-  </div><!-- /.col-md-12-->
+  </div>
+  </div>
+  <!-- /.col-md-12-->  
  </div><!-- /.row -->
 
 <script language="Javascript" type="text/javascript">
 window.onload = function () {
  <?php if(!isset($this->msg)){ ?>
-      $('tr#msg').hide();
+      $('#msg').hide();
 
     <?php  } else{
     ?>
-      $('tr#msg').show().delay(3000).hide('slow');
+      $('#msg').show().delay(3000).hide('slow');
 
     <?php } ?>
  }

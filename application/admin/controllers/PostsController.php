@@ -31,12 +31,6 @@ class Admin_PostsController extends Zend_Controller_Action
         }
 	}
 
-
-	// this is default output function
-	public function indexAction()
-	{
-	}
-
 	public function newPostAction()
 	{
 		$form = new Application_Form_PostForm();
@@ -153,7 +147,7 @@ class Admin_PostsController extends Zend_Controller_Action
 	}
 
 	//for post list
-	public function postsListAction(){
+	public function indexAction(){
 
 	  //post list form
      // $form = new Application_Form_FilterPostsForm();
@@ -192,12 +186,13 @@ class Admin_PostsController extends Zend_Controller_Action
 
 	else{ */
         $results = $this->post->getAllPosts($this->db);
-	//}
+        $this->view->data = $results;
+	/*}
        if (count($results) > 0) {
 	   $this->Paginator($results);
        } else {
        $this->view->empty_rec = true;
-     	}
+     	}*/
    }
 
     // for edit post
@@ -223,6 +218,7 @@ if(isset($id) || isset($this->user_session->post_id)){
 	$form->url->setValue($result->url);
     $form->image->setValue($result->image);
 	$form->description->setValue($result->description);
+    $this->view->save_description = $result->description;
 	//$form->categories->setValue($result->categories);
 	$form->tags->setValue($result->tags);
 	$form->submit->setLabel("Update");
