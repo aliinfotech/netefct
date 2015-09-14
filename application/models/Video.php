@@ -42,10 +42,6 @@ class Application_Model_Video extends Zend_Db_Table
 	// add new video link
 	public function addVideo($formData) {
 		
-if(isset($formData['is_main']) && $formData['is_main'] == true){
-$data = array('is_main' => 0);
-$result = $this->update($data);	
-}		
 	 $data = array('title' => $formData['title'],
 					'url_video' => addslashes($formData['url_video']),
 					'short_description' => $formData['short_description'],
@@ -68,22 +64,22 @@ $result = $this->update($data);
 
 	   }
 	  
-	  public function removeVideo($db, $video_id){
-		$id = $this->delete($db->quoteInto("v_id = ?", $video_id));
+	   public function removeVideo($db, $id){
+	   
+	   $rowset   = $this->fetchAll();
+	   $rowCount = count($rowset);
+	   if($rowCount < 2 || $rowCount == 1) return 3;
+
+		$id = $this->delete($db->quoteInto("v_id = ?", $id));
 		if($id > 0){
-			return true;
+			return 1;
 		}else{
-			return false;
+			return 2;
 		}
 	 }
 
- public function updateVideo($formData){
+ 	public function updateVideo($formData){
 
-if(isset($formData['is_main']) && $formData['is_main'] == true){
-$data = array('is_main' => 0);
-$result = $this->update($data);	
-}
- 
 	 $data = array('title' => $formData['title'],
 	 'short_description' => $formData['short_description'],
 	 'url_video' => $formData['url_video'],
@@ -92,15 +88,15 @@ $result = $this->update($data);
 	 'is_main' => $formData['is_main']);
 	 
 	// 'main_video' => $formData['main_video']);
-	  $where = "v_id= ". $formData['video_id'];
+	  $where = "v_id= ". $formData['v_id'];
 	 $result = $this->update($data,$where);
 	$main_video = $this->getMainVideo();
 	 if ($result > 0) {
 	 // if no main video make this as main video 
-if(count($main_video) < 1)$this->makeMain($formData['video_id']);
+if(count($main_video) < 1)$this->makeMain($formData['v_id']);
 	 return true; 
 			 }else{
-if(count($main_video) < 1)$this->makeMain($formData['video_id']);
+if(count($main_video) < 1)$this->makeMain($formData['v_id']);
 			 return false; 
 		 }
 		  }

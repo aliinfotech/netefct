@@ -132,7 +132,7 @@ class Admin_PhotoCategoriesController extends Zend_Controller_Action
     try {
                if(isset($result->banner)){
 
-$image_file = SYSTEM_PATH."/images/user/photo_gallery/categories/".$result->banner;
+$image_file = SYSTEM_PATH."/images/user/photo_gallery/categories/500X500/".$result->banner;
 
 if (file_exists($image_file)) {
            unlink(SYSTEM_PATH."/images/user/photo_gallery/categories/".$result->banner);

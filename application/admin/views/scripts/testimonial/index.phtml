@@ -24,9 +24,10 @@
         } 
         if(isset($this->msg)){
 
-        ?>                                  <tr id='msg'><td colspan='5'><?php echo $this->msg ?></td></tr>
+        ?>                                  <tr id='msg'><td colspan='6'><?php echo $this->msg ?></td></tr>
         <?php } ?>
                                                             <tr>
+                                                                <th style="text-align:center;">Image</th>
                                                                 <th style="text-align:center;">Name</th>
                                                                 <th style="text-align:center;">Email</th>
                                                                 <th style="text-align:center;">Featured</th>
@@ -41,7 +42,11 @@
                                                         <?php foreach ($this->paginator as $item): ?>
 
                                                         <tr class="odd gradeX">
-                                                       
+                                                       <td style="text-align:center;">
+                                            <div  style="position: relative; width: 50px; height: 50px">
+                                            <img style="max-width:100%; max-height: 100%" src="<?php echo $this->baseUrl(); ?>/images/user/testimonials/200X200/<?php echo $item['image1'] ?>" alt="video-image" />
+                                            </div>
+                                                        </td>
                                                         <td style="text-align:center;">
                                                         <?php echo $item['first_name'] ?>&nbsp;<?php echo $item['last_name'] ?>
                                                         </td>

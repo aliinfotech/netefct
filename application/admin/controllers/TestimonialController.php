@@ -94,7 +94,7 @@ class Admin_TestimonialController extends Zend_Controller_Action
 	$id = $this->_request->getParam('id');
     if(!isset($id)) $this->_redirect('admin/testimonial/index');
     $form = new Application_Form_TestimonialForm();
-   // get image block data from image_blocks table
+   // get testimonial data from testimonial table
     $result = $this->testimonial->getTestimonial($id);
    // var_dump($result);//
     $this->view->id = $result->test_id;
@@ -106,7 +106,7 @@ class Admin_TestimonialController extends Zend_Controller_Action
     $form->email->setValue($result->email);
     $form->short_description->setValue($result->short_description);
     $form->is_featured->setValue($result->is_featured);
-   
+    $form->submit->setLabel("Update");
     $this->view->form = $form;
              if (!$this->_request->isPost()) return;
               $formData = $this->_request->getPost();
@@ -121,7 +121,7 @@ class Admin_TestimonialController extends Zend_Controller_Action
     try {
                if(isset($result->image1)){
 
-$image_file = SYSTEM_PATH."/images/user/testimonials/".$result->image1;
+$image_file = SYSTEM_PATH."/images/user/testimonials/500X500/".$result->image1;
 
 if (file_exists($image_file)) {
            unlink(SYSTEM_PATH."/images/user/testimonials/".$result->image1);
