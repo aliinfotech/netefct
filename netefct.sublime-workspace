@@ -23,6 +23,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "application/forms/PostForm.php",
+			"settings":
+			{
+				"buffer_size": 3696,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/admin/controllers/PostsController.php",
+			"settings":
+			{
+				"buffer_size": 10500,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -32,11 +48,15 @@
 	"command_palette":
 	{
 		"height": 392.0,
-		"last_filter": "",
+		"last_filter": "insta",
 		"selected_items":
 		[
 			[
 				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
 				"Package Control: Install Package"
 			],
 			[
@@ -68,16 +88,35 @@
 		"/D/netefct",
 		"/D/netefct/application",
 		"/D/netefct/application/admin",
-		"/D/netefct/application/admin/views",
+		"/D/netefct/application/admin/controllers",
 		"/D/netefct/application/admin/views/scripts",
-		"/D/netefct/application/configs"
+		"/D/netefct/application/configs",
+		"/D/netefct/application/forms",
+		"/D/netefct/application/models"
 	],
 	"file_history":
 	[
-		"/D/netefct/application/models/ImageBlocks.php",
-		"/D/netefct/application/forms/TextBlockForm.php",
-		"/D/netefct/application/models/Banner.php",
+		"/D/netefct/application/models/StripBanner.php",
+		"/D/netefct/application/models/SocialSharing.php",
+		"/D/netefct/application/models/SocialLinks.php",
 		"/D/netefct/application/models/Sliders.php",
+		"/D/netefct/application/models/Testimonials.php",
+		"/D/netefct/application/models/TextBlocks.php",
+		"/D/netefct/application/models/Thumbnail.php",
+		"/D/netefct/application/models/Urls.php",
+		"/D/netefct/application/models/User.php",
+		"/D/netefct/application/models/Posts.php",
+		"/D/netefct/application/models/PostComments.php",
+		"/D/netefct/application/models/Photos.php",
+		"/D/netefct/application/models/PGCategory.php",
+		"/D/netefct/application/models/Pages.php",
+		"/D/netefct/application/models/PageComments.php",
+		"/D/netefct/application/models/LandingPageText.php",
+		"/D/netefct/application/models/ImageBlocks.php",
+		"/D/netefct/application/models/Banner.php",
+		"/D/netefct/application/models/Video.php",
+		"/D/netefct/application/admin/controllers/BannerController.php",
+		"/D/netefct/application/forms/TextBlockForm.php",
 		"/D/netefct/application/configs/application.ini",
 		"/D/netefct/application/admin/controllers/GalleryController.php",
 		"/D/netefct/application/forms/ImageBlockForm.php",
@@ -89,7 +128,6 @@
 		"/D/netefct/application/forms/UserForm.php",
 		"/D/netefct/application/admin/layouts/image-block.phtml",
 		"/D/netefct/application/admin/controllers/TextBlocksController.php",
-		"/D/netefct/application/models/TextBlocks.php",
 		"/D/netefct/.htaccess",
 		"/D/netefct/application/admin/views/scripts/image-blocks/index-old.phtml",
 		"/D/netefct/application/admin/layouts/layout.phtml",
@@ -114,8 +152,6 @@
 		"/D/netefct/application/admin/controllers/UserController.php",
 		"/D/netefct/application/admin/views/scripts/text-blocks/edit-text-block.phtml",
 		"/D/netefct/application/admin/views/scripts/text-blocks/index.phtml",
-		"/D/netefct/application/models/Photos.php",
-		"/D/netefct/application/admin/controllers/BannerController.php",
 		"/D/netefct/application/admin/controllers/PostCommentsController.php",
 		"/D/netefct/application/admin/controllers/PostsController.php",
 		"/D/netefct/application/admin/views/scripts/left-panel.phtml",
@@ -140,10 +176,7 @@
 		"/D/netefct/application/models/Themes.php",
 		"/D/netefct/themes/default/css/site.css",
 		"/D/netefct/application/models/Category.php",
-		"/D/netefct/application/models/LandingPageText.php",
 		"/D/netefct/application/models/Mpr.php",
-		"/D/netefct/application/models/PageComments.php",
-		"/D/netefct/application/models/StripBanner.php",
 		"/D/netefct/themes/default/layouts/layout-org.phtml",
 		"/D/netefct/themes/default/layouts/layout.phtml",
 		"/D/netefct/themes/default/css/bootstrap.min.css",
@@ -167,7 +200,7 @@
 	],
 	"find":
 	{
-		"height": 31.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -201,14 +234,72 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "application/forms/PostForm.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3696,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								828,
+								828
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 855.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "application/admin/controllers/PostsController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10500,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10500,
+								10500
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": -0.0,
+						"translation.y": 4953.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 31.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -245,7 +336,7 @@
 	"project": "netefct.sublime-project",
 	"replace":
 	{
-		"height": 58.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":

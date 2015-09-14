@@ -2,7 +2,7 @@
  
 class Application_Model_PGCategory extends Zend_Db_Table
 { 
-    protected $_name = 'pg_categories';
+    protected $_name = 'categories_pg';
     protected $_primary = 'pg_cat_id';
     protected $result = null;
   

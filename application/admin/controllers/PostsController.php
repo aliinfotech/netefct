@@ -39,7 +39,7 @@ class Admin_PostsController extends Zend_Controller_Action
 
 	public function newPostAction()
 	{
-		$form = new Application_Form_AddNewPostForm();
+		$form = new Application_Form_PostForm();
 		$this->view->form = $form;
 		$results = $this->url->getUrls();
 		$this->view->post_url= $results->post_url;
@@ -204,7 +204,7 @@ class Admin_PostsController extends Zend_Controller_Action
    public function editPostAction(){
 
 	$id = $this->_request->getParam('post_id');
-	$form = new Application_Form_AddNewPostForm();
+	$form = new Application_Form_PostForm();
 	$results = $this->url->getUrls();
 	$this->view->post_url= $results->post_url;
 	$this->view->post_id = $id;
@@ -367,4 +367,3 @@ $formData['image']= $this->user_session->image;
     }
 
 }
-?>

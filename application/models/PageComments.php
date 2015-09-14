@@ -2,7 +2,7 @@
 
 class Application_Model_PageComments extends Zend_Db_Table
 { 
-    protected $_name = 'comments';
+    protected $_name = 'comments_page';
     protected $_primary = 'comment_id';
     protected $result = null;
 

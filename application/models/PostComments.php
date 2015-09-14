@@ -2,7 +2,7 @@
 
 class Application_Model_PostComments extends Zend_Db_Table
 { 
-    protected $_name = 'post_comments';
+    protected $_name = 'comments_post';
     protected $_primary = 'pc_id';
     protected $result = null;
 
