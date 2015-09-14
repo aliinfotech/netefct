@@ -1,0 +1,117 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="page-title">
+			<strong>
+				Post Comments List
+			</strong>
+		</div>
+	</div>
+	<!-- /.col-md-12-->
+</div>
+   
+   
+					<!--	<div class="col-xs-7">
+                             <form class="form-inline" action="<?php //echo $this->baseUrl()?>/admin/post-comments/post-list" method="post">
+								<div class="form-inline">
+								<?php //echo $this->form->search_type?><span class="input-group-button"><button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button></span>	
+							</div>
+							</form>
+                          </div> -->
+								
+<div class="row">
+	<div class="col-md-12">
+		<div id="msg">
+			<?php echo $this->msg ?>
+		</div>
+		<div class="clearfix">
+		</div>
+		<br />
+		<div class="table-responsive">
+			<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+														<thead>
+														<tr>
+																<th style="text-align:center;"> Post Title</th>
+																<th style="text-align:center;">Name </th>
+																<th style="text-align:center;">Email </th>
+																<th style="text-align:center;">Comment </th>
+																<th style="text-align:center;">Date </th>
+																<th style="text-align:center;">Status </th>
+																<th style="text-align:center;">Action</th>
+																<th style="text-align:center;">Edit</th>
+																<th style="text-align:center;">Delete</th>
+                                                        	</tr>
+														</thead>		
+														<tbody> 
+                                          
+														<?php if (count($this->data)) {
+                                                        foreach ($this->data as $item): ?>
+														<tr class="odd gradeX">
+															<td> <?php echo $item['heading'] ?> </td> 
+															<td style="text-align:center;"> <?php echo $item['name'] ?> </td> 
+															<td style="text-align:center;"> <?php echo $item['email'] ?> </td> 
+															<td> <?php echo $item['comment'] ?> </td> 
+															<td style="text-align:center;"> <?php echo $item['comment_date'] ?> </td> 
+															<td style="text-align:center;">
+															<?php if($item['status']== 1){?>
+															Pending<?php }elseif($item['status']== 3){ ?>
+															Rejected<?php }else{ ?>
+															Approved<?php } ?>
+															</td>
+															<td style="text-align:center;">
+															<?php if($item['status']== 1){?>
+															<a class="btn btn-sm btn-primary" href="#" onclick="return confirmApprove(<?php echo $item['pc_id'] ?> )" >Approve</a><?php }elseif($item['status']== 3){ ?>
+															<a class="btn btn-sm btn-primary" href="#" onclick="return confirmApprove(<?php echo $item['pc_id'] ?> )" >Approve</a> <?php }else{ ?>
+															<a class="btn btn-sm btn-danger" href="#" onclick="return confirmReject(<?php echo $item['pc_id'] ?> )" >Reject</a> <?php } ?> </td>
+                                                            <td style="text-align:center;"><a class="btn btn-sm btn-warning" href="<?php echo $this->baseUrl(); ?>/admin/post-comments/edit/id/<?php echo $item['pc_id'] ?>">Edit</a></td>
+                                                            <td style="text-align:center;"><a class="btn btn-sm btn-danger" href="#" onclick="return confirmDelete(<?php echo $item['pc_id'] ?> )" >Delete</a></td>
+														</tr>  
+															<?php endforeach; }?> 
+														</tbody>
+
+						 								</table>
+														</div><!-- div responsive end-->
+												</div>
+
+                                </div>
+
+  <script language="Javascript" type="text/javascript">
+ window.onload = function () { 
+ <?php if(!isset($this->msg)){ ?>
+			$('#msg').hide();
+			
+		<?php  } else{
+		?>
+			$('#msg').show();
+		<?php } ?>
+        
+        $('#dataTables-example').dataTable();
+ }
+ 
+ function confirmDelete(id){
+	var r = confirm("Are you sure to Delete this Comment! " );
+	if (r == true) {
+	window.location.assign("<?php echo $this->baseUrl(); ?>/admin/post-comments/delete-comment/id/" + id);    
+	} else {
+	return false;
+	}
+	}
+	
+  function confirmApprove(id){
+	var r = confirm("Are you sure to Approve this Comment! " );
+	if (r == true) {
+	window.location.assign("<?php echo $this->baseUrl(); ?>/admin/post-comments/approve-comment/id/" + id);    
+	} else {
+	return false;
+	}
+	}
+	
+  function confirmReject(id){
+	var r = confirm("Are you sure to Reject this Comment! " );
+	if (r == true) {
+	window.location.assign("<?php echo $this->baseUrl(); ?>/admin/post-comments/reject-comment/id/" + id);    
+	} else {
+	return false;
+	}
+	}
+
+ </script>

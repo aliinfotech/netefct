@@ -1,0 +1,51 @@
+   <script src="<?php echo $this->baseUrl();?>/js/admin/ckeditor/ckeditor.js"></script>
+ <div class="row">
+  <div class="col-md-12">
+  <div class="page-title">Edit  <strong><?php echo $this->escape($this->title); ?></strong> Video Link</div>
+  </div><!-- /.col-md-12-->
+ </div><!-- /.row -->
+
+ <div class="row">
+   <form class="form-horizontal" action="" method="post" enctype="multipart/form-data" >
+  <div class="col-md-6">
+    <table class="table space-mangead">
+     <tr id='msg'><td ><?php echo $this->msg ?></td></tr>
+      <tr><td><strong>Video Image:</strong></td></tr><td>
+      <img src="<?php echo $this->baseUrl();?>/images/user/videos/500X500/<?php echo $this->image;?>" alt="video-image" style="float:left; width:300px"/></td>
+      <tr><td><strong>Change Image:</strong>  <?php echo $this->form->video_img; ?></td></tr>
+  </table>
+</div>
+ <div class="col-md-6">
+    <table class="table space-mangead">
+      <tr><td><strong>Title</strong></td></tr>
+      <?php echo $this->form->title; ?>
+      <tr><td><strong>Video Url</strong></td></tr>
+      <?php echo $this->form->url_video; ?>
+      <tr><td><strong>Description</strong></td></tr>
+      <?php echo $this->form->short_description; ?>
+      <tr><td><strong>Mark as Main</strong>
+      <?php echo $this->form->is_main; ?></td></tr>
+      <tr><td><strong>Featured</strong>
+      <?php echo $this->form->is_featured; ?></td></tr>
+      <tr><td > <?php echo $this->form->submit?></td></tr>
+     </table>
+    </form>
+  </div><!-- /.col-md-12-->
+ </div><!-- /.row -->
+
+<script language="Javascript" type="text/javascript">
+window.onload = function () {
+ <?php if(!isset($this->msg)){ ?>
+      $('tr#msg').hide();
+
+    <?php  } else{
+    ?>
+      $('tr#msg').show().delay(3000).hide('slow');
+
+    <?php } ?>
+ // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+               CKEDITOR.replace( 'editor1' );
+ }
+
+ </script>

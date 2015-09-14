@@ -1,103 +1,120 @@
-<style>
- .set-table{
- float:left;
- table-layout:fixed;
-}
-.set-tab{
-    margin-top: 8%;
-}
-</style>  
 
- <!-- Page Content -->
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                         <div class="col-lg-9 col-md-16">
-                         <h3></h3>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-user fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">Edit User</div>
-                            
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="panel-body">
-                                <span class="pull-left">Enter Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix">
-                                <!-- form accept-charset="UTF-8" action="" method="post" -->
-                           <div class="table-responsive set-tab"> 
-                           <table class="table table-striped table-bordered table-hover set-table">
-                                                <tr id='msg'><td colspan='2'><?php echo $this->msg ?></td></tr>
-                                             <tr><td><input type="text" name="video" id="url_video">
-                                              </input></td><td>
-                                              <?php echo $this->form->url_video ?>     
-                                                   
-                                                    <tr><td><input type="submit" value="Add" onclick="saveVideo()"/></td><td>
-                                            </td></tr>
-                                            </table>
-                                            </div><!--div responsive end-->
-                    <!-- /form --> 
-                                
-                                
-                                </div>
-                            </div>
-                        
-                        <a href="#">
-                            <div class="panel-footer">
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                
-                
-          
-                
-                
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /#page-wrapper -->
+<div class="row">
+ <div class="col-md-12">
+ <div class="page-title">Videos List</div>
+ </div><!-- /.col-md-12-->
+</div><!-- /.row -->
+             <div class="row">
+                        <div class="col-md-12">
+                                <div class="table-responsive">
+                                     <table cellpadding="0" cellspacing="0" border="0" class="responsive dynamicTable display table table-bordered  set-table" width="100%">
+                                         <thead>
+                                           <?php 
 
+        if($this->msg == 1){
+        $this->msg = "<div class='alert alert-success'>Video Deleted</div>";  
+        } 
 
+        if($this->msg == 3){
+        $this->msg = "<div class='alert alert-success'>You cant' delete all video must keep at least one Featured Video </div>";    
+        } 
 
-  <script language="Javascript" type="text/javascript">
-window.onload = function () { 
- <?php if(!isset($this->msg)){ ?>
-            $('tr#msg').hide();
-            
-        <?php  } else{
-        ?>
-            $('tr#msg').show();
+        if($this->msg == 2){
+        $this->msg = "<div class='alert alert-success'>Please try again!</div>";    
+        } 
+        if(isset($this->msg)){
+
+        ?>                                  <tr id='msg'><td colspan='5'><?php echo $this->msg ?></td></tr>
         <?php } ?>
+                                                            <tr>
+                                                              <th style="text-align:center;">Video</th>
+                                                              <th style="text-align:center;">Title</th>
+                                                              <th style="text-align:center;">Featured</th>
+                                                              <th style="text-align:center;">Main</th>
+                                                              <th style="text-align:center;">Edit</th>
+                                                              <th style="text-align:center;">Delete </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        <?php if (count($this->paginator)){ ?>
+
+                                                        <?php foreach ($this->paginator as $item): ?>
+
+                                                        <tr class="odd gradeX">
+                                                       
+                                                      <td style="text-align:center;">
+                                            <div  style="position: relative; width: 50px; height: 50px">
+                                            <img style="max-width:100%; max-height: 100%" src="<?php echo $this->baseUrl(); ?>/images/user/videos/200X200/<?php echo $item['video_img'] ?>" alt="video-image" />
+                                            </div>
+                                                        </td>
+                                                             
+                                                        <td style="text-align:center;">
+                                                        <?php echo $item['title'] ?>
+                                                        </td> 
+                                                        
+                                                        <td style="text-align:center;">
+                                                         <?php 
+                                                                if($item['is_featured'] == 1) { ?>
+                                                               <i>Yes</i> 
+                                                                <?php
+                                                                }else{
+                                                                    ?>
+                                                                <i> No</i>
+                                                                                                           
+                                                                <?php   
+                                                                } ?>
+                                                        </td>    
+
+                                                        <td style="text-align:center;">
+                                                         <?php 
+                                                                if($item['is_main'] == 1) { ?>
+                                                               <i>Yes</i> 
+                                                                <?php
+                                                                }else{
+                                                                    ?>
+                                                                <i> No</i>
+                                                                                                           
+                                                                <?php   
+                                                                } ?>
+                                                        </td>                                                          
+                                                        <td style="text-align:center;"><a class="btn btn-sm btn-warning float-right" href="<?php echo $this->baseUrl(); ?>/admin/videos/edit/id/<?php echo $item['v_id'] ?>">Edit</a></td>
+                                                             
+                                                        <td  style="text-align:center;"><a class="btn btn-danger" href="#" onclick="return confirmDelete(<?php echo $item['v_id'] ?> )" href="">Delete </a></td>
+                                                        </tr>
+                                                            <?php endforeach; ?>
+                                                            <tr><td colspan='9' style="text-align:center;">
+                                                            <?php echo $this->paginationControl($this->paginator, 'Sliding', 'my_pagination_control.phtml'); ?>
+                                                            </td>
+                                                            </tr><?php } ?>
+                                                        </tbody>
+
+                                                        </table>
+                                                        </div><!-- div responsive end-->
+
+                                </div>
+
+                  `  </div>
+                 <!-- /.row -->
+
+<script>
+window.onload = function () {
+ <?php if(!isset($this->msg)){ ?>
+      $('tr#msg').hide();
+
+    <?php  } else{
+    ?>
+      $('tr#msg').show().delay(3000).hide('slow');
+
+    <?php } ?>
  }
 
-
- function saveVideo(){
-            var url_video = $('#url_video').val();//select item value from listbox
-                    
-             if(url_video == "")
-{
-alert("add video url")
-return;
-}
-               // alert(url_video);
-                        $.post("<?php echo $this->baseUrl()?>/index/savev", {url_video: url_video},
-                        //this is response from controller
-                        function(data){
-                           alert(data); 
-                       ///     $('#atom').html(data);
-                         //   $('#show').show();
-                            
-                        });
-          
-            }
- </script>
+ function confirmDelete(id){
+    var r = confirm("Are you sure to Delete this Video! " );
+    if (r == true) {
+    window.location.assign("<?php echo $this->baseUrl(); ?>/admin/videos/delete-video/id/" + id);    
+    } else {
+    return false;
+    }
+    }  
+</script
