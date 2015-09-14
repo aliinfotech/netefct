@@ -24,7 +24,7 @@ public function init()
 					->addFilter('StripTags')
 					->addFilter('StringTrim')
 					->addValidator('NotEmpty') 
-					//->setAttrib("class", "form-control set-txt")
+					->setAttrib("class", "form-control set-txt")
 					->removeDecorator('htmlTag');
 				
 				$description = new Zend_Form_Element_Textarea('description',array('disableLoadDefaultDecorators' =>true));

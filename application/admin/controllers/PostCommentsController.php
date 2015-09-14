@@ -33,10 +33,8 @@ class Admin_PostCommentsController extends Zend_Controller_Action
 
 	
 	public function indexAction(){
-}
-
-	public function postListAction(){
-		$form = new Application_Form_FilterCommentForm();
+	   
+      /* $form = new Application_Form_FilterCommentForm();
       $this->view->form = $form;
 	 
 	 if($this->_request->isPost()){
@@ -63,19 +61,20 @@ class Admin_PostCommentsController extends Zend_Controller_Action
         }
 	}
 	
-	else{
+	else{ */
    		$results = $this->comments->getAllComments($this->db);
-	}
+        
+        $this->view->data = $results;
+	/*}
 		
 	
        if (count($results) > 0) {
 		 $this->Paginator($results);
         } else {
         $this->view->empty_rec = true;
-		}
-		
-	}
-	
+		} */
+ }
+
 	public function deleteCommentAction(){
 		 $id = $this->_request->getParam('id');
 		  // Because of following code we don't need a phtml file 
@@ -106,7 +105,7 @@ class Admin_PostCommentsController extends Zend_Controller_Action
 				} 
 		}
 		
-	public function editCommentAction(){
+	public function editAction(){
 		
 		$form = new Application_Form_CommentForm();
 		$id = $this->_request->getParam('id');

@@ -46,14 +46,13 @@ float:left;
 
 <div class="row">
    <div class="col-lg-12">
-        <div class="row" style="height:50px; padding:0; margin:0"><!-- row 1-->
-            <div class="col-md-12">
-                <a href="<?php echo $this->baseUrl(); ?>/admin/posts/new-post"> <i class="btn btn-sm btn-primary"> New Blog Post</i></a>
-                <a href="<?php echo $this->baseUrl(); ?>/admin/posts/posts-list"> <i class="btn btn-sm btn-primary"> Blog Posts List</i></a>					
-            </div>
-        </div>
+        <a href="<?php echo $this->baseUrl(); ?>/admin/posts/new-post"> <i class="btn btn-md btn-primary"> New Blog Post</i></a>
+        &nbsp;
+        <a href="<?php echo $this->baseUrl(); ?>/admin/posts/posts-list"> <i class="btn btn-md btn-primary"> Blog Posts List</i></a>
    </div>
 </div>
+<br/>
+
 <div class="row">
  <div class="col-md-12">
  <div class="page-title"><strong>Edit Blog Post</strong></div>
@@ -75,9 +74,17 @@ float:left;
 									   <tr><td><label>* Blog Post Url Slug</label></td><td><p class="set-slug"><?php echo $this->post_url; ?></p><?php echo $this->form->url; ?></td></tr>
 									   <tr><td><label>* Current Url Slug</label></td><td><p class="set-slug"><?php echo $this->post_url; ?><span id="label1" ><?php echo $this->url_slug; ?></span></p></td></tr>
                                        <tr><td><label>Blog Post Image:</label></td>
-                                       <td><img src="<?php echo $this->baseUrl();?>/images/posts/500X500/<?php echo $this->image;?>" alt="" style="float:left; width:150px;"/></td></tr>									  
+                                       <td>
+                                        <?php if(!empty($this->image)) {?>
+                                            <img src="<?php echo $this->baseUrl();?>/images/user/posts/200X200/<?php echo $this->image;?>" alt="<?php echo $this->image;?>" width="160" height="100"/>
+                                            <?php } else {?>
+                                            <img src="<?php echo $this->baseUrl();?>/images/user/posts/200X200/placeholder.png" alt="placeholder" width="160" height="100"/>
+                                            <?php } ?>
+                                        
+                                       </td></tr>									  
                                        <input type="hidden" name="post_id" value="<?php echo $this->post_id?>"/>
-                                       <tr><td><label>Change 800 pixel wide image</label></td><td><?php echo $this->form->image;?></td></tr>							    
+                                       <tr><td style="width: 230px;"><label>Change 800 pixel wide image</label></td>
+                                       <td><?php echo $this->form->image;?></td></tr>							    
                                          <?php //echo $this->form->description; ?>
                                          <tr>
                                             <td colspan="2">
@@ -90,9 +97,8 @@ float:left;
                                        <tr>
                                        <td colspan="2">
                                         <!--<?php echo $this->form->submit?>-->
-										<button class="btn btn-lg btn-primary update-btn" value="0" name="submit" type="submit" style="margin-right: 20px;">Update and Continue</button>
-										<button class="btn btn-lg btn-primary set-save-draft" value="1" name="submit" type="submit">Save as Draft</button>
-										
+										<button class="btn btn-md btn-primary pull-right" value="0" name="submit" type="submit">Update and Continue</button>
+										<button class="btn btn-md btn-primary pull-right" value="1" name="submit" type="submit" style="margin-right: 20px;">Save as Draft</button>										
 										</td></tr>   
                                         </table>
                                    </form>

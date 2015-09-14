@@ -33,19 +33,20 @@ class Admin_TextBlocksController extends Zend_Controller_Action
 
 //@ following function will server as the list function of text blocks
 	public function indexAction()
-{
-if(isset($this->user_session->msg)){
-    $this->view->msg = $this->user_session->msg;
-    unset($this->user_session->msg);
-    }
-
-    $results = $this->textBlock->getAllTextBlocks();
-       if (count($results) > 0) {
-         $this->Paginator($results, 10);
-        } else {
-        $this->view->empty_rec = true;
+    {
+        if(isset($this->user_session->msg)){
+            $this->view->msg = $this->user_session->msg;
+            unset($this->user_session->msg);
         }
-}
+    
+        $results = $this->textBlock->getAllTextBlocks();
+           $this->view->data = $results;
+          /* if (count($results) > 0) {
+             $this->Paginator($results, 10);
+            } else {
+            $this->view->empty_rec = true;
+            } */
+    }
 
 /* to be deleted */
 /*

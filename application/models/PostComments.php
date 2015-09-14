@@ -34,7 +34,7 @@ class Application_Model_PostComments extends Zend_Db_Table
  	public function getAllComments($db){
 	$select = new Zend_Db_Select($db);
 	$cols = array('pc_id','post_id', 'comment','comment_date','name','email','status');
-   $select->from(array('pc' =>'post_comments'), $cols)->order("comment_date DESC")
+   $select->from(array('pc' =>'comments_post'), $cols)->order("comment_date DESC")
    ->joinLeft(array('p' => 'posts'),'p.post_id = pc.post_id',array('url','heading'));//->where("p.page_id =?", 'c.page_id' );
    $stmt = $db->query($select);
    $results = $stmt->fetchAll(); 
@@ -52,7 +52,7 @@ return $result;
 		public function getPendingComments($db){
 	$select = new Zend_Db_Select($db);
 	$cols = array('pc_id','post_id', 'comment','comment_date','name','email','status');
-   $select->from(array('pc' =>'post_comments'), $cols)->order("comment_date DESC")->where("status = 1")
+   $select->from(array('pc' =>'comments_post'), $cols)->order("comment_date DESC")->where("status = 1")
    ->joinLeft(array('p' => 'posts'),'p.post_id = pc.post_id',array('url','heading'));//->where("p.page_id =?", 'c.page_id' );
    $stmt = $db->query($select);
    $results = $stmt->fetchAll(); 
@@ -62,7 +62,7 @@ return $result;
 	public function getApprovedComments($db){
 	$select = new Zend_Db_Select($db);
 	$cols = array('pc_id','post_id', 'comment','comment_date','name','email','status');
-   $select->from(array('pc' =>'post_comments'), $cols)->order("comment_date DESC")->where("status = 2")
+   $select->from(array('pc' =>'comments_post'), $cols)->order("comment_date DESC")->where("status = 2")
    ->joinLeft(array('p' => 'posts'),'p.post_id = pc.post_id',array('url','heading'));//->where("p.page_id =?", 'c.page_id' );
    $stmt = $db->query($select);
    $results = $stmt->fetchAll(); 
@@ -72,7 +72,7 @@ return $result;
 	public function getRejectedComments($db){
 	$select = new Zend_Db_Select($db);
 	$cols = array('pc_id','post_id', 'comment','comment_date','name','email','status');
-   $select->from(array('pc' =>'post_comments'), $cols)->order("comment_date DESC")->where("status = 3")
+   $select->from(array('pc' =>'comments_post'), $cols)->order("comment_date DESC")->where("status = 3")
    ->joinLeft(array('p' => 'posts'),'p.post_id = pc.post_id',array('url','heading'));//->where("p.page_id =?", 'c.page_id' );
    $stmt = $db->query($select);
    $results = $stmt->fetchAll(); 
