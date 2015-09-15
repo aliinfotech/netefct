@@ -2,7 +2,8 @@
 .page-title {
     font-size: 22px;
     line-height: normal;
-color: #618CA4;
+	color: #618CA4;
+	padding-bottom: 15px;     
 }
 
 .errors{

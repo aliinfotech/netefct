@@ -1,15 +1,16 @@
 <?php
-class Application_Form_GalleryForm extends Zend_Form
+class Application_Form_BulkUploadGalleryForm extends Zend_Form
 {
-public function init() 
+public function init()   
 	{
-			  $this->setName('photo_gallery');
+			  $this->setName('bulk_upload_gallery');
 					
-              $photo_name = new Zend_Form_Element_File('photo_name');
-			  $photo_name->setRequired(true)
-			  ->addValidator('Count', false, 1)     // ensure only 1 file
-	          ->addValidator('FilesSize',false,array('min' => '1kB', 'max' => '5MB'))
-	          ->addValidator('ImageSize', false,
+               $photo_name = new Zend_Form_Element_File('photo_name');
+			   $photo_name->setRequired(true)
+			   ->setAttrib('multiple', true)
+	           ->setAttrib('name', 'photo_name[]')
+	           ->addValidator('FilesSize',false,array('min' => '1kB', 'max' => '10MB'))
+	           ->addValidator('ImageSize', false,
                 array('minwidth' => 10,
                 'minheight' => 10))
                 ->addFilter('StringTrim')

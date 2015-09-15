@@ -17,8 +17,9 @@ class Application_Model_Photos extends Zend_Db_Table
  // add new banner
 public function addPhoto($formData) {
 	
- $data = array('photo_name' => $formData['photo_name']/*,'caption' => $formData['caption']
- 	,'description' => $formData['description'],'link' => $formData['link']*/);
+ $data = array('photo_name' => $formData['photo_name'],'caption' => $formData['caption']
+ 	,'description' => $formData['description'],'link' => $formData['link'],
+ 	'pg_cat_id' => $formData['category']);
  
  $result = $this->insert($data); 
 		 if($result){
@@ -40,7 +41,7 @@ public function addPhoto($formData) {
   public function editPhoto($formData)
   {	  
 	  $data = array('photo_name' => $formData['photo_name'],'caption' => $formData['caption'],
- 	'description' => $formData['description'],'link' => $formData['link']);
+ 	'description' => $formData['description'],'link' => $formData['link'],'pg_cat_id' => $formData['category']);
      $where = $this->getAdapter()->quoteInto('photo_id = ?',$formData['photo_id']);
 	 $result = $this->update($data,$where);
 	 if($result){

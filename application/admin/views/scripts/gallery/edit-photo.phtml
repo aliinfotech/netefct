@@ -1,4 +1,4 @@
-  <script src="<?php echo $this->baseUrl();?>/js/admin/ckeditor/ckeditor.js"></script>
+<script src="<?php echo $this->baseUrl();?>/js/admin/ckeditor/ckeditor.js"></script>
  <div class="row">
   <div class="col-md-12">
   <div class="page-title">Edit Photo</div>
@@ -24,17 +24,9 @@
       <tr><td><strong>Photo Caption:</strong></td></tr>
       <?php echo $this->form->caption; ?>
       <tr><td><strong>Photo Category:</strong></td></tr>
-      <tr><td>
-      <select class="form-control">
-      <option value="1">testing category</option>
-      <option value="2"></option>
-      <option value="3"></option>
-      <option value="4"></option>
-      </select>
-      </td></tr>
-      <tr><td style="text-align:right">
-          <a href="#">Add Category</a>
-      </td></tr>
+      <tr><td><strong>Select Category:</strong></td></tr>
+      <?php echo $this->form->category;?>
+  
       <tr><td > <?php echo $this->form->submit?></td></tr>
      </table>
     </form>
@@ -51,5 +43,8 @@ window.onload = function () {
       $('tr#msg').show().delay(3000).hide('slow');
 
     <?php } ?>
+         // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+               CKEDITOR.replace( 'editor1' );
  }
  </script>

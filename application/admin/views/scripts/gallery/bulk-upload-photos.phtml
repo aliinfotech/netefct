@@ -1,8 +1,8 @@
- <script src="<?php echo $this->baseUrl();?>/js/admin/ckeditor/ckeditor.js"></script>
- 
+  <script src="<?php echo $this->baseUrl();?>/js/admin/ckeditor/ckeditor.js"></script>
  <div class="row">
   <div class="col-md-12">
-  <div class="page-title">Add Photo Gallery <a href="<?php echo $this->baseUrl()?>/admin/gallery/bulk-upload-photos" class="btn btn-primary btn-md pull-right">Bulk Uploads</a></div>
+  <div class="page-title">Add Bulk Photo Gallery</div>
+
   </div><!-- /.col-md-12-->
  </div><!-- /.row -->
 
@@ -10,15 +10,15 @@
             <div class="col-lg-12">
                 <form class="form-horizontal" action="" method="post" enctype="multipart/form-data" >
                     <table class="table space-mangead">
-                         <tr id='msg'><td colspan='2'><?php echo $this->msg ?></td></tr>
-                 <tr><td><strong>Gallery Photo:</strong>  <?php echo $this->form->photo_name; ?></td></tr> 
-                          <tr><td><strong>Caption:</strong></td></tr>
-                          <?php echo $this->form->caption;?>	
-                          <tr><td><strong>Link:</strong></td></tr>
-                          <?php echo $this->form->link;?>  
+                        <tr id='msg'><td colspan='2'><?php echo $this->msg ?></td></tr>
+                 <tr><td><strong>Gallery Photos:</strong>  <?php echo $this->form->photo_name; ?></td></tr> 
+                         <tr><td><strong>Caption:</strong></td></tr>
+                         <?php echo $this->form->caption;?>	
+                         <tr><td><strong>Link:</strong></td></tr>
+                         <?php echo $this->form->link;?>  
                           <tr><td><strong>Description:</strong></td></tr>
                          <?php echo $this->form->description;?>
-                         <tr><td><strong>Select Category:</strong></td></tr>
+                          <tr><td><strong>Select Category:</strong></td></tr>
                          <?php echo $this->form->category;?>
                          <tr><td><?php echo $this->form->submit?></td></tr>
                      </table>

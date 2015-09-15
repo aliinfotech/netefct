@@ -14,6 +14,14 @@ class Application_Model_PGCategory extends Zend_Db_Table
 	 return $result;
  }
  
+	public function getLastInsertRecord()
+	{
+	$select = $this->select();
+	$select->from($this)->order('pg_cat_id DESC');
+	$result = $this->fetchRow($select);
+	return $result;
+	}
+
    // add new photo category
  public function addPhotoCategory($formData) {
 
@@ -65,6 +73,14 @@ class Application_Model_PGCategory extends Zend_Db_Table
 		}else return false; 
 	} 
 
+	public function getAllCategoriesNames()
+   {
+	$select = $this->select();
+	$cols = array("pg_cat_id","category_name");
+	$select->from($this);
+	$result = $this->fetchAll($select);
+	return $result;
+   }
      // for get all categories 
     public function getAllCategories(){
      $select = $this->select();
