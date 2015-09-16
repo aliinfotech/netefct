@@ -9,7 +9,7 @@ class Admin_VideosController extends Zend_Controller_Action
 		private $video = null;
 	
 
-	public function init(){
+	public function init(){ 
 		Zend_Layout::startMvc(
 		array('layoutPath'=>  APPLICATION_PATH . '/admin/layouts',  'layout' => 'layout'));
 		$this->db = Zend_Db_Table::getDefaultAdapter();

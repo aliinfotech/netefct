@@ -8,7 +8,8 @@ public function init()
 	$this->setName('image_block');
 
 	$block = new Zend_Form_Element_File('block');
-	$block->addValidator('Count', false, 1)     // ensure only 1 file
+	$block->setRequired(true)
+	->addValidator('Count', false, 1)     // ensure only 1 file
 	->addValidator('FilesSize',false,array('min' => '1kB', 'max' => '5MB'))
 	->addValidator('ImageSize', false,
                             array('minwidth' => 10,

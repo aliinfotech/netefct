@@ -21,6 +21,7 @@ class IndexController extends Zend_Controller_Action {
     public function indexAction() {
 		/*for text blocks*/
 	$results = $this->text_block->getAllTextBlocks();
+	//var_dump($results);
 	$this->view->list = $results;
 	$this->view->i = 0;
 
