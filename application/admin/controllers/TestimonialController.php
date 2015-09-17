@@ -211,7 +211,7 @@ $formData['image1']=  $result->image1;
         if ('Action' == substr($method, -6)) {
             // If the action method was not found, forward to the
             // index action
-            return $this->_forward('index');
+            return $this->_forward('admin/index');
         }
 
         // all other methods throw an exception

@@ -114,4 +114,16 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	$response->sendResponse();
                  
         }
+
+    public function _initCache() {
+    $cache = Zend_Cache::factory(
+                    'Core', 'File', array(
+                'lifetime' => 3600 * 24 * 7, /*caching time is 7 days*/                            
+                'automatic_serialization' => true
+                    ), array('cache_dir' => APPLICATION_PATH . '/cache' /* This is caching folder where caching data will be stored and it must be writable by apache **/
+                )
+    );
+    
+    Zend_Registry::set('Cache', $cache); /* set the cache object in zend_registery so that you can globally access*/
+}
 }
