@@ -27,6 +27,7 @@
 														<tr>
 																<th style="text-align:center;"> Title</th>
 																<th style="text-align:center;"> Author</th>
+                                                                <th style="text-align:center;"> Status</th>
 																<th style="text-align:center;"> Publish Date</th>
 																<th style="text-align:center;">Edit </th>
 																<th style="text-align:center;">Delete</th>
@@ -55,8 +56,11 @@
 															?>
 															</td>
 															
+                                                            <td style="text-align:center;">
+															     <?php if($item['is_in_draft'] > 0 ) echo "Published"; else echo "Drafted"; ?>
+															</td>
 															<td style="text-align:center;">
-															<?php echo $item['date_published'] ?>
+															     <?php if($item['is_in_draft'] > 0 ) echo $item['date_published']; else ""; ?>
 															</td>
 
 															

@@ -41,6 +41,7 @@ class Admin_PageController extends Zend_Controller_Action
 		$this->view->form = $form;
 		$results = $this->url->getUrls();
 		$this->view->page_url= $results->page_url;
+        
 		if($this->user_session->msg!=null)
 		{
 			$this->view->msg = $this->user_session->msg;
@@ -52,102 +53,66 @@ class Admin_PageController extends Zend_Controller_Action
 		
 		if (!$form->isValid($formData)) return;
 		
-		$formData['is_in_draft'] = $formData['submit'];
+		//$formData['is_in_draft'] = $formData['submit'];
 		 
-		if($formData['submit'] == "1" ){ 
-			 
-			$formData['is_in_draft'] = 1;
-		
 		//For Images
-		$file_name = NULL;
-		 try {
-			$image = $_FILES['image']['name'];
-			$random = rand(10,10000);
-			$time = time() + (7 * 24 * 60 * 60);
-			$file_name = $time . $random . $image;
-			$formData["image"] = $file_name;
-	 
-			move_uploaded_file($_FILES["image"]['tmp_name'], SYSTEM_PATH."/images/pages/original/".$file_name);
-			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/pages/original/".$file_name);
-			$thumb->resize(500,500);
-			$thumb->save(SYSTEM_PATH.'/images/pages/500X500/'.$file_name);
-			$thumb->resize(800,800);
-			$thumb->save(SYSTEM_PATH.'/images/pages/800/'.$file_name);
-			
-		} 
-		 
-		catch (Zend_File_Transfer_Exception $e)
-		{
-			throw new Exception('Bad data: '.$e->getMessage());
-		}
-		
-		$formData['user_id']= $this->user_session->user_id;
-		$formData['date_created']= date("Y-m-d h:i:sa");
-		$formData['date_published']= date("Y-m-d h:i:sa");
-		
-		$slug= $formData['url_slug'];
-		$formData['url_slug']= str_replace("-","", $slug);
-		
-		//check from database if the slug is already in db  
-		$data = array ("url"=>$formData['url_slug']);
-		$data["url"]=$formData['url_slug'];
-			
-		 if($this->page->checkPageSlug($data)){
-		 $this->view->msg =  "<div class='alert alert-danger'>Url Slug Is Already Exist. Please change to another.</div>";
-		 return;
+    		$file_name = NULL;
+    		 try {
+    			$image = $_FILES['image']['name'];
+    			$random = rand(10,10000);
+    			$time = time() + (7 * 24 * 60 * 60);
+    			$file_name = $time . $random . $image;
+    			$formData["image"] = $file_name;
+    	 
+    			move_uploaded_file($_FILES["image"]['tmp_name'], SYSTEM_PATH."/images/pages/original/".$file_name);
+    			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/pages/original/".$file_name);
+    			$thumb->resize(500,500);
+    			$thumb->save(SYSTEM_PATH.'/images/pages/500X500/'.$file_name);
+    			$thumb->resize(800,800);
+    			$thumb->save(SYSTEM_PATH.'/images/pages/800/'.$file_name);
+    			
+    		} 
+    		 
+    		catch (Zend_File_Transfer_Exception $e)
+    		{
+    			throw new Exception('Bad data: '.$e->getMessage());
+    		}
+    		
+    		$formData['user_id']= $this->user_session->user_id;
+    		$formData['date_created']= date("Y-m-d H:i:s");
+    		$formData['date_published']= date("Y-m-d H:i:s");
+    		
+    		$slug= $formData['url_slug'];
+    		$formData['url_slug']= str_replace("-","", $slug);
+    		
+    		//check from database if the slug is already in db  
+    		$data = array ("url"=>$formData['url_slug']);
+    		$data["url"]=$formData['url_slug'];
+    			
+    		 if($this->page->checkPageSlug($data)){
+    		 $this->view->msg =  "<div class='alert alert-danger'>Url Slug Is Already Exist. Please change to another.</div>";
+    		 return;
 		 }
-		
- 		$result = $this->page->addDraftPage($formData);
-		$this->view->msg = $result;
-		}
-		
-		elseif($formData['submit'] == "0" ){
-			$formData['is_in_draft'] = 0;
-			//For Images
-		$file_name = NULL;
-		 try {  
-			$image = $_FILES['image']['name'];
-			$random = rand(10,10000);
-			$time = time() + (7 * 24 * 60 * 60);
-			$file_name = $time . $random . $image;
-			$formData["image"] = $file_name;
-	 
-			move_uploaded_file($_FILES["image"]['tmp_name'], SYSTEM_PATH."/images/pages/original/".$file_name);
-			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/pages/original/".$file_name);
-			$thumb->resize(500,500);
-			$thumb->save(SYSTEM_PATH.'/images/pages/500X500/'.$file_name);
-			$thumb->resize(800,800);
-			$thumb->save(SYSTEM_PATH.'/images/pages/800/'.$file_name);
-			
-		}
-		 
-		catch (Zend_File_Transfer_Exception $e)
-		{
-			throw new Exception('Bad data: '.$e->getMessage());
-		}
-		
-		$formData['user_id']= $this->user_session->user_id;
-		$formData['date_created']= date("Y-m-d h:i:sa");
-		$formData['date_published']= date("Y-m-d h:i:sa");
-		$slug= $formData['url_slug'];
-		$formData['url_slug']= str_replace("-","", $slug);
-		
-		//check from database if the slug is already in db  
-		$data = array ("url"=>$formData['url_slug']);
-		$data["url"]=$formData['url_slug'];
-			
-		 if($this->page->checkPageSlug($data)){
-			$this->view->msg =  "<div class='alert alert-danger'>Url Slug Is Already Exist. Please change to another.</div>";
-			return;
-			} 
-		
- 		$result = $this->page->addPage($formData);
-		$this->view->msg = $result;
-		}
+         
+         if($formData['submit'] == "0" )
+         {
+            $formData['is_in_draft'] = 0;
+            $formData['draft_content'] = $formData['description'];
+         }
+         else
+         {
+            $formData['is_in_draft'] = 1;
+            $formData['draft_content'] = $formData['description'];
+            $formData['description'] = "";
+         }
+            
+            $result = $this->page->addPage($formData);
+     		
+    		$this->view->msg = $result;
 		
 		//clear all form fields 
 
-	$form->reset();
+	   $form->reset();
 
 	}
 	
@@ -209,30 +174,31 @@ class Admin_PageController extends Zend_Controller_Action
 		$this->view->page_url= $results->page_url;
 	$this->view->page_id = $id;
 	
-if(isset($id)){
-	$this->user_session->page_id = $id;
-}
+    if(isset($id)){
+    	$this->user_session->page_id = $id;
+    }
   
-if(isset($id) || isset($this->user_session->page_id)){
-  	$result = $this->page->getPageByID($this->user_session->page_id);	
-	
-	//var_dump($result);
-	//return;
-	$this->view->page_id = $result->page_id;
-	$form->title->setValue($result->title);
-	$form->url_slug->setValue($result->url_slug);
-    $form->image->setValue($result->image);
-	$form->description->setValue($result->description);
-	$this->view->save_description = $result->description;
-    $form->submit->setLabel("Update");
-	
-	
-    $this->view->url_slug = $result->url_slug;
-    $this->user_session->image = $result->image; 
-    $this->view->image = $result->image; 
-
-    $this->view->form = $form;
-}
+    if(isset($id) || isset($this->user_session->page_id)){
+      	$result = $this->page->getPageByID($this->user_session->page_id);	
+    	
+    	//var_dump($result);
+    	//return;
+    	$this->view->page_id = $result->page_id;
+    	$form->title->setValue($result->title);
+    	$form->url_slug->setValue($result->url_slug);
+        $form->image->setValue($result->image);
+    	$form->description->setValue($result->description);
+    	$this->view->save_description = $result->draft_content;
+        $form->submit->setLabel("Update");
+    	
+    	
+        $this->view->url_slug = $result->url_slug;
+        $this->user_session->image = $result->image; 
+        $this->view->image = $result->image; 
+    
+        $this->view->form = $form;
+    }
+    
      if (!$this->_request->isPost()) {
 			$this->view->form = $form;
 			return;
@@ -278,42 +244,31 @@ if(isset($id) || isset($this->user_session->page_id)){
 		{
 			throw new Exception('Bad data: '.$e->getMessage());
 		}
-}else{
-
-$formData['image']= $this->user_session->image;
-
-}
+    }else{
+    
+    $formData['image']= $this->user_session->image;
+    
+    }
 	
 	$formData['page_id']= $this->user_session->page_id;
 	
-	$formData['is_in_draft'] = $formData['submit'];
+	//$slug= $formData['url_slug'];
+	//$formData['url_slug']= str_replace("-","", $slug);
 	
-	$slug= $formData['url_slug'];
-	$formData['url_slug']= str_replace("-","", $slug);
-	
-	/*check from database if the slug is already in db  
-	$data = array ("url"=>$formData["url_slug"]);
-	$data["url"]=$formData["url_slug"];
-			
-	 if($this->page->checkPageSlug($data)){
-	 $this->view->msg =  "<div class='alert alert-danger'>Url Slug Is Already Exist. Please change to another.</div>";
-		 return;
-		} */
- 			 
-		if($formData['submit'] == "0" ){ 
-			 
-			$formData['is_in_draft'] = 0;
-	
-	$result = $this->page->updatePage($formData);
-	$this->view->msg = $result;
-	//$this->_redirect("/admin/page/lists");
-	}
-	else if($formData['submit'] == "1"){
-		$formData['is_in_draft'] = 1;
-    $result = $this->page->updateDraftPage($formData);
-	$this->view->msg = $result;
-	//$this->_redirect("/admin/page/lists");
-	}
+    $formData['date_published']= date("Y-m-d H:i:s");
+    	if($formData['submit'] == "0" ){
+    			 
+            $formData['is_in_draft'] = 0;
+            $formData['draft_content'] = $formData['description'];        	        	
+    	}
+    	else 
+        {
+    		$formData['is_in_draft'] = 1;
+            $formData['draft_content'] = $formData['description'];
+    	}
+        
+        $result = $this->page->updatePage($formData);
+        $this->view->msg = $result;
 	}
 		
 	// delete post

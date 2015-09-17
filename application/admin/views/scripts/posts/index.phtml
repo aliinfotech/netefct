@@ -36,7 +36,8 @@
 																<th style="text-align:center;"> Title</th>
 																<th style="text-align:center;"> Author</th>
 																<th style="text-align:center;"> Tags</th>
-																<th style="text-align:center;"> Publish Date</th>
+																<th style="text-align:center;"> Status</th>
+                                                                <th style="text-align:center;"> Publish Date</th>
 																<th style="text-align:center;">Edit </th>
 																<th style="text-align:center;">Delete</th>
                                                         	</tr>
@@ -67,11 +68,12 @@
 															<td style="text-align:center;">
 															<?php echo $item['tags'] ?>
 															</td>
-															<td style="text-align:center;">
-															<?php echo $item['date_published'] ?>
+                                                            <td style="text-align:center;">
+															     <?php if($item['is_in_draft'] > 0 ) echo "Published"; else echo "Drafted"; ?>
 															</td>
-
-															
+															<td style="text-align:center;">
+															     <?php if($item['is_in_draft'] > 0 ) echo $item['date_published']; else ""; ?>
+															</td>
                                                             <td style="text-align:center;"><a class="btn btn-sm btn-warning float-right" href="<?php echo $this->baseUrl(); ?>/admin/posts/edit-post/post_id/<?php echo $item['post_id'] ?>">Edit</a></td>
 															 <td  style="text-align:center;"><a class="btn btn-danger" href="#" onclick="return confirmDelete(<?php echo $item['post_id'] ?> )" href="">Delete </a></td>
 														</tr>  

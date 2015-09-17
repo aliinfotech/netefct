@@ -62,12 +62,16 @@ float:left;
 
     <div class="row">
         <div class="col-md-12">
+        <div id="msg">
+			<?php echo $this->msg ?>
+		</div>
+		<div class="clearfix">
+		</div>
+		<br />
                                     <form class="form-horizontal" action="" method="post" enctype="multipart/form-data" >
 									
                                        	<table class="table space-mangead">
-                                    	<tr id='msg'><td colspan='2'><?php echo $this->msg; ?></td></tr>
-										 
-         							     
+                                    	 
 									   <!--<?php echo $this->form->csrf ?>-->				
                                        
 									   <?php echo $this->form->heading; ?>
@@ -109,11 +113,11 @@ float:left;
  <script language="Javascript" type="text/javascript">
 window.onload = function () { 
  <?php if(!isset($this->msg)){ ?>
-			$('tr#msg').hide();
+			$('#msg').hide();
 			
 		<?php  } else{
 		?>
-			$('tr#msg').show();
+			$('#msg').show();
 		<?php } ?>
         
         CKEDITOR.replace('description');
