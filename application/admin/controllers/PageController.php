@@ -6,7 +6,7 @@ class Admin_PageController extends Zend_Controller_Action
         private $db = null;
         private $baseurl = null;
         private $authAdapter = null;
-		private $post = null;
+		
 		private $page = null;
 		private $url = null;
 		
@@ -19,7 +19,7 @@ class Admin_PageController extends Zend_Controller_Action
 		$this->user_session = new Zend_Session_Namespace("user_session");
 				
 		ini_set("max_execution_time",(60*300));
-		$this->post = new Application_Model_Posts();
+		
 		$this->page = new Application_Model_Pages();
 		$this->url = new Application_Model_Urls();
 		
@@ -64,12 +64,12 @@ class Admin_PageController extends Zend_Controller_Action
     			$file_name = $time . $random . $image;
     			$formData["image"] = $file_name;
     	 
-    			move_uploaded_file($_FILES["image"]['tmp_name'], SYSTEM_PATH."/images/pages/original/".$file_name);
-    			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/pages/original/".$file_name);
+    			move_uploaded_file($_FILES["image"]['tmp_name'], SYSTEM_PATH."/images/user/pages/".$file_name);
+    			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/user/pages/".$file_name);
     			$thumb->resize(500,500);
-    			$thumb->save(SYSTEM_PATH.'/images/pages/500X500/'.$file_name);
-    			$thumb->resize(800,800);
-    			$thumb->save(SYSTEM_PATH.'/images/pages/800/'.$file_name);
+    			$thumb->save(SYSTEM_PATH.'/images/user/pages/500X500/'.$file_name);
+    			$thumb->resize(200,200);
+    			$thumb->save(SYSTEM_PATH.'/images/user/pages/200X200/'.$file_name);
     			
     		} 
     		 
@@ -82,8 +82,8 @@ class Admin_PageController extends Zend_Controller_Action
     		$formData['date_created']= date("Y-m-d H:i:s");
     		$formData['date_published']= date("Y-m-d H:i:s");
     		
-    		$slug= $formData['url_slug'];
-    		$formData['url_slug']= str_replace("-","", $slug);
+    		//$slug= $formData['url_slug'];
+    		//$formData['url_slug']= str_replace("-","", $slug);
     		
     		//check from database if the slug is already in db  
     		$data = array ("url"=>$formData['url_slug']);
@@ -220,9 +220,9 @@ class Admin_PageController extends Zend_Controller_Action
 	
 	try {
 				if(isset($this->user_session->image)){
-				unlink(SYSTEM_PATH."/images/pages/original/".$result->image);
-				unlink(SYSTEM_PATH."/images/pages/500X500/".$result->image);
-				unlink(SYSTEM_PATH.'/images/pages/800/'.$result->image);
+				unlink(SYSTEM_PATH."/images/user/pages/".$result->image);
+				unlink(SYSTEM_PATH."/images/user/pages/500X500/".$result->image);
+				unlink(SYSTEM_PATH.'/images/user/pages/200X200/'.$result->image);
 				}
 				 
 			$image = $_FILES['image']['name'];
@@ -231,12 +231,12 @@ class Admin_PageController extends Zend_Controller_Action
 			$file_name = $time . $random . $image;
 			$formData["image"] = $file_name;
 	 
-			move_uploaded_file($_FILES["image"]['tmp_name'], SYSTEM_PATH."/images/pages/original/".$file_name);
-			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/pages/original/".$file_name);
+			move_uploaded_file($_FILES["image"]['tmp_name'], SYSTEM_PATH."/images/user/pages/".$file_name);
+			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/user/pages/".$file_name);
 			$thumb->resize(500,500);
-			$thumb->save(SYSTEM_PATH.'/images/pages/500X500/'.$file_name);
-			$thumb->resize(800,800);
-			$thumb->save(SYSTEM_PATH.'/images/posts/800/'.$file_name);
+			$thumb->save(SYSTEM_PATH.'/images/user/pages/500X500/'.$file_name);
+			$thumb->resize(200,200);
+			$thumb->save(SYSTEM_PATH.'/images/user/pages/200X200/'.$file_name);
 			
 		}
 		
@@ -280,12 +280,12 @@ class Admin_PageController extends Zend_Controller_Action
   
 		$id = $this->_request->getParam('id');
 		$result = $this->page->getPageByID($id);
-		unlink(SYSTEM_PATH.'/images/pages/500X500/'.$result->image);
-		unlink(SYSTEM_PATH.'/images/pages/original/'.$result->image);
-		unlink(SYSTEM_PATH.'/images/pages/800/'.$result->image);
+		unlink(SYSTEM_PATH.'/images/user/pages/500X500/'.$result->image);
+		unlink(SYSTEM_PATH.'/images/user/pages/'.$result->image);
+		unlink(SYSTEM_PATH.'/images/user/pages/200X200/'.$result->image);
 		
-		$this->post->removePost($this->db, $id);
-		$this->_redirect('/admin/page/pages-list');
+		$this->page->removePage($this->db, $id);
+		$this->_redirect('/admin/page/index');
 	}
 	
 	

@@ -57,12 +57,12 @@ class Admin_PostsController extends Zend_Controller_Action
 			$file_name = $time . $random . $image;
 			$formData["image"] = $file_name;
 
-			move_uploaded_file($_FILES["image"]['tmp_name'], SYSTEM_PATH."/images/posts/original/".$file_name);
-			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/posts/original/".$file_name);
+			move_uploaded_file($_FILES["image"]['tmp_name'], SYSTEM_PATH."/images/user/posts/".$file_name);
+			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/user/posts/".$file_name);
 			$thumb->resize(500,500);
-			$thumb->save(SYSTEM_PATH.'/images/posts/500X500/'.$file_name);
-			$thumb->resize(800,800);
-			$thumb->save(SYSTEM_PATH.'/images/posts/800/'.$file_name);
+			$thumb->save(SYSTEM_PATH.'/images/user/posts/500X500/'.$file_name);
+			$thumb->resize(200,200);
+			$thumb->save(SYSTEM_PATH.'/images/user/posts/200X200/'.$file_name);
 
 		}
 		catch (Zend_File_Transfer_Exception $e)
@@ -209,9 +209,9 @@ if(isset($id) || isset($this->user_session->post_id)){
 
 	try {
 				if(isset($this->user_session->image)){
-				unlink(SYSTEM_PATH."/images/posts/original/".$result->image);
-				unlink(SYSTEM_PATH."/images/posts/500X500/".$result->image);
-				unlink(SYSTEM_PATH.'/images/posts/800/'.$result->image);
+				unlink(SYSTEM_PATH."/images/user/posts/".$result->image);
+				unlink(SYSTEM_PATH."/images/user/posts/500X500/".$result->image);
+				unlink(SYSTEM_PATH.'/images/user/posts/800/'.$result->image);
 				}
 
 			$image = $_FILES['image']['name'];
@@ -220,12 +220,12 @@ if(isset($id) || isset($this->user_session->post_id)){
 			$file_name = $time . $random . $image;
 			$formData["image"] = $file_name;
 
-			move_uploaded_file($_FILES["image"]['tmp_name'], SYSTEM_PATH."/images/posts/original/".$file_name);
-			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/posts/original/".$file_name);
+			move_uploaded_file($_FILES["image"]['tmp_name'], SYSTEM_PATH."/images/user/posts/".$file_name);
+			$thumb = new Application_Model_Thumbnail(SYSTEM_PATH."/images/user/posts/".$file_name);
 			$thumb->resize(500,500);
-			$thumb->save(SYSTEM_PATH.'/images/posts/500X500/'.$file_name);
-			$thumb->resize(800,800);
-			$thumb->save(SYSTEM_PATH.'/images/posts/800/'.$file_name);
+			$thumb->save(SYSTEM_PATH.'/images/user/posts/500X500/'.$file_name);
+			$thumb->resize(200,200);
+			$thumb->save(SYSTEM_PATH.'/images/user/posts/200/'.$file_name);
 
 		}
 
@@ -269,12 +269,12 @@ $formData['image']= $this->user_session->image;
 
 		$id = $this->_request->getParam('id');
 		$result = $this->post->getPostByID($id);
-		unlink(SYSTEM_PATH.'/images/posts/500X500/'.$result->image);
-		unlink(SYSTEM_PATH.'/images/posts/original/'.$result->image);
-		unlink(SYSTEM_PATH.'/images/posts/800/'.$result->image);
+		unlink(SYSTEM_PATH.'/images/user/posts/500X500/'.$result->image);
+		unlink(SYSTEM_PATH.'/images/user/posts/'.$result->image);
+		unlink(SYSTEM_PATH.'/images/user/posts/200X200/'.$result->image);
 
 		$this->post->removePost($this->db, $id);
-		$this->_redirect('/admin/blog/posts-list');
+		$this->_redirect('/admin/blog/index');
 	}
 
 	// Paginator action
