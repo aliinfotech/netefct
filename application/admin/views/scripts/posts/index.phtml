@@ -69,10 +69,10 @@
 															<?php echo $item['tags'] ?>
 															</td>
                                                             <td style="text-align:center;">
-															     <?php if($item['is_in_draft'] > 0 ) echo "Published"; else echo "Drafted"; ?>
+															     <?php if($item['is_in_draft'] > 0 ) echo "Drafted"; else echo "Published"; ?>
 															</td>
 															<td style="text-align:center;">
-															     <?php if($item['is_in_draft'] > 0 ) echo $item['date_published']; else ""; ?>
+															     <?php if($item['is_in_draft'] > 0 ) echo ""; else echo $item['date_published']; ?>
 															</td>
                                                             <td style="text-align:center;"><a class="btn btn-sm btn-warning float-right" href="<?php echo $this->baseUrl(); ?>/admin/posts/edit-post/post_id/<?php echo $item['post_id'] ?>">Edit</a></td>
 															 <td  style="text-align:center;"><a class="btn btn-danger" href="#" onclick="return confirmDelete(<?php echo $item['post_id'] ?> )" href="">Delete </a></td>

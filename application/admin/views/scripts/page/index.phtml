@@ -57,10 +57,10 @@
 															</td>
 															
                                                             <td style="text-align:center;">
-															     <?php if($item['is_in_draft'] > 0 ) echo "Published"; else echo "Drafted"; ?>
+															     <?php if($item['is_in_draft'] > 0 ) echo "Drafted"; else echo "Published"; ?>
 															</td>
 															<td style="text-align:center;">
-															     <?php if($item['is_in_draft'] > 0 ) echo $item['date_published']; else ""; ?>
+															     <?php if($item['is_in_draft'] > 0 ) echo ""; else echo $item['date_published']; ?>
 															</td>
 
 															
