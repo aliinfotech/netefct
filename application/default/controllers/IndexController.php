@@ -19,6 +19,16 @@ class IndexController extends Zend_Controller_Action {
 
 
     public function indexAction() {
+    	/* get the cache object */
+	$cache = Zend_Registry::get('Cache');
+	/* create a unique cache key */
+	$cacheKey = "index";
+	$result = array();
+	if (empty($cacheKey) || ($result = $cache->load($cacheKey)) == false) {
+	    /*
+	    Here Process the and store the data in $result variable
+	    */  
+
 		/*for text blocks*/
 	$results = $this->text_block->getAllTextBlocks();
 	//var_dump($results);
@@ -30,21 +40,13 @@ class IndexController extends Zend_Controller_Action {
 	$this->view->image = $image->getAllImageBlocks();
 	$this->view->v = 0;
 	//var_dump($this->view->image);
+
+	   $cache->save($result, $cacheKey);
+}
+//$cache->clean(Zend_Cache::CLEANING_MODE_ALL);
 	
 	}
-	
-	public function sliderAction() {
-
-	}
-
-	public function textBlocksAction() {
-
-	}
-
-	public function imageBlocksAction() {
-
-	}
-
+/*
 	public function moreTestimonialsAction(){
 
 			//for social links
@@ -77,7 +79,7 @@ $this->view->main_video = $this->video->getVideo($id);
 
 
 		}
-
+*/
 
    public function Paginator($results) {
         $page = $this->_getParam('page', 1);
