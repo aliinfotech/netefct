@@ -118,9 +118,13 @@ $("#url").keyup(function(){
         $("#url").val(Text);        
 });
   
-         //CKEDITOR.dtd.$editable.textarea = 1;
-            //CKEDITOR.disableAutoInline = true;
-            //CKEDITOR.inline('description');
-            CKEDITOR.replace('description');            
+         var roxyFileman = '<?php echo $this->baseUrl(); ?>/js/admin/fileman/index.html';
+         
+            CKEDITOR.replace( 'description',
+            {
+                filebrowserBrowseUrl:roxyFileman,
+                filebrowserImageBrowseUrl:roxyFileman+'?type=image',
+                removeDialogTabs: 'link:upload;image:upload'
+            });            
 }
     </script>

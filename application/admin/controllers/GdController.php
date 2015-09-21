@@ -32,8 +32,107 @@ class Admin_GdController extends Zend_Controller_Action
             $this->_redirect('/admin/login/admin-login');
         }
     }
-
+    
     public function indexAction()
+    {
+        ########## Google Settings.. Client ID, Client Secret #############
+        $google_client_id               = '787369762880-65kvt8cblmlm653k5gcks9uipmn401qo.apps.googleusercontent.com';
+        $google_client_secret           = 'Ya__r8ROl0oqKO5hb3JpRJlF';
+        $google_redirect_url            = "http://aliinfotech.com/colinkr/admin/gd/index";
+        $page_url_prefix                = 'http://aliinfotech.com';
+        
+        ########## Google analytics Settings.. #############
+        $google_analytics_profile_id    = 'ga:106789249'; //Analytics site Profile ID
+        $google_analytics_dimensions    = 'ga:fullReferrer,ga:sourceMedium,ga:socialNetwork'; //no change needed (optional)
+        $google_analytics_metrics       = 'ga:organicSearches'; //no change needed (optional)
+        $google_analytics_sort_by       = '-ga:organicSearches'; //no change needed (optional)
+        //$google_analytics_max_results   = '20'; //no change needed (optional)
+        
+        require_once (APPLICATION_PATH . '/../library/GoogleClientApi/Google_Client.php');
+        require_once (APPLICATION_PATH . '/../library/GoogleClientApi/contrib/Google_AnalyticsService.php');
+        
+        // Initialise the Google Client object
+        $gClient = new Google_Client();
+        $gClient->setApplicationName('Colinkr');
+        $gClient->setClientId($google_client_id);
+        $gClient->setClientSecret($google_client_secret);
+        $gClient->setRedirectUri($google_redirect_url);
+        $gClient->setScopes(array('https://www.googleapis.com/auth/analytics.readonly'));
+        $gClient->setUseObjects(true);
+        
+        $val = $this->_request->getParam("logout");
+        if ($val == "1") {
+            unset($_SESSION['token']);
+        }
+        
+        //authenticate user
+        if (isset($_GET['code'])) {    
+                $gClient->authenticate();
+                $token = $gClient->getAccessToken();
+                $_SESSION["token"] = $token;
+                header('Location: ' . filter_var($google_redirect_url, FILTER_SANITIZE_URL));
+        }
+        
+        if (!$gClient->getAccessToken() && !isset($_SESSION['token'])) {
+            
+            $authUrl = $gClient->createAuthUrl();
+            $this->view->authUrl = $authUrl;
+        }
+        
+        //check for session variable
+        if (isset($_SESSION["token"])) 
+        {            
+            //set start date to previous month
+            $start_date = date("Y-m-d", strtotime("-1 month") );
+           
+            //end date as today
+            $end_date = date("Y-m-d");
+           
+            try{
+                //set access token
+                $gClient->setAccessToken($_SESSION["token"]);
+               
+                //create analytics services object
+                $service = new Google_AnalyticsService($gClient);
+               
+                //analytics parameters (check configuration file)
+                $params = array('dimensions' => $google_analytics_dimensions,'sort' => $google_analytics_sort_by);//'filters' => 'ga:medium==organic','max-results' => $google_analytics_max_results);
+               
+                //get results from google analytics
+                $by_search = $service->data_ga->get($google_analytics_profile_id,$start_date,$end_date, $google_analytics_metrics, $params);
+            
+                $google_analytics_dimensions    = 'ga:userType,ga:sessionCount,ga:browser,ga:country,ga:region';
+                $google_analytics_metrics       = 'ga:users';
+                $google_analytics_sort_by       = '-ga:users';
+                $params = array('dimensions' => $google_analytics_dimensions,'sort' => $google_analytics_sort_by);//,'max-results' => $google_analytics_max_results);
+                $by_user_type = $service->data_ga->get($google_analytics_profile_id, $start_date, $end_date, $google_analytics_metrics, $params);
+             
+                $google_analytics_dimensions    = 'ga:socialInteractionNetwork,ga:socialInteractionAction,ga:socialInteractionTarget';
+                $google_analytics_metrics       = 'ga:socialInteractions';
+                $google_analytics_sort_by       = '-ga:socialInteractions';
+                $params = array('dimensions' => $google_analytics_dimensions,'sort' => $google_analytics_sort_by);//,'max-results' => $google_analytics_max_results);
+                $by_social_interactions = $service->data_ga->get($google_analytics_profile_id, $start_date, $end_date, $google_analytics_metrics, $params);
+                
+                $google_analytics_dimensions    = 'ga:date,ga:pagePath,ga:operatingSystem,ga:userType,ga:source';
+                $google_analytics_metrics       = 'ga:pageviews';
+                $google_analytics_sort_by       = '-ga:date';
+                $params = array('dimensions' => $google_analytics_dimensions,'sort' => $google_analytics_sort_by);//,'max-results' => $google_analytics_max_results);
+                $by_pageviews = $service->data_ga->get($google_analytics_profile_id, $start_date, $end_date, $google_analytics_metrics, $params);
+                
+                //var_dump($by_search->getRows());return;
+            
+                $this->view->by_user_type = $by_user_type;
+                $this->view->by_search = $by_search;
+                $this->view->by_social_interactions = $by_social_interactions;
+                $this->view->by_pageviews = $by_pageviews;
+            }
+            catch(Exception $e){ //do we have an error?
+                echo $e->getMessage(); //display error
+            }  
+        }
+    }
+
+    public function index2Action()
     {
         //$this->_redirect('/admin/gd/login');
        
@@ -60,7 +159,7 @@ class Admin_GdController extends Zend_Controller_Action
         require_once (APPLICATION_PATH . '/../library/src/Google/Service/Analytics.php');
         
         // Initialise the Google Client object 
-        $client = new Google_Client();
+      /*  $client = new Google_Client();
         $client->setApplicationName('Colinkr');
          
         $client->setAssertionCredentials(new Google_Auth_AssertionCredentials(
@@ -107,7 +206,7 @@ class Admin_GdController extends Zend_Controller_Action
                 );
                 
                 $page_tracking = $analytics->data_ga->get($analytics_id, $from_date, $to_date, $metrics, $optParams);
-                */
+                *
                 
                 //$dimensions = array('dimensions' => 'ga:pagePath','ga:country', 'ga:region', 'ga:city');
                 //$page_tracking = $analytics->data_ga->get($analytics_id, $from_date, $to_date, $metrics, $dimensions);
@@ -121,12 +220,11 @@ class Admin_GdController extends Zend_Controller_Action
                 
             } catch(Exception $e) {
                 echo 'There was an error : - ' . $e->getMessage();
-            }
+            } */
             
-           /* $client_id = '787369762880-65kvt8cblmlm653k5gcks9uipmn401qo.apps.googleusercontent.com';
+            $client_id = '787369762880-blqa1b2s529ccpihll4hce7aoqmoot79.apps.googleusercontent.com';
             $client_secret = 'Ya__r8ROl0oqKO5hb3JpRJlF';
-            $redirect_uri = 'http://aliinfotech.com/colinkr/admin/gd/index';
-        
+            $redirect_uri = 'http://aliinfotech.com/colinkr/admin/gd/index.php';
         
             $client = new Google_Client();
             $client->setApplicationName("Colinkr");
@@ -134,13 +232,12 @@ class Admin_GdController extends Zend_Controller_Action
             $client->setClientSecret($client_secret);
             $client->setRedirectUri($redirect_uri);
             $client->setScopes(array('https://www.googleapis.com/auth/analytics.readonly'));
-            $client->setAccessType('offline');   // Gets us our refreshtoken
+            $client->setAccessType('offline');   // Gets us our refresh token
                 
-            // CODE FOR ManagementAccountSummaries START HERE
             //For loging out.
-            if ($_GET['logout'] == "1") {
-        	   unset($_SESSION['token']);
-            }
+            //if ($_GET['logout'] == "1") {
+        	  // unset($_SESSION['token']);
+            //}
                                 
             // Step 1:  The user has not authenticated we give them a link to login    
             if (!$client->getAccessToken() && !isset($_SESSION['token'])) {
@@ -162,14 +259,17 @@ class Admin_GdController extends Zend_Controller_Action
             }
         
             // Step 3: We have access we can now create our service
-            if (isset($_SESSION['token'])) {
+            if (isset($_SESSION['token'])) 
+            {
                 print "<a class='logout' href='".$_SERVER['PHP_SELF']."?logout=1'>LogOut</a><br>";
                 
                 print "Access from google: " . $_SESSION['token']."<br>"; 
                 
             	$client->setAccessToken($_SESSION['token']);
-            	$service = new Google_Service_Analytics($client);    
-        
+                
+            	$service = new Google_Service_Analytics($client);
+                
+                // CODE FOR ManagementAccountSummaries START HERE
                 // request user accounts
                 $accounts = $service->management_accountSummaries->listManagementAccountSummaries();
                
@@ -191,11 +291,8 @@ class Admin_GdController extends Zend_Controller_Action
         		} // Closes web property
         		
         	} // closes account summaries
-        } // if end */
+        } // if end 
         
-        // GA Data
-        
-    	 
     } // index action end
     
     public function loginAction()

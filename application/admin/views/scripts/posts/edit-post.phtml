@@ -120,7 +120,14 @@ window.onload = function () {
 			$('#msg').show();
 		<?php } ?>
         
-        CKEDITOR.replace('description');
+         var roxyFileman = '<?php echo $this->baseUrl(); ?>/js/admin/fileman/index.html';
+         
+            CKEDITOR.replace( 'description',
+            {
+                filebrowserBrowseUrl:roxyFileman,
+                filebrowserImageBrowseUrl:roxyFileman+'?type=image',
+                removeDialogTabs: 'link:upload;image:upload'
+            });
  }
 
 // make slug from title
