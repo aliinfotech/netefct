@@ -1,24 +1,41 @@
-    <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Dashboard <small>Statistics Overview</small>
-                        </h1>
-                        <ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-dashboard"></i> Dashboard
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-                <!-- /.row -->
 
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i>  <strong>Like SB Admin?</strong> Try out <a href="http://startbootstrap.com/template-overviews/sb-admin-2" class="alert-link">SB Admin 2</a> for additional features!
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->
+ <div class="row">
+  <div class="col-md-12">
+  <div class="page-title">Clean All Cache</div>
+  </div><!-- /.col-md-12-->
+ </div><!-- /.row -->
+
+            <div class="row">
+            <div class="col-lg-12">
+                    <table class="table space-mangead">
+                         <tr id='msg'><td colspan='2'><?php echo $this->msg ?></td></tr>
+                 <tr><td><strong>Press Button To Clean Cache:</strong>  
+                 <td><a class="btn btn-danger" href="#" onclick="return confirmClean()" href="">Clean Cache </a></td>
+                            </tr>
+                  
+                     </table>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+
+<script language="Javascript" type="text/javascript">
+window.onload = function () {
+ <?php if(!isset($this->msg)){ ?>
+      $('tr#msg').hide();
+
+    <?php  } else{
+    ?>
+      $('tr#msg').show().delay(3000).hide('slow');
+
+    <?php } ?>
+ }
+  function confirmClean(){
+  var r = confirm("Are you sure to Clean All Cache! " );
+  if (r == true) {
+  window.location.assign("<?php echo $this->baseUrl(); ?>/admin/setting/clean-cache");    
+  } else {
+  return false;
+  }
+  }
+ </script>

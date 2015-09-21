@@ -1,5 +1,6 @@
 body{
 background-color:#fff;
+background-image: url("../images/user/image_blocks/136909Koala.jpg");
   }
   /* Text Size Classes */
 
@@ -70,4 +71,5 @@ padding-bottom: 20px;
   }
   .image-block2{
 padding-bottom: 20px;
+background-image: url("../images/user/image_blocks/136909Koala.jpg");
   }

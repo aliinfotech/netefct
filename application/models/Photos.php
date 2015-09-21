@@ -30,10 +30,18 @@ public function addPhoto($formData) {
    }
  
  
-     // for get all Photos
+     // for get all Photos by decending order
    public function getAllPhotos(){
 	$select = $this->select();
 	$select->from($this)->order("photo_id DESC");
+	$result = $this->fetchAll($select);
+	return $result;
+	 }
+
+	  // for get all Photos
+   public function getAllGalleryPhotos(){
+	$select = $this->select();
+	$select->from($this);
 	$result = $this->fetchAll($select);
 	return $result;
 	 }

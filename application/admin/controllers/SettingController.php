@@ -32,9 +32,29 @@ class Admin_SettingController extends Zend_Controller_Action
 	// this is default output function
 	public function indexAction()
 	{
-
+		if($this->user_session->msg!=null)
+    {
+      $this->view->msg = $this->user_session->msg;
+      $this->user_session->msg = null;
+    }
 	}	
 	
+	// this is for cleaning all cache
+	public function cleanCacheAction()
+	{
+		$this->_helper->viewRenderer->setNoRender();
+     	$this->_helper->layout()->disableLayout();
+		//for getting all cache
+		$cache = Zend_Registry::get('Cache');
+		//cleaning all cache
+		if(isset($cache)){
+		$cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+			}
+		else{
+			$this->view->msg = "<div class='alert alert-danger'>Cache already Clean. </div>";
+		}
+		$this->_redirect("/admin/setting/index");
+	}	
     
 		// Paginator action
   	public function Paginator($results, $records) {
