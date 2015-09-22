@@ -7,45 +7,40 @@ class IndexController extends Zend_Controller_Action {
     private $cookie = null;
     private $text_block = null;
     private $results = null;
-   	private $image = null;
+   	private $slides = null;
+   	private $image_block = null;
+    private $gallery = null;
 
     public function init() {
 		$this->_helper->layout->setLayout('layout');
         $this->baseurl = Zend_Controller_Front::getInstance()->getBaseUrl();
         $this->db = Zend_Db_Table::getDefaultAdapter();
 		$this->text_block = new Application_Model_TextBlocks();
-		$this->image =  new Application_Model_ImageBlocks();
+		$this->image_block =  new Application_Model_ImageBlocks();
+		$this->slides =  new Application_Model_Sliders();
+        $this->gallery =  new Application_Model_Photos();
 		}
 
 
     public function indexAction() {
-    	/* get the cache object */
-	$cache = Zend_Registry::get('Cache');
-	/* create a unique cache key */
-	$cacheKey = "index";
-	$result = array();
-	if (empty($cacheKey) || ($result = $cache->load($cacheKey)) == false) {
-	    /*
-	    Here Process the and store the data in $result variable
-	    */  
-
-		/*for text blocks*/
-	$results = $this->text_block->getAllTextBlocks();
-	//var_dump($results);
+		
+	$results = $this->slides->getAllSlides();
 	$this->view->list = $results;
-	$this->view->i = 0;
+		/*for text blocks*/
+	$text_block =  new Application_Model_TextBlocks();
+	$this->view->text_block = $text_block->getAllTextBlocks();	
 
 		/*for image blocks*/
-	$image =  new Application_Model_ImageBlocks();
-	$this->view->image = $image->getAllImageBlocks();
-	$this->view->v = 0;
-	//var_dump($this->view->image);
+	$image_block =  new Application_Model_ImageBlocks();
+	$this->view->image_block = $image_block->getAllImageBlocks();
 
-	   $cache->save($result, $cacheKey);
-}
-//$cache->clean(Zend_Cache::CLEANING_MODE_ALL);
+    /*for gallery*/
+    $gallery =  new Application_Model_Photos();
+    $this->view->gallery = $gallery->getAllGalleryPhotos();
 	
 	}
+	
+
 /*
 	public function moreTestimonialsAction(){
 
@@ -78,8 +73,8 @@ $this->view->main_video = $this->video->getVideo($id);
 //	$this->view->list = $results;
 
 
-		}
-*/
+		}*/
+
 
    public function Paginator($results) {
         $page = $this->_getParam('page', 1);

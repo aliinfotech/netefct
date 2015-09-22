@@ -1,85 +1,59 @@
- <!-- Navigation -->
-    <nav class="navbar navbar-inverse" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-               <!-- <a class="navbar-brand" href="<?php echo $this->baseUrl();?>"> Netefct</a>-->
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="about.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="services.html">Services</a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="portfolio-1-col.html">1 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="portfolio-2-col.html">2 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="portfolio-3-col.html">3 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="portfolio-4-col.html">4 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="portfolio-item.html">Single Portfolio Item</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="blog-home-1.html">Blog Home 1</a>
-                            </li>
-                            <li>
-                                <a href="blog-home-2.html">Blog Home 2</a>
-                            </li>
-                            <li>
-                                <a href="blog-post.html">Blog Post</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="full-width.html">Full Width Page</a>
-                            </li>
-                            <li>
-                                <a href="sidebar.html">Sidebar Page</a>
-                            </li>
-                            <li>
-                                <a href="faq.html">FAQ</a>
-                            </li>
-                            <li>
-                                <a href="404.html">404</a>
-                            </li>
-                            <li>
-                                <a href="pricing.html">Pricing Table</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+<head>
+<script type="text/javascript" src="<?php echo $this->baseUrl(); ?>/js/default/normal.js"></script>
+</head>
+<div class="fix-header" id="home">
+    <div class="w-container">
+      <div class="w-nav" data-collapse="medium" data-animation="default" data-duration="400"></div>
+    </div>
+  </div>
+  <div class="fixed-header">
+    <div class="w-container container">
+      <div class="w-row">
+
+       <!--///////////////////////////////////////////////////////
+       // Logo section 
+       //////////////////////////////////////////////////////////-->
+
+
+        <div class="w-col w-col-3 logo">
+          <a href="#"><img class="logo" src="<?php echo $this->baseUrl();?>/images/default/aliinfotech-02.png" alt="Netefct"></a>
         </div>
-        <!-- /.container -->
-    </nav>
+
+        <!--///////////////////////////////////////////////////////
+       // End Logo section 
+       //////////////////////////////////////////////////////////-->
+
+        <div class="w-col w-col-9">
+
+       <!--///////////////////////////////////////////////////////
+       // Menu section 
+       //////////////////////////////////////////////////////////-->
+
+
+          <div class="w-nav navbar" data-collapse="medium" data-animation="default" data-duration="400" data-contain="1">
+            <div class="w-container nav">
+              <nav class="w-nav-menu nav-menu" role="navigation">
+
+                <a class="w-nav-link menu-li" href="#home">HOME</a>
+                <a class="w-nav-link menu-li" href="#about">ABOUT</a>
+                <a class="w-nav-link menu-li" href="#service">SERVICES</a>
+                <a class="w-nav-link menu-li" href="#portfolio">PORTFOLIO</a>
+                <a class="w-nav-link menu-li"href="#team">TEAM</a>
+                <a class="w-nav-link menu-li" href="#contact">CONTACT</a>
+              </nav>
+              <div class="w-nav-button">
+                <div class="w-icon-nav-menu"></div>
+              </div>
+            </div>
+          </div>
+
+
+          <!--///////////////////////////////////////////////////////
+       // End Menu section 
+       //////////////////////////////////////////////////////////-->
+
+
+        </div>
+      </div>
+    </div>
+  </div>

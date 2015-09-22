@@ -1,71 +1,138 @@
 <style type="text/css">
+@media (min-width: 768px){
+#wrapper {
+    padding-left: 0px !important;
+}}
 .border-red{
 	border: 3px solid red;
 }
 .template{
 	border: 2px solid #757575;
+	padding: 20px;
+	margin-top: 30px;
+	overflow: scroll;
+	overflow-x: hidden;
+	height: 800px;
+	
+}
+.inner-content{
+	border: 2px solid #757575;
 	padding: 10px;
 	margin-top: 30px;
+	background-image: url("../../../images/admin/theme1.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: local;
+
 }
 .block1{
 	border: 2px solid #757575;
 	padding: 30px;
+	height: 400px;
 }
 .block2{
 	border: 2px solid #757575;
 	padding: 20px;
 	margin-top: 30px;
+	height: 380px;
 }
 .block3{
 	border: 2px solid #757575;
 	padding: 20px;
 	margin-top: 30px;
+	height: 165px;
 }
 .block4{
 	border: 2px solid #757575;
 	padding: 20px;
 	margin-top: 30px;
+	height: 440px;
 }
 .block5{
 	border: 2px solid #757575;
 	padding: 20px;
 	margin-top: 30px;
+	height: 489px;
 }
 .block6{
 	border: 2px solid #757575;
 	padding: 20px;
 	margin-top: 30px;
+	height: 713px;
 }
 .block7{
 	border: 2px solid #757575;
 	padding: 20px;
 	margin-top: 30px;
+	height: 560px;
 }
+.block8{
+	border: 2px solid #757575;
+	padding: 20px;
+	margin-top: 30px;
+	height: 70px;
+}
+.block9{
+	border: 2px solid #757575;
+	padding: 20px;
+	margin-top: 30px;
+	height: 582px;
+}
+.block10{
+	border: 2px solid #757575;
+	padding: 20px;
+	margin-top: 30px;
+	height: 345px;
+}
+.block11{
+	border: 2px solid #757575;
+	padding: 20px;
+	margin-top: 30px;
+	height: 250px;
+}
+.block12{
+	border: 2px solid #757575;
+	padding: 20px;
+	margin-top: 30px;
+	height: 200px;
+}
+body{
+	overflow: hidden;
+}
+	
 	</style>
 
 
 <div class="row">
  <div class="col-md-12">
   <div class="template">
+  <div class="inner-content">
   <div class="row">
    <div class="col-md-4">
-    <a href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/edit/id/<?php echo $this->image[0]['ib_id']?>">
-     <div class="border-red" style="height:50px;">
-    	<h3 style="text-align: center;">Logo (Image Block 1)</h3>
+   <?php 
+	if(isset($this->image[0]['ib_id'])) { ?>
+	<a href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/edit/id/<?php echo $this->image[0]['ib_id']?>"> 
+	<div class="border-red" style="height:50px;">
      </div>
     </a>
+	<?php
+	}else{
+	?>
+	 <div class="border-red" style="height:50px;">
+     </div>																	   
+	<?php 	
+	} ?>
+   
    </div>
    <div class="col-md-8">
    	<div class="meun" style="height:50px; border: 2px solid #757575;">
-   		<h3 style="text-align: center;">Navigation Menu</h3>
    	</div>
    </div>
   </div><!--row1 end-->
   <div class="row">
    <div class="col-md-12">
     <a href="<?php echo $this->baseUrl(); ?>/admin/sliders/edit/id/<?php echo $this->slides[0]['slider_id']?>">
-   	<div class="sliders border-red" style="height:200px; margin: 20px 0 20px 0;">
-   		<h1 style="text-align: center;">Sliders Section</h1>
+   	<div class="sliders border-red" style="height:465px; margin: 20px 0 20px 0;">
    	</div>
    	</a>
    </div>
@@ -73,40 +140,35 @@
   <!--block1 -->
   <div class="row">
   	<div class="col-md-12">
-  	<h3 style="text-align: center;">Block 1</h3>
   	<div class="block1">
   	 <div class="row">
   	  <div class="col-md-12">
   	  	<a href="<?php echo $this->baseUrl(); ?>/admin/text-blocks/edit-text-block/id/<?php echo $this->text[0]['tb_id']?>">
-  	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Text Block 1</h3>
+  	  	<div class="border-red" style="height:115px; margin-bottom:20px;">
   	  	</div>
   	  	</a>
   	  </div>
   	 </div>	
   	 <div class="row">
   	 <!--first section image block-->
-  	  <div class="col-md-4">
+  	  <div class="col-md-3 col-md-offset-1">
   	  <a href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/edit/id/<?php echo $this->image[1]['ib_id']?>">
   	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Image Block 2</h3>
   	  	</div>
   	  	</a>
   	  </div>
   	  
   	  <!--3rd section image block-->
-  	   <div class="col-md-4">
+  	   <div class="col-md-3">
   	   <a href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/edit/id/<?php echo $this->image[2]['ib_id']?>">
   	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Image Block 3</h3>
   	  	</div>
   	  	</a>
   	  </div>
   	  <!--3rd section image block-->
-  	  <div class="col-md-4">
+  	  <div class="col-md-3">
   	  <a href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/edit/id/<?php echo $this->image[3]['ib_id']?>">
   	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Image Block 4</h3>
   	  	</div>
   	  	</a>
   	  </div>
@@ -118,20 +180,17 @@
    <!-- block2 start-->
    <div class="row">
     <div class="col-md-12">
-    <h3 style="text-align: center;">Block 2</h3>
      <div class="block2">
       <div class="row">
     	<div class="col-md-6">
     	<a href="<?php echo $this->baseUrl(); ?>/admin/text-blocks/edit-text-block/id/<?php echo $this->text[1]['tb_id']?>">
-   		 <div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		  <h3 style="text-align: center;">Text Block 2</h3>
+   		 <div class="border-red" style="height:335px; margin-bottom:20px;">
   	  	 </div>
   	  	 </a>
    	    </div>
      	<div class="col-md-6">
      	<a href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/edit/id/<?php echo $this->image[4]['ib_id']?>">
-   		 <div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		  <h3 style="text-align: center;">Image Block 5</h3>
+   		 <div class="border-red" style="height:335px; margin-bottom:20px;">
   	  	 </div>
   	  	 </a>
    	    </div>
@@ -143,13 +202,11 @@
    <!--block 3 -->
    <div class="row">
     <div class="col-md-12">
-    <h3 style="text-align: center;">Block 3</h3>
      <div class="block3">
       <div class="row">
     	<div class="col-md-12">
     	<a href="<?php echo $this->baseUrl(); ?>/admin/text-blocks/edit-text-block/id/<?php echo $this->text[2]['tb_id']?>">
-   		 <div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		  <h3 style="text-align: center;">Text Block 3</h3>
+   		 <div class="border-red" style="height:122px; margin-bottom:20px;">
   	  	 </div>
   	  	 </a>
    	    </div>
@@ -161,48 +218,42 @@
    <!--block 4 -->
    <div class="row">
   	<div class="col-md-12">
-  	<h3 style="text-align: center;">Block 4</h3>
   	<div class="block4">
   	 <div class="row">
   	  <div class="col-md-12">
   	  <a href="<?php echo $this->baseUrl(); ?>/admin/text-blocks/edit-text-block/id/<?php echo $this->text[3]['tb_id']?>">
-  	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Text Block 4</h3>
+  	  	<div class="border-red" style="height:170px; margin-bottom:20px;">
   	  	</div>
   	  	</a>
   	  </div>
   	 </div>	
   	 <div class="row">
   	 <!--first section image block-->
-  	  <div class="col-md-3">
+  	  <div class="col-md-2 col-md-offset-2">
   	  <a href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/edit/id/<?php echo $this->image[5]['ib_id']?>">
-  	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Image Block 6</h3>
+  	  	<div class="border-red" style="height:214px; margin-top: -10px; margin-left: -33px; margin-bottom:20px;">
   	  	</div>
   	  	</a>
   	  </div>
   	  
   	  <!--3rd section image block-->
-  	   <div class="col-md-3">
+  	   <div class="col-md-2">
   	   <a href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/edit/id/<?php echo $this->image[6]['ib_id']?>">
-  	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Image Block 7</h3>
+  	  	<div class="border-red" style="height:214px; margin-top: -10px; margin-right: -11px; margin-left: -21px; margin-bottom:20px;">
   	  	</div>
   	  	</a>
   	  </div>
   	  <!--3rd section image block-->
-  	  <div class="col-md-3">
+  	  <div class="col-md-2">
   	  <a href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/edit/id/<?php echo $this->image[7]['ib_id']?>">
-  	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Image Block 8</h3>
+  	  	<div class="border-red" style="height:214px; margin-top: -10px; margin-left: -11px; margin-right: -23px; margin-bottom:20px;">
   	  	</div>
   	  	</a>
   	  </div>
   	   <!--4th section image block-->
-  	  <div class="col-md-3">
+  	  <div class="col-md-2">
   	  <a href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/edit/id/<?php echo $this->image[8]['ib_id']?>">
-  	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Image Block 9</h3>
+  	  	<div class="border-red" style="height:214px; margin-top: -10px; margin-right: -32px; margin-bottom:20px;">
   	  	</div>
   	  	</a>
   	  </div>
@@ -214,48 +265,45 @@
    <!-- block 5 -->
    <div class="row">
   	<div class="col-md-12">
-  	<h3 style="text-align: center;">Block 5</h3>
-  	<div class="block5">
+   	<div class="block5">
   	 <div class="row">
   	  <div class="col-md-12">
   	  <a href="<?php echo $this->baseUrl(); ?>/admin/text-blocks/edit-text-block/id/<?php echo $this->text[4]['tb_id']?>">
-  	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Text Block 5</h3>
+  	  	<div class="border-red" style="height:164px; margin-bottom:20px;">
   	  	</div>
   	  	</a>
   	  </div>
   	 </div>	
+  	 <div style="height:110px;">
+  	  	</div>
   	 <div class="row">
   	 <!--first section Text block-->
-  	  <div class="col-md-3">
+  	  <div class="col-md-2 col-md-offset-2">
   	  <a href="<?php echo $this->baseUrl(); ?>/admin/text-blocks/edit-text-block/id/<?php echo $this->text[5]['tb_id']?>">
-  	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Text Block 6</h3>
+  	  	<div class="border-red" style="height:145px; margin-left: -33px; margin-bottom:20px;">
   	  	</div>
   	  	</a>
   	  </div>
   	  
   	  <!--3rd section Text block-->
-  	   <div class="col-md-3">
+  	   <div class="col-md-2">
   	   <a href="<?php echo $this->baseUrl(); ?>/admin/text-blocks/edit-text-block/id/<?php echo $this->text[6]['tb_id']?>">
-  	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Text Block 7</h3>
+  	  	<div class="border-red" style="height:145px; margin-right: -11px; margin-left: -21px;  margin-bottom:20px;">
   	  	</div>
   	  	</a>
   	  </div>
   	  <!--3rd section Text block-->
-  	  <div class="col-md-3">
+  	  <div class="col-md-2">
   	  <a href="<?php echo $this->baseUrl(); ?>/admin/text-blocks/edit-text-block/id/<?php echo $this->text[7]['tb_id']?>">
-  	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Text Block 8</h3>
+  	  	<div class="border-red" style="height:145px; margin-left: -11px; margin-right: -23px;
+          margin-bottom:20px;">
   	  	</div>
   	  	</a>
   	  </div>
   	   <!--4th section Text block-->
-  	  <div class="col-md-3">
+  	  <div class="col-md-2">
   	  <a href="<?php echo $this->baseUrl(); ?>/admin/text-blocks/edit-text-block/id/<?php echo $this->text[8]['tb_id']?>">
-  	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Text Block 9</h3>
+  	  	<div class="border-red" style="height:145px; margin-right: -32px; margin-bottom:20px;">
   	  	</div>
   	  	</a>
   	  </div>
@@ -267,13 +315,11 @@
    <!-- block6 -->
    <div class="row">
   	<div class="col-md-12">
-  	<h3 style="text-align: center;">Block 6</h3>
   	<div class="block6">
   	 <div class="row">
   	  <div class="col-md-12">
   	  <a href="<?php echo $this->baseUrl(); ?>/admin/text-blocks/edit-text-block/id/<?php echo $this->text[9]['tb_id']?>">
   	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Text Block 10</h3>
   	  	</div>
   	  	</a>
   	  </div>
@@ -283,7 +329,6 @@
   	  <div class="col-md-4">
   	  <a href="<?php echo $this->baseUrl(); ?>/admin/gallery/edit-photo/id/<?php echo $this->gallery[0]['photo_id']?>">
   	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Photo 1</h3>
   	  	</div>
   	  	</a>
   	  </div>
@@ -292,7 +337,6 @@
   	   <div class="col-md-4">
   	    <a href="<?php echo $this->baseUrl(); ?>/admin/gallery/edit-photo/id/<?php echo $this->gallery[1]['photo_id']?>">
   	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Photo 2</h3>
   	  	</div>
   	  	</a>
   	  </div>
@@ -300,7 +344,6 @@
   	  <div class="col-md-4">
   	   <a href="<?php echo $this->baseUrl(); ?>/admin/gallery/edit-photo/id/<?php echo $this->gallery[2]['photo_id']?>">
   	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Photo 3</h3>
   	  	</div>
   	  	</a>
   	  </div>
@@ -310,7 +353,6 @@
   	  <div class="col-md-4">
   	   <a href="<?php echo $this->baseUrl(); ?>/admin/gallery/edit-photo/id/<?php echo $this->gallery[3]['photo_id']?>">
   	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Photo 4</h3>
   	  	</div>
   	  	</a>
   	  </div>
@@ -319,7 +361,6 @@
   	   <div class="col-md-4">
   	    <a href="<?php echo $this->baseUrl(); ?>/admin/gallery/edit-photo/id/<?php echo $this->gallery[4]['photo_id']?>">
   	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Photo 5</h3>
   	  	</div>
   	  	</a>
   	  </div>
@@ -327,7 +368,6 @@
   	  <div class="col-md-4">
   	   <a href="<?php echo $this->baseUrl(); ?>/admin/gallery/edit-photo/id/<?php echo $this->gallery[5]['photo_id']?>">
   	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Photo 6</h3>
   	  	</div>
   	  	</a>
   	  </div>
@@ -337,7 +377,6 @@
   	  <div class="col-md-4">
   	   <a href="<?php echo $this->baseUrl(); ?>/admin/gallery/edit-photo/id/<?php echo $this->gallery[6]['photo_id']?>">
   	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Photo 7</h3>
   	  	</div>
   	  	</a>
   	  </div>
@@ -346,17 +385,16 @@
   	   <div class="col-md-4">
   	    <a href="<?php echo $this->baseUrl(); ?>/admin/gallery/edit-photo/id/<?php echo $this->gallery[7]['photo_id']?>">
   	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Photo 8</h3>
   	  	</div>
   	  	</a>
   	  </div>
   	  <!--9th section Text block-->
+ 
   	  <div class="col-md-4">
-  	   <a href="<?php echo $this->baseUrl(); ?>/admin/gallery/edit-photo/id/<?php echo $this->gallery[8]['photo_id']?>">
-  	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Photo 9</h3>
-  	  	</div>
-  	  	</a>
+	 <a href="<?php echo $this->baseUrl(); ?>/admin/gallery/edit-photo/id/<?php echo $this->gallery[8]['photo_id']?>">
+	<div class="border-red" style="height:100px;">
+     </div>
+    </a>																	   
   	  </div>
   	 </div><!--photo gallery row3 end-->
   	 </div>
@@ -366,13 +404,11 @@
    <!-- block7 -->
     <div class="row">
   	<div class="col-md-12">
-  	<h3 style="text-align: center;">Block 7</h3>
   	<div class="block7">
   	 <div class="row">
   	  <div class="col-md-12">
   	  <a href="<?php echo $this->baseUrl(); ?>/admin/text-blocks/edit-text-block/id/<?php echo $this->text[10]['tb_id']?>">
-  	  	<div class="border-red" style="height:100px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Text Block 11</h3>
+  	  	<div class="border-red" style="height:159px; margin-bottom:20px;">
   	  	</div>
   	  	</a>
   	  </div>
@@ -380,34 +416,101 @@
   	 <div class="row">
   	 <!--first section Text block-->
   	  <div class="col-md-4">
-  	  <a href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/edit/id/<?php echo $this->image[9]['ib_id']?>">
+  	  <!--<a href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/edit/id/<?php echo $this->image[9]['ib_id']?>">
   	  	<div class="border-red" style="height:200px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Image Block 10</h3>
   	  	</div>
-  	  	</a>
+  	  	</a>-->
   	  </div>
   	  
   	  <!--3rd section Text block-->
   	   <div class="col-md-4">
-  	   <a href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/edit/id/<?php echo $this->image[10]['ib_id']?>">
+  	   <!--<a href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/edit/id/<?php echo $this->image[10]['ib_id']?>">
   	  	<div class="border-red" style="height:200px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Image Block 11</h3>
   	  	</div>
-  	  	</a>
+  	  	</a>-->
   	  </div>
   	  <!--3rd section Text block-->
   	  <div class="col-md-4">
-  	  <a href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/edit/id/<?php echo $this->image[11]['ib_id']?>">
+  	  <!--<a href="<?php echo $this->baseUrl(); ?>/admin/image-blocks/edit/id/<?php echo $this->image[11]['ib_id']?>">
   	  	<div class="border-red" style="height:200px; margin-bottom:20px;">
-  	  		<h3 style="text-align: center;">Image Block 12</h3>
   	  	</div>
-  	  	</a>
+  	  	</a>-->
   	  </div>
   	 </div><!--row end-->
   	 </div>
   	</div>
-   </div><!--row 6 end-->
+   </div><!--row 8 end-->
    <!-- block 7 end-->
+   <!--block 8-->
+   <div class="row">
+    <div class="col-md-12">
+     <div class="block8">
+      <div class="row">
+    	<div class="col-md-12">
+    	<!--<a href="<?php echo $this->baseUrl(); ?>/admin/text-blocks/edit-text-block/id/<?php echo $this->text[2]['tb_id']?>">
+   		 <div class="border-red" style="height:122px; margin-bottom:20px;">
+  	  	 </div>
+  	  	 </a>-->
+   	    </div>
+   	  </div>
+   	 </div>
+   	</div>
+   </div><!-- row9 end-->
+   <!--block 8 end-->
+    <!--block 9-->
+   <div class="row">
+    <div class="col-md-12">
+     <div class="block9">
+      <div class="row">
+    	<div class="col-md-12">
+    	
+   	    </div>
+   	  </div>
+   	 </div>
+   	</div>
+   </div><!-- row10 end-->
+   <!--block 9 end-->
+         <!--block 10-->
+   <div class="row">
+    <div class="col-md-12">
+     <div class="block10">
+      <div class="row">
+    	<div class="col-md-12">
+    	
+   	    </div>
+   	  </div>
+   	 </div>
+   	</div>
+   </div><!-- row11 end-->
+   <!--block 10 end-->
+<!--block 11-->
+   <div class="row">
+    <div class="col-md-12">
+     <div class="block11">
+      <div class="row">
+    	<div class="col-md-12">
+    	
+   	    </div>
+   	  </div>
+   	 </div>
+   	</div>
+   </div><!-- row11end-->
+   <!--block 11 end-->
+   <!--block 12-->
+   <div class="row">
+    <div class="col-md-12">
+     <div class="block12">
+      <div class="row">
+    	<div class="col-md-12">
+    	
+   	    </div>
+   	  </div>
+   	 </div>
+   	</div>
+   </div><!-- row12end-->
+   <!--block 12 end-->
+    
+   </div><!--inner-content-->
   </div><!--template end-->
  </div><!--main col-md-12 end-->
 </div><!--main row end-->
